@@ -110,6 +110,10 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
             datalist=[argList.arg[0].getSelectedRowId(0)];         //获得选中行的所有行id集合
         }
         console.log(datalist);
+        if(datalist<1){
+            alert("没有选中的点！请重试！")
+            return
+        }
         datalist.forEach(function(item){
             item=parseFloat(item);
             lonlatvalue.push([item,parseFloat(argList.arg[0].cells(item, 2).getValue()),parseFloat(argList.arg[0].cells(item, 3).getValue())])
@@ -218,8 +222,9 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                 wrapX: false
             });
             map.addLayer(linkPointLayer); //将图层添加到目标之上
+            //var pointLayerArr = mapControls.funReturnPointLayerArr();
+            //pointLayerArr.push(linkPointLayer);
         }
-
 
         var point = [mainX,mainY];
         var pointFeature = new ol.Feature({
@@ -238,7 +243,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
         pointFeature.setId(pointID);
 
         linkPointLayer.getSource().addFeature(pointFeature);
-        linkPointLayer.id = pointID;
+        //linkPointLayer.id = pointID;
 
         $('#pop').append('<div id="pop'+pointID+'" style="color: red">&nbsp;'+pointID+'</div>');
 
@@ -254,6 +259,47 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
         //points.push(singlePoint);
         map.addOverlay(pop);  // 地图添加
 
+    }
+    //让十字标高亮
+    var _highLight = function(selectedPointID,map) {
+        //map.removeInteraction(draw);  //移除交互
+        //var $pointIdPop = $("#pointIdPop");
+        var features = linkPointLayer.getSource().getFeatures();//pointLayer.getSource().getFeatures();   //得到地图所有的 features
+        console.log(features.length);
+        //new ol.interaction.Select();   //实例化交互选择，操作要素
+        for (var i = 0; i < features.length; i++) {
+            if (selectedPointID == features[i].id_) {
+                $("#pop"+(features[i].id_)+"").css({color:"#009999"});
+                features[i].setStyle(new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: '#047FF3',
+                        width: 2
+                    }),
+                    image: new ol.style.Icon({
+                        anchor: [10, 10],
+                        anchorXUnits: 'pixels',
+                        anchorYUnits: 'pixels',
+                        imgSize: [21, 21],
+                        src: "img/2_xuanzhong.png"
+                    })
+                }));
+            }else{
+                $("#pop"+(features[i].id_)+"").css({color:"red"});
+                features[i].setStyle(new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: '#047FF3',
+                        width: 2
+                    }),
+                    image: new ol.style.Icon({
+                        anchor: [10, 10],
+                        anchorXUnits: 'pixels',
+                        anchorYUnits: 'pixels',
+                        imgSize: [21, 21],
+                        src: "img/21px.png"
+                    })
+                }));
+            }
+        }
     }
     var _pointDraw = function(argList){
         var open = argList.arg[2];
@@ -1071,6 +1117,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
         pointDraw:_pointDraw,
         pointProduce:_pointProduce,
         save:_save,
-        mainAddPoint:_mainAddPoint
+        mainAddPoint:_mainAddPoint,
+        highLight:_highLight
     }
 });

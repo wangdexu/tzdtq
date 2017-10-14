@@ -170,6 +170,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../gis/mapProduce'],function(
                     }
                 },
                 error: function (e) {
+
                     if(e.status == "401"){
                         getSession();
                     }
@@ -199,6 +200,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../gis/mapProduce'],function(
                     loadleftTree();
                 },
                 error: function (e) {
+                    alert("新建任务失败！");
                     if(e.status == "401"){
                         //getSession();
                     }

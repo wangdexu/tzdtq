@@ -97,13 +97,13 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                 {id : "collectMode", text : "采集规划方式", text_pos : "buttom", type : "block", mode : "cols", list : [
 
                     {id : "goalProgram", text : "目标规划",img:"auto_match.png", isbig : true, type : "button"},
-                    {id : "evenProgram", text : "均匀规划",img:"network.png", isbig : true, type : "button"},
+                    {id : "evenProgram", text : "均匀规划",img:"anverage-plan.png", isbig : true, type : "button"},
                     {id : "freeProgram", text : "自由规划",img:"free-plan.png", isbig : true, type : "button"}
                 ]},
                 {id : "process", text : "处理", text_pos : "buttom", type : "block", mode : "cols", list : [
 
-                    {id : "pointHeight", text : "特征点高程获取",img:"auto_match.png", isbig : true, type : "button"},
-                    {id : "pointDraw", text : "特征点提取精化",img:"auto_match.png", isbig : true, type : "button"},
+                    {id : "pointHeight", text : "特征点高程获取",img:"charicter-point-height.png", isbig : true, type : "button"},
+                    {id : "pointDraw", text : "特征点提取精化",img:"charicter-point-input.png", isbig : true, type : "button"},
                     {id : "pointProduce", text : "特征点切片入库",img:"network.png", isbig : true, type : "button"},
                     {id : "groundProduce", text : "大地控制点制备",img:"network.png", isbig : true, type : "button"},
                     {id : "photoProduce", text : "相片控制点制备",img:"network.png", isbig : true, type : "button"}
@@ -259,6 +259,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
             //map.render();
 
             mapControl.highLight(rId);
+            var map = open.funReturn();
+            mapProduce.highLight(rId,map);
         });
 
 

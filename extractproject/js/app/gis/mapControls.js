@@ -314,7 +314,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
     //处理地图坐标，默认保留四位小数
     var __mapCoordinateFixed4 = function(target) {
         //console.log(target);
-       return  (Math.round(target *10000))/10000;
+       return  (Math.round(target *1000000000))/1000000000;
     };
 
 
@@ -428,6 +428,9 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
 
     var draw = null;
     var pointLayerArr = [];
+    var _funReturnPointLayerArr = function(){
+        return pointLayerArr;
+    }
     //创建绘制图层
     var __createPointLayer = function(){
 
@@ -1383,7 +1386,8 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
         pointLayerArr=[];
         dataMain.FeaturePoint=[];
         argList.arg[0].clearAll();
-
+        orderList = [];
+        pointIdList = [];
 
     };
     var _mapLinkMove = function(argList){
@@ -1420,7 +1424,8 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
         highLight:_highLight,
         association:_association,
         removeDelete:_removeDelete,
-        clickPoint:_clickPoint
+        funReturnPointLayerArr:_funReturnPointLayerArr,
+  		 clickPoint:_clickPoint
     }
 });
 
