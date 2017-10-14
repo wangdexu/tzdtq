@@ -423,9 +423,6 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     console.log(id);
                     break;
                 case "export":
-                    mapControl.export({
-                        eventName:"onClick"
-                    });
                     ribbon_1.setItemState("stabPoint", "false", "");        //让刺点按钮弹起来
                     mapControl.removeAdd();                                 //移除刺点关联
                     ribbon_1.setItemState("modifyPoint", "false", "");      //让修改按钮弹起来
@@ -434,6 +431,10 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     scheme.removeDraw();                                    //去除目标规划的鼠标圆点
                     ribbon_1.setItemState("deleteSingle", "false", "");
                     mapControl.removeDelete();
+                    mapControl.export({
+                        eventName: "onClick",
+                        arg: [grid_3]
+                    });
                     break;
  				case "goalProgram":
                     mapControl.targetScheme("goalProgram");
@@ -687,6 +688,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                             eventName: "onClick",
                             arg: [grid_3]
                         });
+
                         //$("." + mapId).css({"cursor": "crosshair"});
                         //smallMap.addPoint({
                         //    eventNme: "onClick",
@@ -746,6 +748,11 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                         mapControl.associatedDisplay({
                             eventName: "onClick",
                             arg: []
+                        });
+                        //调用点击界面点的事件
+                        mapControl.clickPoint({
+                            eventName: "onClick",
+                            arg: [grid_3]
                         });
                         //console.log("ji");
                     }else{
@@ -1028,6 +1035,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                 return null;
             }
         }
+
     };
     return {
         test:_test

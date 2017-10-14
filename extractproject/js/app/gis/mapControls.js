@@ -233,7 +233,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
                 center:center,
                 zoom: 4,
                 minZoom:3,
-                maxZoom:18,
+                maxZoom:25,
                 maxResolution:0.703125
             })
         });
@@ -296,7 +296,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
                 center: [104.06, 30.67],
                 zoom: 5,
                 minZoom:2,
-                maxZoom:18,
+                maxZoom:25,
                 maxResolution:0.703125
             })
         });
@@ -710,7 +710,64 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
         dataMain.FeaturePoint.splice(-1,0,indexExample);
         console.log(dataMain.FeaturePoint);
     };
+    //点击主视图的界面点
+    var _clickPoint= function(data){
+        var map=open.funReturn();
+        if(popArr.length<=0){
+            //alert("当前没有点可以修改！");
+        }else{
+            //map.removeInteraction(draw);  //移除交互
+            var features = pointLayerArr;//pointLayer.getSource().getFeatures();   //得到地图所有的 features
+            var leftTable = data.arg[0];
+            var selectedPointID ;
+            var selectPoint = new ol.interaction.Select(
+                {"hitTolerance":20}
+            );   //实例化交互选择，操作要素
+            map.addInteraction(selectPoint);
+            selectPoint.on('select',function(event){
+                event.preventDefault();
+                event.stopPropagation();
+                if(undefined != event.selected[0]) {
+                    console.log(event.selected);
+                    console.log(selectPoint);
+                    event.selected[0].setStyle(new ol.style.Style({
+                        image: new ol.style.Icon({
+                            anchor: [10, 10],
+                            anchorXUnits: 'pixels',
+                            anchorYUnits: 'pixels',
+                            imgSize: [21, 21],
+                            src: "img/21px.png"
+                        })
+                        //geometry:function(feature){
+                        //    var coordinates = feature.getGeometry().getCoordinates()[0];
+                        //    return feature.getGeometry();
+                        //}
+                    }));
+                    selectedPointID = event.selected[0].getId();   // 得到选择的要素的id值
 
+                    var arr = [];
+                    var lon =  parseFloat(leftTable.cells(selectedPointID,2).getValue());  //取得经度
+                    var lat =  parseFloat(leftTable.cells(selectedPointID,3).getValue());  //取得纬度
+
+                    arr.push(lon);
+                    arr.push(lat);
+                    console.log(arr);
+                    //让小图的中心点跟着点列表数据联动
+                    var map=open.funReturnmin();
+                    var view = map.getView();
+                    // 移动中心点
+                    view.setCenter(ol.proj.transform(arr, 'EPSG:4326', 'EPSG:4326'));
+                    //console.log("jack");
+                    //map.render();
+                    leftTable.setRowColor(selectedPointID,"#EEEEEE");
+
+                    _highLight(selectedPointID);
+
+                }
+            });
+        }
+        //map.removeInteraction(modify);  //移除交互
+    };
     //修改点操作
     var modify;
     var _modifyPoint = function(data) {
@@ -854,8 +911,12 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
             $(this).off("mousemove");
         });
     };
+    var  importLeftTable;
     //导入导出
-    var _export = function(){
+    var gpcData ;
+    var fileName = "newGcp";
+    var _export = function(argList){
+        importLeftTable = argList.arg[0];
         var $exportPop = $("#exportIdPop");
         $exportPop.css({"display":"block"}).fadeIn(500);    //透明蒙层
         $("#popExport").addClass("popContainer").fadeIn(500); // 显示删除弹出层
@@ -866,15 +927,12 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
         });
         $("#export").on('click',function(){
             var gcpJsonData = gpcData;
-            gcpJsonData.forEach(function (item){
-                var str = "";
-                var name = "";
-                item.FeaturePoint.Property.forEach(function (data){
-                    name =  data.IMAGEID;
-                    str = str+data.POINTID+"  "+data.LONRANGE+"  "+data.LATRANGE+"  "+data.HEIGHT+"\r\n"
-                })
-                doSave(str, "text/latex", name+".gcp");
+            var str = "";
+            name =  fileName;
+            gcpJsonData.data.forEach(function (item){
+                str = str+item.pointid+"  "+item.x+"  "+item.y+"  "+item.z+"\r\n"
             })
+            doSave(str, "text/latex", name+".gcp");
         })
 
         function doSave(value, type, name) {
@@ -910,6 +968,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
             var files = evt.target.files; // FileList object
             if(files[0])
             {
+                fileName = files[0].name;
                 var reader = new FileReader();
                 reader.readAsText(files[0]);
                 reader.onload = loaded;
@@ -917,7 +976,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
         })
         var a=new Array();
 
-        //var gpcData ;
+
         var fileString;
         function loaded(evt) {
             fileString = evt.target.result;
@@ -928,28 +987,117 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
 
         }
         $("#import").on('click',function(){
+            //var data = fileString;
             var rediskey=_uuid();
-            var data = {"rediskey":rediskey,"gcp":fileString,"xmlid":["48ea4804-9bf8-4d55-9f68-33ca16e8d2b4","1455e544-135a-42db-9c0a-127c45eee025"]}
+            var data = {
+                "rediskey":rediskey,
+                "gcp":""+fileString,
+                "xmlid":[selectDomData.xmlid]
+            };
+
+
+
             $.ajax({
-                url:"http://192.168.31.233:5000/ControlPointImport",
+                url:window.projectUrl+"ControlPointImport",
                 type:"post",
                 contentType: "application/json",
                 //dataType:'jsonp',
                 data:JSON.stringify(data),
                 async: false,
                 success:function(data){
-                    console.log(data);
-                    gpcData = JSON.parse(data);
-                    dataDisplay(gpcData[0])
-                },
-                error: function (e) {
-                    if(e.status == "401"){
-                        //getSession();
+                    if(data=="SUCCESS"){
+                        time();
+                    }else{
+                        alert("高程-数据获取失败!");
+                        console.log(data);
                     }
+                },
+                error: function () {
+                    alert("高程-数据获取失败!")
                 }
-            })
+            });
+            function time(){
+                console.log(1);
+                var time=window.setInterval(function(){
+                    $.ajax({
+                        url: window.projectUrl+"ControlPointImportProcess",
+                        type: "post",
+                        data:JSON.stringify({"rediskey":rediskey}),
+                        //dataType: 'JSPON',
+                        success: function (data) {
+                            console.log(data);
+                            $("#progressBar").val(data);
+                            if(data<100) {
+                                console.log(data);
+                            }else{
+                                $.ajax({
+                                    url:window.projectUrl+"ControlPointImportResult",
+                                    type:"post",
+                                    contentType: "application/json",
+                                    //dataType:'jsonp',
+                                    data:JSON.stringify({"rediskey":rediskey}),
+                                    async: false,
+                                    success:function(data){
+                                        console.log(data);
+                                        gpcData = data;
+                                        gpcData.data.forEach(function(item){
+                                            _importAdd(item.pointid,item.x,item.y,item.z)
+                                        })
+                                    },
+                                    error: function (e) {
+                                        if(e.status == "401"){
+                                            //getSession();
+                                        }
+                                    }
+                                })
+                                window.clearInterval(time);
+                            }
+                        },
+                        error: function () {
+                            console.log("点列表进程,请求失败");
+                        }
+                    });
+                },500);
+            }
+
+
+
+
+
+
         })
     };
+    //导入添加列表信息
+    var _importAdd = function(pointid,x,y,z){
+        var  leftTable = importLeftTable; //获取第一个参数
+        if(orderList.length<=0 && pointIdList.length <= 0) {
+            if (leftTable.getRowsNum() > 0) {
+                leftTable.forEachRow(function (id) {  //循环每一行
+                    leftTable.forEachCell(id, function (cellObj, index) {  //循环每一行的每一个cell,每个cell的id为index，对象为cellObj
+                        if (index === 0) {
+                            orderList.push(cellObj.getValue() == undefined ? 0 : cellObj.getValue());
+                        }
+                        if (index === 1) {
+                            pointIdList.push(cellObj.getValue() == undefined ? 0 : cellObj.getValue());
+                        }
+                    });
+                });
+            } else {
+                orderList.push(0);
+                pointIdList.push(0);
+            }
+        }
+
+        var numOrder = Math.max.apply(null,orderList) + 1;
+        var pointID= Math.max.apply(null,pointIdList) + 1;
+        orderList = [];
+        pointIdList = [];
+        orderList.push(numOrder);
+        pointIdList.push(pointID);
+        var rowData = [numOrder,pointID,pointType[1],"",FLAGTRUE,x,y,z];
+        leftTable.addRow(numOrder,rowData,false);
+        importToId[pointID] = pointid;
+    }
     //删除单点操作
     //var _deleteSinglePoint = function(data){
     //    var leftTable = data.arg[0];
@@ -1270,7 +1418,8 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
         removeEdit:_removeEdit,
         highLight:_highLight,
         association:_association,
-        removeDelete:_removeDelete
+        removeDelete:_removeDelete,
+        clickPoint:_clickPoint
     }
 });
 
