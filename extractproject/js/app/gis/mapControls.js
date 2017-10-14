@@ -742,6 +742,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
                         //    var coordinates = feature.getGeometry().getCoordinates()[0];
                         //    return feature.getGeometry();
                         //}
+                        
                     }));
                     selectedPointID = event.selected[0].getId();   // 得到选择的要素的id值
 
