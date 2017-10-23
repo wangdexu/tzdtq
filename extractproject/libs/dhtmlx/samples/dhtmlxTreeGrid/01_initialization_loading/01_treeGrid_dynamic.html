@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dynamic loading (using PHP)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/fonts/font_roboto/roboto.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlx.css"/>
+	<script src="../../../codebase/dhtmlx.js"></script>
+	<script>
+		var myTreeGrid;
+		function doOnLoad() {
+			myTreeGrid = new dhtmlXGridObject('gridbox');
+			myTreeGrid.setImagePath("../../../codebase/imgs/");
+			myTreeGrid.setHeader("Tree,Plain Text,Long Text,Color,Checkbox");
+			myTreeGrid.setInitWidths("200,80,80,80,80");
+			myTreeGrid.setColAlign("left,left,left,center,center");
+			myTreeGrid.setColTypes("tree,ed,txt,ch,ch");
+			myTreeGrid.setColSorting("str,str,str,na,str");
+			myTreeGrid.enableAutoWidth(true);
+			myTreeGrid.init();
+			myTreeGrid.kidsXmlFile = "php/treeGrid_dynamic2.php";
+			myTreeGrid.load("php/treeGrid_dynamic2.php");
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<h1>Dynamic loading of sub items </h1>
+	<p>Decrease loading time using dynamical loading of children elements</p>
+	<div id="gridbox" width="550px" height="320px" style="background-color:white;"></div>
+</body>
+</html>

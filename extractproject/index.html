@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Feature point extract</title>
+    <!--<link rel="stylesheet" type="text/css" href="css/reset.css"/>-->
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="libs/openlayers/v4.1.1-dist/ol.css">
+    <!--<link rel="stylesheet" type="text/css" href="libs/dhtmlx/codebase/fonts/font_roboto/roboto.css"/>-->
+    <link rel="stylesheet" href="libs/dhtmlx/codebase/dhtmlx.css"/>
+    <link rel="stylesheet" href="./css/index.css"/>
+    <link rel="stylesheet" href="./css/loading.css"/>
+</head>
+<body>
+<!--加载动画-->
+<div class="autoMatch">
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_four"></div>
+                <div class="object" id="object_three"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_one"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--点id的容器-->
+<div id="pop" style="display:none"></div>
+
+<!--导入导出-->
+<div id="popExport"  style="display: none;">
+    <div id="exportIdPop"  >
+        <div style="padding-left: 10px;height: 40px;">
+            <img src="img/runtitleleft.png">
+            <span >导入/导出</span>
+            <span class="exportPop">&times;</span>
+        </div>
+        <div style="width:100%;">
+            <span>请选择文件:</span><input type="file" id="file" name="files[]" multiple />
+        </div>
+        <button id="import">导入</button>
+        <button id="export">导出</button>
+    </div>
+</div>
+<!--删除点的弹出框-->
+<div id="popContainer"  style="display: none;">
+<div id="pointIdPop"  >
+    <span class="deletePop">&times;</span>
+    <div style="width:100%;">
+        <span>输入要删除点的点ID:</span><input class="pointIdInfo" type="number" autofocus/>
+    </div>
+</div>
+</div>
+<script src="libs/requirejs/require.js" data-main="js/app.js"></script>
+</body>
+</html>

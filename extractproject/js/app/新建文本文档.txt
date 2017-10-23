@@ -1,0 +1,52 @@
+var _createBox = function(divId,data){
+    var featuresArr = [];
+    var drawOverlay;
+        var divId = divId;
+        var points = [];
+        var point1 = [11175542.09549514,4125234.686415287];
+        var point2 = [11275542.09549514,4225234.686415287];
+        var point3 = [11375542.09549514,4325234.686415287];
+        var point4 = [11475542.09549514,4425234.686415287];
+        points.push(point1);
+        points.push(point2);
+        points.push(point3);
+        points.push(point4);
+
+
+        // 设置默认样式
+        var stroke = new ol.style.Stroke({color: '#FF0000', width: 2});
+        var fill = new ol.style.Fill({color: 'rgba(0,255,0,0.4)'});
+        var image = new ol.style.Circle({fill: fill, stroke: stroke, radius: 8});
+        var drawStyle = new ol.style.Style({image: image, fill: fill, stroke: stroke});
+        if(undefined == drawOverlay){
+            drawOverlay = new ol.layer.Vector({
+                source: new ol.source.Vector()
+            });
+        }
+
+        drawOverlay.setStyle(drawStyle);
+        drawOverlay.setMap(mapTemp[divId]);
+        mapTemp[divId].on('click', function (evt) {
+            evt.target.f;
+            features;
+        })
+        var linefeature = new ol.Feature({
+            geometry:new ol.geom.LineString(
+                points)
+        });
+        linefeature.setStyle(new ol.style.Style({
+            stroke: new ol.style.Stroke({
+                width: 3,
+                color: 'rgba(255,0,0,1)'
+            })
+        }));
+        drawOverlay.getSource().addFeature(linefeature);
+
+
+        var features =  new ol.Collection();
+        var uuid =  _uuid();
+        linefeature.id = uuid;
+        features.push(linefeature);
+        featuresArr.push(features);
+
+}

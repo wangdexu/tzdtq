@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--pro-->
+<html>
+<head>
+	<title>Adjust column size</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/fonts/font_roboto/roboto.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlx.css"/>
+	<script src="../../../codebase/dhtmlx.js"></script>
+	<script>
+		var myGrid;
+		function doOnLoad(){
+			myGrid = new dhtmlXGridObject('gridbox');
+			myGrid.setImagePath("../../../codebase/imgs/");
+			myGrid.setHeader("Sales,Book Title,Author,Price,In Store,Shipping,Bestseller,Date of Publication");
+			myGrid.setInitWidths("200,50,50,50,50,50,50,50");
+			myGrid.setColAlign("right,left,left,right,center,left,center,center");
+			myGrid.setColTypes("ed,ed,ed,price,ch,co,ra,ro");
+			var combobox = myGrid.getCombo(5);
+			combobox.put("1","1 Hour");
+			combobox.put("12","12 Hours");
+			combobox.put("24","24 Hours");
+			combobox.put("48","2 days");
+			combobox.put("168","1 week");
+			combobox.put("pick","pick up");
+			combobox.put("na","na");
+			myGrid.setColSorting("na,na,na,na,na,na,na,na");
+			myGrid.enableColumnAutoSize(true);
+			myGrid.enableAutoHeight(true);
+			myGrid.init();
+			myGrid.load("../common/grid_16_rows_columns_manipulations.xml");
+		}
+		function m_f2(id){
+			document.getElementById("a_1").innerHTML="Selected row: "+id;
+		}
+		function doIt(){
+			myGrid.enableEditEvents(document.getElementById('z1').checked,document.getElementById('z2').checked,document.getElementById('z3').checked);
+		}
+	</script>
+</head>
+<body onload="doOnLoad()">
+	<h1>Adjust column size</h1>
+	<p>Double clicking on any header (or using dropdown below the grid) allows you to adjust column size according to cell value size.</p>
+	<table width="600">
+		<tr>
+			<td width="50%" valign="top">
+				<div id="gridbox" style="width:100%;height:350px;background-color:white;"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+                <div><input id='z1' type="button"  onclick='myGrid.adjustColumnSize(this.nextSibling.value)' value="Adjust column" /><select><option value="0">Sales
+					<option value="1">Book title
+					<option value="2">Author
+					<option value="3">Price
+					<option value="4">In store
+					<option value="5">Shipping
+					<option value="6">Bestseller
+					<option value="7">Date
+				</select></div>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

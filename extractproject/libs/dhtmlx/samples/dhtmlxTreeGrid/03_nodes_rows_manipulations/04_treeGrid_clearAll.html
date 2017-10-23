@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Repopulation TreeGrid</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/fonts/font_roboto/roboto.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlx.css"/>
+	<script src="../../../codebase/dhtmlx.js"></script>
+	<script>
+		var myTreeGrid;
+		function doOnLoad() {
+			myTreeGrid = new dhtmlXGridObject('gridbox');
+			myTreeGrid.setImagePath("../../../codebase/imgs/");
+			myTreeGrid.setHeader("Tree,Plain Text,Long Text,Color,Checkbox");
+			myTreeGrid.setInitWidths("150,100,100,100,90");
+			myTreeGrid.setColAlign("left,left,left,center,center");
+			myTreeGrid.setColTypes("tree,ed,txt,ch,ch");
+			myTreeGrid.setColSorting("str,str,str,na,str");
+			myTreeGrid.enableAutoHeigth(true);
+			myTreeGrid.init();
+			myTreeGrid.load("../common/test_list_1.xml");
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<h1>Repopulation TreeGrid</h1>
+	<p>Empty TreeGrid and repopulate it with xml or script</p>
+	<table width="550">
+		<tr>
+			<td>
+				<div id="gridbox" width="100%" height="250px" style="background-color:white;"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="gridtbl1" width="100%" height="200px" style="background-color:white;"></div><br>
+				<div><a href="#" onclick="myTreeGrid.clearAll()">Clear all</a></div>
+				<div><a href="#" onclick="myTreeGrid.load('../common/test_list_1.xml');">Reload XML</a></div>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--pro-->
+<html>
+<head>
+	<title>Paging in sidebar's status bar</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/fonts/font_roboto/roboto.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlx.css"/>
+	<script src="../../../codebase/dhtmlx.js"></script>
+	<style>
+		div#sidebarObj {
+			position: relative;
+			margin-left: 10px;
+			margin-top: 10px;
+			width: 600px;
+			height: 450px;
+			box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.09);
+		}
+	</style>
+	<script>
+		var mySidebar;
+		var myGrid;
+		function doOnLoad() {
+			mySidebar = new dhtmlXSideBar({
+				parent: "sidebarObj",
+				icons_path: "../../dhtmlxSidebar/common/win_16x16/",
+				width: 160,
+				json: "../../dhtmlxSidebar/common/sidebar.json",
+				onload: function() {
+					// attach status bar
+					mySidebar.cells("recent").attachStatusBar({
+						text: "<div id='pagingArea'></div>",
+						paging: true
+					});
+					// attach grid
+					myGrid = mySidebar.cells("recent").attachGrid();
+					myGrid.setImagePath("../../../codebase/imgs/");
+					myGrid.enablePaging(true, 9, 3, "pagingArea");
+					myGrid.setPagingSkin("toolbar");
+					myGrid.load("../common/grid.xml");
+				}
+			});
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<div id="sidebarObj"></div>
+</body>
+</html>

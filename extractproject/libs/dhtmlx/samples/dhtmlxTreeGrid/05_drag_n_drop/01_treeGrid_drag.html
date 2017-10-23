@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drag and Drop between Grids</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/fonts/font_roboto/roboto.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlx.css"/>
+	<script src="../../../codebase/dhtmlx.js"></script>
+	<script>
+		var myTreeGrid, myTreeGrid2, myTreeGrid3;
+		function doOnLoad() {
+			myTreeGrid = new dhtmlXGridObject('gridbox');
+			myTreeGrid.setImagePath("../../../codebase/imgs/");
+			myTreeGrid.setIconPath("../common/images/");
+			myTreeGrid.setHeader("Tree,Plain Text,Long Text,Color,Checkbox");
+			myTreeGrid.setInitWidths("160,80,80,80,80");
+			myTreeGrid.setColAlign("left,left,left,center,center");
+			myTreeGrid.setColTypes("tree,ed,txt,ch,ch");
+			myTreeGrid.setColSorting("str,str,str,na,str");
+			myTreeGrid.enableDragAndDrop(true);
+			myTreeGrid.enableSmartXMLParsing(false);
+			myTreeGrid.init();
+			myTreeGrid.setDragBehavior('complex');
+			myTreeGrid.load("../common/test_list_1_05_drag_n_drop.xml");
+
+			myTreeGrid2 = new dhtmlXGridObject('gridbox2');
+			myTreeGrid2.setImagePath("../../../codebase/imgs/");
+			myTreeGrid2.setIconPath("../common/images/");
+			myTreeGrid2.setHeader("Tree,Plain Text,Long Text,Color,Checkbox");
+			myTreeGrid2.setInitWidths("160,80,80,80,80");
+			myTreeGrid2.setColAlign("left,left,left,center,center");
+			myTreeGrid2.setColTypes("tree,ed,txt,ch,ch");
+			myTreeGrid2.setColSorting("str,str,str,na,str");
+			myTreeGrid2.enableDragAndDrop(true);
+			myTreeGrid2.enableSmartXMLParsing(false);
+			myTreeGrid2.init();
+			myTreeGrid2.setDragBehavior('complex');
+			myTreeGrid2.load("../common/test_list_1_05_drag_n_drop.xml");
+			
+			myTreeGrid3 = new dhtmlXGridObject('gridbox3');
+			myTreeGrid3.setImagePath("../../../codebase/imgs/");
+			myTreeGrid3.setIconPath("../common/images/");
+			myTreeGrid3.setHeader("Tree,Plain Text,Long Text,Color,Checkbox");
+			myTreeGrid3.setInitWidths("160,80,80,80,80");
+			myTreeGrid3.setColAlign("left,left,left,center,center");
+			myTreeGrid3.setColTypes("tree,ed,txt,ch,ch");
+			myTreeGrid3.setColSorting("str,str,str,na,str");
+			myTreeGrid3.enableDragAndDrop(true);
+			myTreeGrid3.enableSmartXMLParsing(false);
+			myTreeGrid3.init();
+			myTreeGrid3.setDragBehavior('complex');
+			myTreeGrid3.load("../common/test_list_1_05_drag_n_drop.xml");
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<h1>Drag and Drop between Grids</h1>
+	<p>Drag-n-drop within Grid(TreeGrid), between Grids(TreeGrids)</p>
+	<table width="1000px">
+		<tr>
+			<td width="500px">
+				<div id="gridbox" width="100%" height="250px" style="background-color:white;"></div>
+			</td>
+			<td>
+				<div id="gridbox2" width="100%" height="250px" style="background-color:white;"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="gridbox3" width="100%" height="250px" style="background-color:white;"></div>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

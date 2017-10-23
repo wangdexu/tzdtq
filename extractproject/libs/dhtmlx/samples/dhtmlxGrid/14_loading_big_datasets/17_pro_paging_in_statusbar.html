@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--pro-->
+<html>
+<head>
+	<title>Paging in status bar</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/fonts/font_roboto/roboto.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlx.css"/>
+	<script src="../../../codebase/dhtmlx.js"></script>
+	<style>
+		div#tabbarObj {
+			position: relative;
+			margin-top: 20px;
+			margin-left: 20px;
+			width: 650px;
+			height: 470px;
+		}
+		div#controls {
+			margin-top: 20px;
+			margin-left: 20px;
+		}
+	</style>
+	<script>
+		var myTabbar, myGrid;
+		function doOnLoad() {
+			if (myTabbar != null) myTabbar.unload();
+			// init tabbar
+			myTabbar = new dhtmlXTabBar({
+				parent: "tabbarObj",
+				tabs: [
+					{id: "a1", text: "dhtmlxGrid", active: true},
+					{id: "a2", text: "Tab 2"},
+					{id: "a3", text: "Tab 3"}
+				]
+			});
+			// attach status bar
+			myTabbar.tabs("a1").attachStatusBar({
+				paging: true,
+				text: "<div id='pagingArea'></div>"
+			});
+			// init grid
+			myGrid = myTabbar.tabs("a1").attachGrid();
+			myGrid.setImagePath("../../../codebase/imgs/");
+			myGrid.enablePaging(true, 10, 3, "pagingArea");
+			myGrid.setPagingSkin("toolbar");
+			myGrid.enableAutoHeight(true);
+			myGrid.load("../common/grid_layout.xml?etc="+new Date().getTime());
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<div id="tabbarObj"></div>
+</body>
+</html>
