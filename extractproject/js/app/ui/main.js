@@ -1,7 +1,7 @@
 /**
  * Created by domea on 17-6-2.
  */
-define(['jquery','dhtmlx','ol','../gis/mapControls'],function ($,dhtmlx,ol,mapControl) {
+define(['jquery','dhtmlx','ol','../gis/mapControls','../gis/mapProduce'],function ($,dhtmlx,ol,mapControl,mapProduce) {
     var _test=function(){
         window.dhx4.skin = 'material';
         var main_layout = new dhtmlXLayoutObject(document.body, '2U');
@@ -340,12 +340,12 @@ define(['jquery','dhtmlx','ol','../gis/mapControls'],function ($,dhtmlx,ol,mapCo
                         //arg: [id,mapId]
                     });
                     break;
-                case "oneRatioOne":
-                    mapControl.oneRatioOne({
-                        eventName:"onClick"
-                        //arg: [id,mapId]
-                    });
-                    break;
+                //case "oneRatioOne":
+                //    mapControl.oneRatioOne({
+                //        eventName:"onClick"
+                //        //arg: [id,mapId]
+                //    });
+                //    break;
                 case "addPoint":
                     $(".mapMainContainer").css({"cursor":"default"});
                     mapControl.addPoint({
@@ -378,30 +378,49 @@ define(['jquery','dhtmlx','ol','../gis/mapControls'],function ($,dhtmlx,ol,mapCo
                         eventName:"onClick"
                     });
                     break;
-                case "autoPrediction":
-                    $(".autoMatch").addClass("autoMatchLoading").fadeIn(500);
-                    //这里写的只是测试加载动画，真实情况要从后台处理数据进度判断动画消失的时间
-                    setTimeout(function(){
-                        $(".autoMatch").removeClass('.autoMatchLoading').fadeOut(500);
-                    },10000);
-                    break;
-                case "associatedDisplay":
-                    mapControl.mapLinkMove({
-                        eventName:"onclick",
-                        args:[mapLinkMove]
-                    });
-                    break;
-                case "autoMatch":
-                    $(".autoMatch").addClass("autoMatchLoading").fadeIn(500);
-                    //这里写的只是测试加载动画，真实情况要从后台处理数据进度判断动画消失的时间
-                    setTimeout(function(){
-                        $(".autoMatch").removeClass('.autoMatchLoading').fadeOut(500);
-                    },10000);
+                case "goalProgram":
 
                     break;
-                case "blockAdjustment":
-                    //console.log(id);
+                case "evenProgram":
+
                     break;
+                case "freeProgram":
+
+                    break;
+                case "pointDraw":
+                    mapProduce.pointDraw({
+                        eventName:"onClick"
+                    });
+                    break;
+                case "pointProduce":
+                    mapProduce.pointProduce({
+                        eventName:"onClick"
+                    });
+                    break;
+                //case "autoPrediction":
+                //    $(".autoMatch").addClass("autoMatchLoading").fadeIn(500);
+                //    //这里写的只是测试加载动画，真实情况要从后台处理数据进度判断动画消失的时间
+                //    setTimeout(function(){
+                //        $(".autoMatch").removeClass('.autoMatchLoading').fadeOut(500);
+                //    },10000);
+                //    break;
+                //case "associatedDisplay":
+                //    mapControl.mapLinkMove({
+                //        eventName:"onclick",
+                //        args:[mapLinkMove]
+                //    });
+                //    break;
+                //case "autoMatch":
+                //    $(".autoMatch").addClass("autoMatchLoading").fadeIn(500);
+                //    //这里写的只是测试加载动画，真实情况要从后台处理数据进度判断动画消失的时间
+                //    setTimeout(function(){
+                //        $(".autoMatch").removeClass('.autoMatchLoading').fadeOut(500);
+                //    },10000);
+                //
+                //    break;
+                //case "blockAdjustment":
+                //    //console.log(id);
+                //    break;
             }
         });
 
