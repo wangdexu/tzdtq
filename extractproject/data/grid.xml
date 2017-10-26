@@ -3,61 +3,43 @@
 	<row id="1">
 		<cell>1</cell>
 		<cell>2</cell>
-		<cell>Tiepoint</cell>
-		<cell>18</cell>
-		<cell>1</cell>
-		<cell>24</cell>
-		<cell>0</cell>
-		<cell>05/01/1998</cell>
+		<cell>经122</cell>
+		<cell>纬123</cell>
+		<cell>66</cell>
 	</row>
 	<row id="2">
 		<cell>2</cell>
 		<cell>4</cell>
-		<cell>Tiepoint</cell>
-		<cell>3</cell>
-		<cell>1</cell>
-		<cell>24</cell>
-		<cell>0</cell>
-		<cell>01/01/2000</cell>
+		<cell>经122</cell>
+		<cell>纬123</cell>
+		<cell>55</cell>
 	</row>
 	<row id="3" selected="1">
 		<cell>3</cell>
 		<cell>3</cell>
-		<cell>Controlpoint</cell>
-		<cell>8</cell>
-		<cell>0</cell>
-		<cell>48</cell>
-		<cell>0</cell>
-		<cell>12/01/2001</cell>
+		<cell>经122</cell>
+		<cell>纬123</cell>
+		<cell>44</cell>
 	</row>
 	<row id="4" selected="1">
 		<cell>4</cell>
 		<cell>7</cell>
-		<cell>Controlpoint</cell>
-		<cell>6</cell>
-		<cell>0</cell>
-		<cell>48</cell>
-		<cell>0</cell>
-		<cell>12/01/2001</cell>
+		<cell>经122</cell>
+		<cell>纬123</cell>
+		<cell>33</cell>
 	</row>
 	<row id="5" selected="1">
 		<cell>5</cell>
 		<cell>6</cell>
-		<cell>Checkpoint</cell>
-		<cell>7</cell>
-		<cell>0</cell>
-		<cell>48</cell>
-		<cell>0</cell>
-		<cell>12/01/2001</cell>
+		<cell>经122</cell>
+		<cell>纬123</cell>
+		<cell>22</cell>
 	</row>
 	<row id="6" selected="1">
 		<cell>6</cell>
 		<cell>8</cell>
-		<cell>Checkpoint</cell>
-		<cell>2</cell>
-		<cell>0</cell>
-		<cell>48</cell>
-		<cell>0</cell>
-		<cell>12/01/2001</cell>
+		<cell>经122</cell>
+		<cell>纬123</cell>
+		<cell>11</cell>
 	</row>
 </rows>
