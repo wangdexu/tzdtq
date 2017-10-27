@@ -39,8 +39,9 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
 
 
 
-        //网格点数据,罗旭给
-        var gridData= {
+        //网格点数据,罗旭给坐标
+        var gridData=
+        {
             "Userproperty" :
             {
                 "InputParameter" :
@@ -52,6 +53,24 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
                             "title" : "采集规则",
                             "type" : "string",
                             "value" : "自由规划"
+                        },
+                        {
+                            "name" : "RedisKey",
+                            "title" : "进度状态",
+                            "type" : "string",
+                            "value" : ""
+                        },
+                        {
+                            "name" : "RedisIP",
+                            "title" : "redis数据库IP",
+                            "type" : "string",
+                            "value" : ""
+                        },
+                        {
+                            "name" : "RedisPort",
+                            "title" : "redis数据库端口号",
+                            "type" : "number",
+                            "value" : 0
                         },
                         {
                             "index" : 0,
@@ -190,22 +209,34 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
                             "name" : "ReturnCode",
                             "title" : "运行转态",
                             "type" : "number",
-                            "value" : 0
+                            "value" : -1
                         },
                         {
                             "name" : "ReturnAnalyse",
                             "title" : "错误描述",
                             "type" : "string",
-                            "value" : "Success"
+                            "value" : "InputDOMFileName�ļ�������"
                         }
                     ]
                 }
             },
+            "createDate" : "",
+            "desc" : "",
+            "dirs" : [ "全色影像", "多光谱影像" ],
+            "icon" : "",
+            "manual" : "",
             "name" : "影像特征点提取",
-            "op" : "ImageFptRefine",
+            "op" : "ImageMatch_geo",
+            "outputDir" : "",
+            "owner" : "",
+            "redirect" : "",
+            "tags" : "",
             "tmp" : "E:\\testdata\\tempfile",
-            "version" : "0.0.1"
-        };
+            "type" : "",
+            "version" : "0.0.1",
+            "workDir" : ""
+        }
+
 
 
 
@@ -312,6 +343,7 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
                     ]
             }
         };
+        dataDisplay(dataMain); //临时用用
         function dataDisplay(dataMain){
         var dataArr = dataMain.FeaturePoint.Property;
         //生成点信息数据
