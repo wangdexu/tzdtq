@@ -343,8 +343,8 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
                     ]
             }
         };
-        dataDisplay(dataMain); //临时用用
-        function dataDisplay(dataMain){
+        dataDisplay(dataMain); //调用点信息数据显示函数
+        function dataDisplay(dataMain){             //点信息数据显示函数
         var dataArr = dataMain.FeaturePoint.Property;
         //生成点信息数据
         var data= {
@@ -354,17 +354,17 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         for(var i=1;i<=shu;i++){
             data.rows.push({ id:dataArr[i-1].POINTID, data: [i,i,dataArr[i-1].LONRANGE,dataArr[i-1].LATRANGE,dataArr[i-1].HEIGHT]});
         }
-        argList.arg[0].clearAll();
-        argList.arg[0].parse(data,function(){
+        argList.arg[0].clearAll();                      //加载前先清空列表的内容
+        argList.arg[0].parse(data,function(){               //加载数据到列表
             //alert(1);
         },"json");
         //调用属性信息数据,默认显示列表的第一条
         attrInformation(1);
 
-        argList.arg[0].attachEvent('onRowSelect', function(rId, cInd){
-            attrInformation(rId);
+        argList.arg[0].attachEvent('onRowSelect', function(rId, cInd){          //监听点信息列表点击事件
+            attrInformation(rId);                                               //调用属性信息数据显示函数
         });
-        function attrInformation(id) {
+        function attrInformation(id) {                                          //属性信息数据显示函数
             var dataChild = dataMain.FeaturePoint.Property[id-1];
             $("#GRAPHID").empty().append(dataChild.GRAPHID);
             $("#PRODUCTIONDATE").empty().append(dataChild.PRODUCTIONDATE);
@@ -483,23 +483,21 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         //);
     };
     var _saveDate= function(argList){
-
-        //保存按钮,生成操作后的的数据
-        var dataMain={
+        var dataMain={                      //按保存按钮,生成操作后的数据
             "FeaturePoint" : {
                 "Property": []
             }
         };
         var dataArr = dataMain.FeaturePoint.Property;
-        for(var i=1;i<=argList.arg[0].getRowsNum();i++){
+        for(var i=1;i<=argList.arg[0].getRowsNum();i++){                //遍历一遍点信息列表,将最新的操作后数据动态生成并保存
             dataArr.push({"COL" : 11597,"DATAFORMAT" : "tif","DATASIZE" : 1024,"DOMMARK" : "E:\\testdata\\inputData\\GF1_beijing\\GF1_PMS1_E116.9_N40.3_20160831_L1A0001795441_dom.tiff","DSMMARK" : "E:\\testdata\\inputData\\GF1_beijing\\GF1_PMS1_E116.9_N40.3_20160831_L1A0001795441_dsm.tiff","FEATUREID" : "H50E002023-20171023162532-2","GRAPHID" : "H50E002023","HEIGHT" : value(i,4),"HEIGHTCOORDINATESYSTEM" : "WGS84","LATRANGE" : value(i,3),"LEVEL" : "","PERSON" : "","LONRANGE" : value(i,2),"MAPPROJECTION" : "UTM","METHOD" : "自由规划","PLANECOORDINATESYSTEM" : "WGS84","POINTID" : argList.arg[0].getRowId(i-1),"PRODUCTIONDATE" : "2017-10-23 16:25:32","PRODUCTIONUNIT" : "","RESOLUTION" : "0.5","ROW" : 11555,"UNIT" : "meter","ZONE" : "49","ZONENAME" : ""});
         }
-        function value(i,j) {
+        function value(i,j) {                                   //包一段写起来简便的代码
             return argList.arg[0].cells(i,j).getValue();
         }
         //发送操作后的数据
         $.ajax({
-            url: "http://192.168.31.230:5000/testmain",
+            url: "http://192.168.31.229:5000/ImageFptRefine",
             type: "post",
             data:JSON.stringify(dataMain),
             //dataType: 'JSPON',

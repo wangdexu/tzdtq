@@ -145,6 +145,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../gis/mapProduce'],functio
             '<li>级别:</li>' +
             '<li>精度:</li>' +
             '<li>采集规划:</li>' +
+            '<li>控制点种类:</li>' +
             '</ul>' +
             '<ul class="attribute_value">' +
             '<li>值</li>' +
@@ -158,6 +159,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../gis/mapProduce'],functio
             '<li id="LEVEL">1</li>' +
             '<li id="RESOLUTION">1</li>' +
             '<li id="METHOD">1</li>' +
+            '<li id="CONTROLPOINTSORT">1</li>' +
             '</ul>' +
             '</div>'
         );
