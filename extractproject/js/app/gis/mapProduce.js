@@ -509,9 +509,9 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
                     console.log("请求失败");
                 }
             }
+
         });
         //console.log(dataMain);
-
         //console.log(data);
         //$.ajax({
         //    url: "http://192.168.31.230:5000/testmain",
