@@ -1,4 +1,4 @@
-define(['jquery','dhtmlx','ol'],function($,dhl,ol){
+define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
     //定义地图接口变量，全局使用
     var map,smallMap;
     var center = [108.93, 34.27]; //设置地图默认的中心点(西安)
@@ -229,7 +229,15 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         rasterTemp[target] = raster;
         return mapTemp;
     };
-
+    function _targetScheme(themeName){
+        scheme.targetScheme(map,themeName);
+    }
+    function _targetSchemeEven(themeName){
+        scheme.targetSchemeEven(map,themeName);
+    }
+    function _targetSchemeFree(themeName){
+        scheme.targetSchemeFree(map,themeName);
+    }
     var _changeColor = function(id,data,mapId) {
         controlId[id].value = data;
         rasterTemp[mapId].changed();
@@ -502,7 +510,7 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         pointIdList = [];
         orderList.push(numOrder);
         pointIdList.push(pointID);
-        var rowData = [numOrder,pointID,pointType[0],"",FLAGTRUE,"","",""];
+        var rowData = [numOrder,pointID,"","",""];
         leftTable.addRow(numOrder,rowData,false);
     };
 
@@ -736,7 +744,10 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         changeColor:_changeColor,
         deleteAllPoint:_deleteAllPoint,
         mapLinkMove:_mapLinkMove,
-        export:_export
+        export:_export,
+	    targetScheme:_targetScheme,
+        targetSchemeEven:_targetSchemeEven,
+        targetSchemeFree:_targetSchemeFree,
     }
 });
 
