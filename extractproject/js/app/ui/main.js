@@ -1,8 +1,7 @@
 /**
  * Created by domea on 17-6-2.
  */
-define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../project/open'],function ($,dhtmlx,ol,mapControl,schemeObject,open) {
-    var _test=function(){
+define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../project/open','../gis/mapProduce'],function ($,dhtmlx,ol,mapControl,schemeObject,open,mapProduce) {    var _test=function(){
         window.dhx4.skin = 'material';
         var main_layout = new dhtmlXLayoutObject(document.body, '2U');
 
@@ -42,7 +41,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     {id : "project", text : "工程", text_pos : "buttom", type : "block", mode : "cols", list : [
                     {id : "close", text : "关闭",img : "close.png",isbig : true,  type : "button"},
                     {id : "open", text : "打开",img : "submit.png", isbig : true, type : "button"},
-                    {id : "export", text : "导入/导出",img : "import.png",isbig : true,  type : "button"}
+                    {id : "export", text : "导入/导出",img : "import.png",isbig : true,  type : "button"},
+                    {id : "save", text : "保存",img : "import.png",isbig : true,  type : "button"}
                 ]},
                 {id : "tools", text : "工具", text_pos : "buttom", type : "block", mode : "cols", list : [
                     {id : "zoomIn", text : "放大",img:"big.png",isbig : true, type : "button"},
@@ -144,19 +144,21 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
             '<li>级别:</li>' +
             '<li>精度:</li>' +
             '<li>采集规划:</li>' +
+            '<li>控制点种类:</li>' +
             '</ul>' +
             '<ul class="attribute_value">' +
             '<li>值</li>' +
-            '<li>1</li>' +
-            '<li>1</li>' +
-            '<li>1</li>' +
-            '<li>1</li>' +
-            '<li>1</li>' +
-            '<li>1</li>' +
-            '<li>1</li>' +
-            '<li>1</li>' +
-            '<li>1</li>' +
-            '<li>1</li>' +
+            '<li id="GRAPHID">1</li>' +
+            '<li id="PRODUCTIONDATE">1</li>' +
+            '<li id="ZONENAME">1</li>' +
+            '<li id="FEATUREID">1</li>' +
+            '<li id="PLANECOORDINATESYSTEM">1</li>' +
+            '<li id="HEIGHTCOORDINATESYSTEM">1</li>' +
+            '<li id="PERSON">1</li>' +
+            '<li id="LEVEL">1</li>' +
+            '<li id="RESOLUTION">1</li>' +
+            '<li id="METHOD">1</li>' +
+            '<li id="CONTROLPOINTSORT">1</li>' +
             '</ul>' +
             '</div>'
         );
@@ -174,9 +176,22 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
         grid_3.setColSorting('str,str,str,str,str');
         grid_3.setInitWidths('*,*,*,*,*');
         grid_3.init();
-        grid_3.load('./data/grid.xml','xml');
+        //grid_3.load('./data/grid.xml','xml');
 
-      //存储每个创建的小地图，用于地图联动
+        var data={
+            rows:[
+                { id:1, data: ["1", "1","经度000","纬度000","111"]},
+                { id:2, data: ["2", "2","经度000","纬度000","111"]},
+                { id:3, data: ["3", "3","经度000","纬度000","111"]},
+                { id:4, data: ["4", "4","经度000","纬度000","111"]}
+            ]
+        };
+        grid_3.parse(data,function(){
+            //alert(1);
+        },"json");
+
+
+        //存储每个创建的小地图，用于地图联动
        var mapLinkMove = [];
        //创建小地图
         var creatDiv = function(){
@@ -193,7 +208,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
 
         var mapCount;
         var arr = [];
-        // 每次单击一行，取得那一行的信息
+         //每次单击一行，取得那一行的信息
         grid_3.attachEvent('onRowSelect', function(rId, cInd){
             var obj = {};
             obj.id = rId;   //行ID
@@ -349,12 +364,12 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                         //arg: [id,mapId]
                     });
                     break;
-                case "oneRatioOne":
-                    mapControl.oneRatioOne({
-                        eventName:"onClick"
-                        //arg: [id,mapId]
-                    });
-                    break;
+                //case "oneRatioOne":
+                //    mapControl.oneRatioOne({
+                //        eventName:"onClick"
+                //        //arg: [id,mapId]
+                //    });
+                //    break;
                 case "addPoint":
                     $(".mapMainContainer").css({"cursor":"default"});
                     mapControl.addPoint({
@@ -387,30 +402,56 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                         eventName:"onClick"
                     });
                     break;
-                case "autoPrediction":
-                    $(".autoMatch").addClass("autoMatchLoading").fadeIn(500);
-                    //这里写的只是测试加载动画，真实情况要从后台处理数据进度判断动画消失的时间
-                    setTimeout(function(){
-                        $(".autoMatch").removeClass('.autoMatchLoading').fadeOut(500);
-                    },10000);
-                    break;
-                case "associatedDisplay":
-                    mapControl.mapLinkMove({
-                        eventName:"onclick",
-                        args:[mapLinkMove]
-                    });
-                    break;
-                case "autoMatch":
-                    $(".autoMatch").addClass("autoMatchLoading").fadeIn(500);
-                    //这里写的只是测试加载动画，真实情况要从后台处理数据进度判断动画消失的时间
-                    setTimeout(function(){
-                        $(".autoMatch").removeClass('.autoMatchLoading').fadeOut(500);
-                    },10000);
+                case "goalProgram":
 
                     break;
-                case "blockAdjustment":
-                    //console.log(id);
+                case "evenProgram":
+
                     break;
+                case "freeProgram":
+
+                    break;
+                case "save":
+                    mapProduce.saveDate({
+                        eventName:"onClick",
+                        arg: [grid_3]
+                    });
+                    break;
+                case "pointDraw":
+                    mapProduce.pointDraw({
+                        eventName:"onClick",
+                        arg: [grid_3,cell_8]
+                    });
+                    break;
+                case "pointProduce":
+                    mapProduce.pointProduce({
+                        eventName:"onClick"
+                    });
+                    break;
+                //case "autoPrediction":
+                //    $(".autoMatch").addClass("autoMatchLoading").fadeIn(500);
+                //    //这里写的只是测试加载动画，真实情况要从后台处理数据进度判断动画消失的时间
+                //    setTimeout(function(){
+                //        $(".autoMatch").removeClass('.autoMatchLoading').fadeOut(500);
+                //    },10000);
+                //    break;
+                //case "associatedDisplay":
+                //    mapControl.mapLinkMove({
+                //        eventName:"onclick",
+                //        args:[mapLinkMove]
+                //    });
+                //    break;
+                //case "autoMatch":
+                //    $(".autoMatch").addClass("autoMatchLoading").fadeIn(500);
+                //    //这里写的只是测试加载动画，真实情况要从后台处理数据进度判断动画消失的时间
+                //    setTimeout(function(){
+                //        $(".autoMatch").removeClass('.autoMatchLoading').fadeOut(500);
+                //    },10000);
+                //
+                //    break;
+                //case "blockAdjustment":
+                //    //console.log(id);
+                //    break;
             }
         });
 

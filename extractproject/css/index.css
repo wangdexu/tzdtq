@@ -289,8 +289,13 @@ html, body{
 #attribute_table ul{
     padding: 0;
     float: left;
-    width: 50%;
     list-style: none;
+}
+#attribute_table ul:first-child{
+    width: 35%;
+}
+#attribute_table ul:last-child{
+    width: 65%;
 }
 #attribute_table ul li{
     width: 100%;
