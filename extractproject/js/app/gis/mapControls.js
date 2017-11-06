@@ -281,7 +281,7 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
 
     //处理地图坐标，默认保留四位小数
     var __mapCoordinateFixed4 = function(target) {
-        console.log(target);
+        //console.log(target);
        return  (Math.round(target *10000))/10000;
     };
 
@@ -440,7 +440,8 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
             event.preventDefault();
             event.stopPropagation();
             singlePoint = {};
-
+            var height;
+            //console.log(1);
             var numOrder = Math.max.apply(null,orderList) + 1;  // 获取最大的加1
             var pointID= Math.max.apply(null,pointIdList) + 1;
             orderList = [];   //置空，只保留最大值
@@ -448,8 +449,31 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
             orderList.push(numOrder);
             pointIdList.push(pointID);
             coordinates = event.feature.getGeometry().getCoordinates();   //获取坐标
+            var gridData={
+                "dsmid":"b0159561-5473-4526-8e40-51ad090b29e6",
+                "lonlatvalue":[__mapCoordinateFixed4(coordinates[0]),__mapCoordinateFixed4(coordinates[1])]
+            };
+            //刺点,发送经纬度,请求高程
+            $.ajax({
+                url: "http://192.168.31.230:5000/GetPtBLH",
+                type: "post",
+                contentType: "application/json",
+                data:JSON.stringify(gridData),
+                //dataType: 'JSONP',
+                success: function (data) {
+                    console.log(2);
+                    console.log(data);
+                    data=22222;
+                    height=data;
+                },
+                error: function (e) {
+                    if(e.status == "401"){
+                        console.log("请求失败");
+                    }
+                }
+            });
             //添加一行信息  序号，点ID，点类型。。。。。。。
-            var rowData = [numOrder,pointID,pointType[0],"","1",__mapCoordinateFixed4(coordinates[0]),__mapCoordinateFixed4(coordinates[1]),""];
+            var rowData = [numOrder,pointID,__mapCoordinateFixed4(coordinates[0]),__mapCoordinateFixed4(coordinates[1]),height];
             leftTable.addRow(numOrder,rowData,false);  //行的ID 与序号号值是一样的
 
             event.feature.setId(pointID);  //给每个点（要素）添加一个唯一的ID值
@@ -606,11 +630,16 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
             $("#popExport").removeClass("popContainer").fadeOut(500);
         });
         $("#export").on('click',function(){
-            var a=new Array();
-            for(var i=0;i<10;i++){
-                a.push(i);
-            }
-            doSave(a, "text/latex", "hello.txt");
+            var gcpJsonData = JSON.parse(gpcData);
+            gcpJsonData.forEach(function (item){
+                var str = "";
+                var name = "";
+                item.FeaturePoint.Property.forEach(function (data){
+                    name =  data.IMAGEID;
+                    str = str+data.POINTID+"  "+data.LONRANGE+"  "+data.LATRANGE+"  "+data.HEIGHT+"\r\n"
+                })
+                doSave(str, "text/latex", name+".gcp");
+            })
         })
 
         function doSave(value, type, name) {
@@ -653,11 +682,36 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         })
         var a=new Array();
 
-
+        var gpcData ;
+        var fileString;
         function loaded(evt) {
-            var fileString = evt.target.result;
-            alert(fileString);
+            fileString = evt.target.result;
+            fileString=fileString.replace(/\r\n/g,"&");
+            fileString=fileString.replace(/\r/g,"&");
+            fileString=fileString.replace(/\n/g,"&");
+            //alert(fileString);
+
         }
+        $("#import").on('click',function(){
+            var data = {"gcp":fileString,"xmlid":["48ea4804-9bf8-4d55-9f68-33ca16e8d2b4","1455e544-135a-42db-9c0a-127c45eee025"]}
+            $.ajax({
+                url:"http://192.168.31.230:5000/ControlPointImport",
+                type:"post",
+                contentType: "application/json",
+                //dataType:'jsonp',
+                data:JSON.stringify(data),
+                async: false,
+                success:function(data){
+                    console.log(data);
+                    gpcData = data
+                },
+                error: function (e) {
+                    if(e.status == "401"){
+                        //getSession();
+                    }
+                }
+            })
+        })
     };
     //删除单点操作
     var _deleteSinglePoint = function(){
