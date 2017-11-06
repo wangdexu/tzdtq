@@ -1,0 +1,122 @@
+
+.nomodal {
+  position: fixed;
+  z-index: 1024;
+  display: none;
+  overflow:hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  border-radius: 6px; 
+  background-color: #fff;
+   -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);  
+}
+
+.nomodal-dialog {
+  position: relative;
+  width: auto;
+  margin: 0px;
+}
+.nomodal-content {
+  position: relative;
+ }
+.nomodal-header {
+  min-height: 16.42857143px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #ffffff;
+  height: 30px;
+}
+
+.nomodal-header .close {
+  margin-top: -2px;
+  background-color: #ffffff;
+}
+.nomodal-title {
+  margin: 0;
+  line-height: 1.42857143;
+  margin-top: -10px;
+}
+
+.nomodal-operation {
+  min-height: 13.42857143px;
+  padding: 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.nomodal-operation-left{
+	text-align:left;
+	position: relative;
+}
+.nomodal-operation-left .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+.nomodal-operation-left .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+.nomodal-operation-right{
+	text-align:right;
+	position: relative;
+	margin-top: -30px;
+}
+.nomodal-operation-right .btn + .btn {
+  margin-bottom: 0px;
+  margin-left: 5px;
+}
+.nomodal-operation-right .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+
+
+.nomodal-body {
+  position: relative;
+  padding: 25px;
+  padding-bottom: 0px;
+  padding-top: 10px;
+  padding-right: 0px;
+  overflow: auto;
+  height: 120px;
+}
+
+.nomodal-footer {
+  padding: 10px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.nomodal-footer-left{
+	text-align:left;
+	position: relative;
+}
+.nomodal-footer-left .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+.nomodal-footer-left .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+.nomodal-footer-right{
+	text-align:right;
+	position: relative;
+	margin-top: -30px;
+}
+.nomodal-footer-right .btn + .btn {
+  margin-bottom: 0px;
+  margin-left: 5px;
+}
+.nomodal-footer-right .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+
+
+.nomodal-footer:before,
+.nomodal-footer:after {
+  display: table;
+  content: " ";
+}
+
+.nomodal-footer:after {
+  clear: both;
+}

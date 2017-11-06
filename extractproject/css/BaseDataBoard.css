@@ -1,0 +1,137 @@
+.BaseData_AddDataBoard{
+	display: none;
+	width: 1030px;
+	height: 590px;
+	position: absolute;
+	border: 1px solid #0078d7;
+    top: 160px;
+    left: 260px;
+    background: white;
+}
+.Board_title{
+	height: 50px;
+	border-bottom: 1px solid #d7d9df;
+	/*background: antiquewhite;*/
+}
+.Board_title span{
+	font-family: "微软雅黑";
+	font-size: 20px;
+	color: #666;
+	line-height: 50px;
+	margin-left: 20px;
+}
+.Board_title_right{
+	width: 330px;
+	height: 50px;
+	float: right;
+	position: relative;
+	/*background: salmon;*/
+}
+.Board_title_right img{
+	cursor: pointer;
+    height: 20px;
+    width: auto;
+}
+.Board_title_right .sear{
+	position: absolute;
+    right: 56px;
+    top: 14px;
+}
+.Board_title_right .close{
+	position: absolute;
+    right: 22px;
+    top: 16px;
+    height: 16px;
+}
+.Board_title_right input{
+	text-indent: 8px;
+	width: 280px;
+	height: 30px;
+	margin-top: 6px;
+	border: 1px solid #d2d2d2;
+	border-radius: 5px;
+}
+.Board_subtitle{
+	height: 40px;
+	display: flex;
+}
+.Board_subtitle li{
+	/*border-left: 1px solid saddlebrown;*/
+	flex-grow: 1;
+	text-align: center;
+	line-height: 40px;
+	font-size: 16px;
+	color: #747474;
+}
+.Board_list{
+	position: absolute;
+	width: 100%;
+	top: 90px;
+	bottom: 50px;
+	overflow: auto;
+	
+}
+.Board_list table{
+	width: 100%;
+}
+.Board_list tr{
+	height: 36px;
+	font-size: 14px;
+	color: #999;
+	text-align: center;
+}
+.Board_list tr td:nth-child(1){
+	text-indent: 50px;
+	text-align: left;
+}
+.Board_list td{
+	position: relative;
+	border: 1px solid #ccc;
+	height: 36px;
+	width: 250px;
+	font-size: 14px;
+	color: #999;
+	text-align: center;
+	text-indent: 10px;
+}
+.Board_list td input{
+	cursor: pointer;
+	position: absolute;
+	top: 10px;
+	left: 20px;
+}
+.Board_foot{
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
+	height: 50px;
+}
+.Board_foot div{
+	border-radius: 5px;
+	float: left;
+	margin-top: 7px;
+	width: 100px;
+	height: 30px;
+	border: 1px solid #0078d7;
+	line-height: 30px;
+	text-align: center;
+	cursor: pointer;
+}
+.daoruBtn{
+	background: #0078d7;
+	margin-left: 800px;
+	margin-right: 14px;
+	color: white;
+}
+.quxiaoBtn{
+	 color: #8c8d8f;
+}
+.BaseDataBRightConCont p{
+	height: 30px;
+	line-height: 30px;
+	text-align: left;
+	text-indent: 15px;
+	/*background: saddlebrown;*/
+}
+
+

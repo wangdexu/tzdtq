@@ -1,7 +1,7 @@
 /**
  * Created by domea on 17-6-2.
  */
-define(['jquery','dhtmlx','ol','../gis/mapControls'],function ($,dhtmlx,ol,mapControl) {
+define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../project/open'],function ($,dhtmlx,ol,mapControl,schemeObject,open) {
     var _test=function(){
         window.dhx4.skin = 'material';
         var main_layout = new dhtmlXLayoutObject(document.body, '2U');
@@ -312,6 +312,15 @@ define(['jquery','dhtmlx','ol','../gis/mapControls'],function ($,dhtmlx,ol,mapCo
                     mapControl.export({
                         eventName:"onClick"
                     });
+                    break;
+ 				case "goalProgram":
+                    mapControl.targetScheme("goalProgram");
+                    break;
+                case "evenProgram":
+                    mapControl.targetSchemeEven("evenProgram");
+                     break;
+                case "freeProgram":
+                    mapControl.targetSchemeFree("freeProgram");
                     break;
                 case "zoomIn":
                     $("#mapMainContainer").css({"cursor":"crosshair"});
