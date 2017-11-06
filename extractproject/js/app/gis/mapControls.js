@@ -510,7 +510,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
         pointIdList = [];
         orderList.push(numOrder);
         pointIdList.push(pointID);
-        var rowData = [numOrder,pointID,pointType[0],"",FLAGTRUE,"","",""];
+        var rowData = [numOrder,pointID,"","",""];
         leftTable.addRow(numOrder,rowData,false);
     };
 

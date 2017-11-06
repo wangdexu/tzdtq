@@ -208,7 +208,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     arr.push(obj);
                 }
             }
-            $(".tabLi").css({"display":"block"});   //选择一行，显示其对应的选项卡
+            // $(".tabLi").css({"display":"block"});   //选择一行，显示其对应的选项卡
             $('.idName').html(rId);              // 将选择的那一行显示到选项卡
             creatDiv();       //创建每副小地图容器，并且调用地图
             return arr;
