@@ -1,8 +1,7 @@
 /**
  * Created by domea on 17-6-2.
  */
-define(['jquery','dhtmlx','ol','../gis/mapControls','../gis/mapProduce'],function ($,dhtmlx,ol,mapControl,mapProduce) {
-    var _test=function(){
+define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../project/open','../gis/mapProduce'],function ($,dhtmlx,ol,mapControl,schemeObject,open,mapProduce) {    var _test=function(){
         window.dhx4.skin = 'material';
         var main_layout = new dhtmlXLayoutObject(document.body, '2U');
 
@@ -224,7 +223,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../gis/mapProduce'],functio
                     arr.push(obj);
                 }
             }
-            $(".tabLi").css({"display":"block"});   //选择一行，显示其对应的选项卡
+            // $(".tabLi").css({"display":"block"});   //选择一行，显示其对应的选项卡
             $('.idName').html(rId);              // 将选择的那一行显示到选项卡
             creatDiv();       //创建每副小地图容器，并且调用地图
             return arr;
@@ -328,6 +327,15 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../gis/mapProduce'],functio
                     mapControl.export({
                         eventName:"onClick"
                     });
+                    break;
+ 				case "goalProgram":
+                    mapControl.targetScheme("goalProgram");
+                    break;
+                case "evenProgram":
+                    mapControl.targetSchemeEven("evenProgram");
+                     break;
+                case "freeProgram":
+                    mapControl.targetSchemeFree("freeProgram");
                     break;
                 case "zoomIn":
                     $("#mapMainContainer").css({"cursor":"crosshair"});

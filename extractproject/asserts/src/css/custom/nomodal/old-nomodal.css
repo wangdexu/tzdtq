@@ -1,0 +1,65 @@
+
+.nomodal {
+  position: fixed;
+  z-index: 1024;
+  display: none;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  border-radius: 6px; 
+  background-color: #fff;
+   -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);  
+}
+
+.nomodal-dialog {
+  position: relative;
+  width: auto;
+  margin: 0px;
+}
+.nomodal-content {
+  position: relative;
+ }
+.nomodal-header {
+  min-height: 16.42857143px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.nomodal-header .close {
+  margin-top: -2px;
+}
+.nomodal-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+.nomodal-body {
+  position: relative;
+  padding: 25px;
+}
+.nomodal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+.nomodal-footer .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+.nomodal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+
+
+
+
+.nomodal-footer:before,
+.nomodal-footer:after {
+  display: table;
+  content: " ";
+}
+
+.nomodal-footer:after {
+  clear: both;
+}
