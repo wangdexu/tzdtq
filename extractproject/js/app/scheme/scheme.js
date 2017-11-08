@@ -591,12 +591,12 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         allArray.length = 0;
         if((selectedValue=="2*2"||selectedValue=="4*4"||selectedValue=="8*8"||selectedValue=="16*16")&&selectedValueInput=="*")
         {
-                      var keyValue = {
-                          "1-1":"2*2",
-                          "1-2":"4*4",
-                          "1-3":"8*8",
-                          "1-4":"16*16"
-                     }
+                    var keyValue = {
+                        "2*2":"2",
+                        "4*4":"4",
+                        "8*8":"8",
+                        "16*16":"16"
+                    };
                     w = keyValue[selectedValue];
                     h = keyValue[selectedValue];
 

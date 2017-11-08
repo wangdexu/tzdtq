@@ -1,3 +1,4 @@
+    var gpcData;
 define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
     //定义地图接口变量，全局使用
     var map,smallMap;
@@ -270,7 +271,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
             view: new ol.View({
                 projection:'EPSG:4326',
                 center: [104.06, 30.67],
-                zoom: 3,
+                zoom: 5,
                 minZoom:2,
                 maxZoom:18,
                 maxResolution:0.703125
@@ -461,18 +462,23 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                 "dsmid":"b0159561-5473-4526-8e40-51ad090b29e6",
                 "lonlatvalue":[__mapCoordinateFixed4(coordinates[0]),__mapCoordinateFixed4(coordinates[1])]
             };
+            //var gridData={
+            //    "dsmid":"b0159561-5473-4526-8e40-51ad090b29e6",
+            //    "lonlatvalue":[__mapCoordinateFixed4(coordinates[0]),__mapCoordinateFixed4(coordinates[1])]
+            //};
+            console.log(1);
             //刺点,发送经纬度,请求高程
             $.ajax({
-                url: "http://192.168.31.230:5000/GetPtBLH",
+                url: "http://192.168.31.233:5000/GetPtBLH",
                 type: "post",
                 contentType: "application/json",
                 data:JSON.stringify(gridData),
                 //dataType: 'JSONP',
                 success: function (data) {
                     console.log(2);
-                    console.log(data);
-                    data=22222;
-                    height=data;
+                    //console.log(data);
+                    //data=22222;
+                    //height=data;
                 },
                 error: function (e) {
                     if(e.status == "401"){
@@ -690,7 +696,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
         })
         var a=new Array();
 
-        var gpcData ;
+        //var gpcData ;
         var fileString;
         function loaded(evt) {
             fileString = evt.target.result;
@@ -703,7 +709,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
         $("#import").on('click',function(){
             var data = {"gcp":fileString,"xmlid":["48ea4804-9bf8-4d55-9f68-33ca16e8d2b4","1455e544-135a-42db-9c0a-127c45eee025"]}
             $.ajax({
-                url:"http://192.168.31.230:5000/ControlPointImport",
+                url:"http://192.168.31.23:5000/ControlPointImport",
                 type:"post",
                 contentType: "application/json",
                 //dataType:'jsonp',
@@ -711,7 +717,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                 async: false,
                 success:function(data){
                     console.log(data);
-                    gpcData = data
+                    gpcData = data;
                 },
                 error: function (e) {
                     if(e.status == "401"){

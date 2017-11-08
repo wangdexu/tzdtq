@@ -318,6 +318,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
         ribbon_1.attachEvent("onClick", function(id) {
             switch(id){
                 case "open":
+                    open.showProjectDialog();
                    //console.log(id);
                     break;
                 case "close":
