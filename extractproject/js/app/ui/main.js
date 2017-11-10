@@ -41,14 +41,15 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     {id : "project", text : "工程", text_pos : "buttom", type : "block", mode : "cols", list : [
                     {id : "close", text : "关闭",img : "close.png",isbig : true,  type : "button"},
                     {id : "open", text : "打开",img : "submit.png", isbig : true, type : "button"},
-                    {id : "export", text : "导入/导出",img : "import.png",isbig : true,  type : "button"},
-                    {id : "save", text : "保存",img : "import.png",isbig : true,  type : "button"}
+                    {id : "export", text : "导入/导出",img : "import.png",isbig : true,  type : "button"}
+                    //{id : "save", text : "保存",img : "import.png",isbig : true,  type : "button"}
                 ]},
                 {id : "tools", text : "工具", text_pos : "buttom", type : "block", mode : "cols", list : [
                     {id : "zoomIn", text : "放大",img:"big.png",isbig : true, type : "button"},
                     {id : "zoomOut", text : "缩小",img:"small.png",isbig : true, type : "button"},
                     {id : "translate", text : "平移",img : "move.png", isbig : true, type : "button"},
                     {id : "fullView", text : "全图",img:"allimage.png",isbig : true, type : "button"},
+                    //{id : "associatedDisplay", text : "关联",img:"view_connect.png",isbig : true, type : "button"}
                     //{id : "oneRatioOne", text : "1:1显示", img : "1show.png", isbig : true, type : "button"},
                     //{id : "group_1", text : "group_1", type : "group", list : [
                     //    {id : "contrast", text : "对比度", type : "text"},
@@ -89,6 +90,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                 ]},
                 {id : "process", text : "处理", text_pos : "buttom", type : "block", mode : "cols", list : [
 
+                    {id : "pointHeight", text : "特征点高程",img:"auto_match.png", isbig : true, type : "button"},
                     {id : "pointDraw", text : "特征点提取精化",img:"auto_match.png", isbig : true, type : "button"},
                     {id : "pointProduce", text : "特征点数据生成",img:"network.png", isbig : true, type : "button"}
                 ]}
@@ -412,10 +414,16 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                 case "freeProgram":
 
                     break;
-                case "save":
-                    mapProduce.saveDate({
+                //case "save":
+                //    mapProduce.saveDate({
+                //        eventName:"onClick",
+                //        arg: [grid_3]
+                //    });
+                //    break;
+                case "pointHeight":
+                    mapProduce.pointDraw({
                         eventName:"onClick",
-                        arg: [grid_3]
+                        arg: [grid_3,grid_2]
                     });
                     break;
                 case "pointDraw":

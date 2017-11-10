@@ -466,24 +466,27 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
             //    "dsmid":"b0159561-5473-4526-8e40-51ad090b29e6",
             //    "lonlatvalue":[__mapCoordinateFixed4(coordinates[0]),__mapCoordinateFixed4(coordinates[1])]
             //};
+            var gridData={
+                "dsmid":"03adff02-0bd9-41c8-9334-ab9db659ecdc",
+                "lonlatvalue":[[1,116.4578,39.4562],[2,116.6578,39.5562],[3,116.5578,39.3562]]
+            }
             console.log(1);
             //刺点,发送经纬度,请求高程
             $.ajax({
-                url: "http://192.168.31.233:5000/GetPtBLH",
+                url: "http://192.168.31.233:5000/GetPtAlt",
                 type: "post",
                 contentType: "application/json",
                 data:JSON.stringify(gridData),
                 //dataType: 'JSONP',
                 success: function (data) {
-                    console.log(2);
+                    console.log(data);
                     //console.log(data);
                     //data=22222;
                     //height=data;
                 },
-                error: function (e) {
-                    if(e.status == "401"){
-                        console.log("请求失败");
-                    }
+                error: function () {
+                        console.log("高程请求失败");
+
                 }
             });
             //添加一行信息  序号，点ID，点类型。。。。。。。
