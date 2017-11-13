@@ -617,7 +617,7 @@ $(function() {
 							'							</ul>').appendTo($(".dl_list"));
 						// 文件夹左侧树模式
 						$('<li class="nav_item clearfix wjj_leftbs" id="' + datas[i].id + '" title="' + datas[i].name + '" data-pid="' + datas[i].parentID + '"  data-id="' + datas[i].Metadata + '" data-descirbe="' + datas[i].descirbe + '" data-createTime="' + datas[i].createTime + '" data-editTime="' + datas[i].editTime + '" data-userName="' + datas[i].userName + '" data-type="0">' +
-							'							<i></i>' +
+							'							<i style="background-repeat: no-repeat;width:12px;height:12px"></i>' +
 							'							<u></u>' +
 							'							<p>' + datas[i].name + '</p>' +
 							'							<div class="nav_item_sWrap clearfix"></div>' +

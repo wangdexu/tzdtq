@@ -93,7 +93,7 @@
 }
 
 .nav_item i{
-    background: url(../img/square1.png),#ffc055 center no-repeat;
+    background: url(../img/square4.png),center no-repeat;
     width: 10px;
     height: 10px;
     margin-top: 14px;
@@ -116,6 +116,7 @@
     margin-left: 5px;
     width: 120px;
     white-space: nowrap;
+    margin-top: -7px;
    /* min-width: 128px;
     max-width: 150px;*/
 }
@@ -146,7 +147,8 @@
 }
 
 .navWrapActive{
-    background: url(../img/square3.png),#ffc055,center no-repeat!important;
+    /*background: url(../img/square3.png),#ffc055,center no-repeat!important;*/
+    background: url(../img/square5.png),center no-repeat!important;
 }
 
 .copyWrap i{

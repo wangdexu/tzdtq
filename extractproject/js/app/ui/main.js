@@ -1,3 +1,5 @@
+var small_Map;
+var tempMap;
 /**
  * Created by domea on 17-6-2.
  */
@@ -9,7 +11,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
         leftDiv.setWidth('200');
         leftDiv.fixSize(1,0);
         leftDiv.hideHeader();
-        leftDiv.attachHTMLString('<div id="treeboxbox_tree" class="fileList">文件列表</div>');  //左侧的文件列表
+        leftDiv.attachHTMLString('<div id="jstreeDiv" class="fileList" style="width:100%;height:100%;overflow:auto;background:black;padding-top:10px;float:left"></div>');  //左侧的文件列表
+        //leftDiv.attachHTMLString('<div id="treeboxbox_tree" class="fileList">文件列表</div>');  //左侧的文件列表
         //var tree=new dhtmlXTreeObject("treeboxbox_tree","100%","100%",0);
         //tree.setImagePath("codebase/imgs/");
         //tree.enableDragAndDrop(false);
@@ -31,6 +34,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
         //        ]
         //    }
         //);
+        
 
         var rightDiv = main_layout.cells('b');
         rightDiv.hideHeader();
@@ -285,11 +289,52 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                 $(".idMapContainer").empty().fadeOut();
             })
         };
+        function overView(){
+            var small_Map = new ol.Map({
+            layers: [
+                //默认调取瓦片地图
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                })
+            ],
+            target:"small_map",
+            controls: ol.control.defaults({
+                attribution: false,
+                rotate: false,
+                zoom: false
+            }).extend([
+                new ol.control.MousePosition({
+                    coordinateFormat: ol.coordinate.createStringXY(4),
+                    projection: 'EPSG:4326',
+                    className:"ol-mouse-position",
+                    target:"small_map"
+                })
+            ]),
+            view: new ol.View({
+                projection:'EPSG:4326',
+                center: [104.06, 30.67],
+                zoom: 3,
+                minZoom:2,
+                maxZoom:18,
+                maxResolution:0.703125
+            })
+        });
+        small_Map.on('moveend',function(event){
+              tempMap.mapMainContainer.setView(small_Map.getView());
+              tempMap.mapMainContainer.getView().setZoom(small_Map.getView().getZoom());
+        }); 
+        tempMap.mapMainContainer.on('moveend',function(event){
+              small_Map.setView(tempMap.mapMainContainer.getView());
+              small_Map.getView().setZoom(tempMap.mapMainContainer.getView().getZoom())
+        }); 
+        }
         $(function(){
             //参数1：主视图地图 鼠标移动控件内容(经纬度)挂载点，参数2：地图id挂载点，参数三：将控件放到目标位置挂载点
-            mapControl.createMap("ol-mouse-position2","mapMainContainer","post11");
+            tempMap = mapControl.createMap("ol-mouse-position2","mapMainContainer","post11");
             tabChange(); //调用
-        });
+            overView();
+    });
+    
         //var grid_2 ;
         //var cell_3 = layout_1.cells('c');
         //cell_3.setText('影像列表');
@@ -322,9 +367,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
         ribbon_1.attachEvent("onClick", function(id) {
             switch(id){
                 case "open":
-                    open.showProjectDialog();
-                   //console.log(id);
-                    break;
+                  open.showProjectDialog();                    break;
                 case "close":
                     //console.log(id);
                     break;
@@ -393,18 +436,20 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                 case "modifyPoint":
                     $(".mapMainContainer").css({"cursor":"pointer"});
                     mapControl.modifyPoint({
-                        eventName:"onClick"
-                        //arg: [id,mapId]
+                        eventName:"onClick",
+                        arg: [grid_3]
                     });
                     break;
                 case "deleteSingle":
                     mapControl.deleteSinglePoint({
-                        eventName:"onClick"
+                        eventName:"onClick",
+                        arg: [grid_3]
                     });
                     break;
                 case "deleteAll":
                     mapControl.deleteAllPoint({
-                        eventName:"onClick"
+                        eventName:"onClick",
+                        arg: [grid_3]
                     });
                     break;
                 case "goalProgram":

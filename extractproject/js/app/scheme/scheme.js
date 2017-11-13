@@ -23,7 +23,8 @@ var vectorFreeSource;
 var vectorFreeLayer;
 var xminX1,xmaxX1,xminY1,xmaxY1;
 var xminX2,xmaxX2,xminY2,xmaxY2;
-define(['jquery','dhtmlx','ol'],function($,dhl,ol){
+define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
+    // var map = open.map;
     function clearMap(map){
         if(vectorSource1!=null&&vectorSource1!='undefined'){
             for(var i = 0;i<clearLayer1.length;i++)
@@ -52,11 +53,12 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         if(vector!=null)
             vector.getSource().clear();
     }
-    var _targetSchemeEven = function(map,themeName){
+  
+    var _targetSchemeEven = function(map,themeName,bbox){
         isFree = themeName;
         clearMap(map);
         selectedValue = "2*2";
-        showDialog("",map,"均匀规划");
+        showDialog("",map,"均匀规划","","",bbox);
         $(".form-group>input")[0].style.display='none'
         $(".col-lg-12.col-md-12")[0].style.display='none'
         $(".form-group>select")[0].onchange = function(e){
@@ -69,10 +71,10 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
             selectedValue = keyValue[e.target.value];
          }
     }
-    var _targetSchemeFree = function(map,themeName){
+    var _targetSchemeFree = function(map,themeName,bbox){
         isFree = themeName;
         clearMap(map);
-        showNet("",map,themeName)
+        showNet("",map,themeName,bbox)
         map.on('click',function(event){
                tempX = event.coordinate[0];//经度
                tempY = event.coordinate[1];//纬度
@@ -81,9 +83,11 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
                    if(isFree=="goalProgram"){
                         break;
                    }
-                    if((allArrayFree[i][0]<tempX&&tempX<allArrayFree[i][2])&&(allArrayFree[i][3]<tempY&&tempY<allArrayFree[i][1]))//四个矩形坐标位置
+                   if((allArrayFree[i][0]<tempX&&tempX<allArrayFree[i][2])&&(allArrayFree[i][3]<tempY&&tempY<allArrayFree[i][1]))//四个矩形坐标位置
+                    // if((bbox[i][0]<tempX&&tempX<bbox[i][2])&&(bbox[i][3]<tempY&&tempY<bbox[i][1]))//四个矩形坐标位置
                     {
-                        showDialog(allArrayFree[i],map,"自由规划",tempX,tempY);
+                        showDialog(allArrayFree[i],map,"自由规划",tempX,tempY,bbox);
+                        // showDialog(bbox[i],map,"自由规划",tempX,tempY,bbox);
                         $(".form-group>select")[0].value="2*2";
                         $(".col-lg-12.col-md-12")[0].style.display='block'
                         $(".form-group>input")[0].style.display='block'
@@ -107,8 +111,8 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         h = 4;
         var m = (a3[0]-a4[0])/w;
         var n = (a3[1]-a2[1])/h;
-        var x=a4[0];
-        var y=a4[1];
+        var x=parseFloat(a4[0]);
+        var y=parseFloat(a4[1]);
         for(var i=0;i<w;i++)
         {
             for(var j=0;j<h;j++)
@@ -122,25 +126,25 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
             }
         }
     }
-    function showNet(rect,map,theme){
+    function showNet(rect,map,theme,bbox){
         var a1=[],a2=[],a3=[],a4=[];
         var count;
-        a1.push(map.previousExtent_[0],map.previousExtent_[1]);
+        a1.push(bbox[0],bbox[3]);
         allFree.push(a1);
-        a2.push(map.previousExtent_[2],map.previousExtent_[1]);
+        a2.push(bbox[2],bbox[3]);
         allFree.push(a2);
-        a3.push(map.previousExtent_[2],map.previousExtent_[3]);
+        a3.push(bbox[2],bbox[1]);
         allFree.push(a3);
-        a4.push(map.previousExtent_[0],map.previousExtent_[3]);
+        a4.push(bbox[0],bbox[1]);
         allFree.push(a4);
         if(isFree=='均匀规划'){
             count = 0;
         }else{
             count = 4;
         }
-        addEvenNetFree(a1,a2,a3,a4,count,map,theme);
+        addEvenNetFree(a1,a2,a3,a4,count,map,theme,bbox);
     }
-    var _targetScheme = function(map,themeName){
+    var _targetScheme = function(map,themeName,bbox){
         isFree = themeName;
         clearMap(map);
         if(source!=null&&source!='undefined'){
@@ -191,7 +195,7 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
             draw.on('drawend',function(event){
                  map.removeInteraction(draw);
                  var rect = event.feature.values_.geometry.extent_;
-                 showDialog(rect,map,"目标规划","","");
+                 showDialog(rect,map,"目标规划","","",bbox);
                  $(".col-lg-12.col-md-12")[0].style.display='block';
                  $(".form-group>input")[0].style.display='block'
                  $(".form-group>select")[0].onchange = function(e){
@@ -206,14 +210,14 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
             });     
     };
    
-    function showDialog(rect,map,theme,x,y)
+    function showDialog(rect,map,theme,x,y,bbox)
     {
         cache = rect;
         function getFormContent() {
             return $("#formTemplateId").html();
         }
         var singleButtons = [];
-        singleButtons.push({id:"startIncButId",name:"确定",order:2,halign:"right",callback:function(){drawNet(cache,map,theme,x,y);return false}});
+        singleButtons.push({id:"startIncButId",name:"确定",order:2,halign:"right",callback:function(){drawNet(cache,map,theme,x,y,bbox);return false}});
         singleButtons.push({id:"sendMessageButId",name:"取消",order:1,halign:"right",callback:function(){cancelNet();return false}}); 
         var showPar = {
             zIndex:1024,
@@ -244,7 +248,7 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
             $(".form-group>select")[0].value="";
         }
     }
-    function drawNet(rect,map,theme,x,y)
+    function drawNet(rect,map,theme,x,y,bbox)
     {
         var selectValue;
         if($(".panel-body input")[0].checked){//下拉选择
@@ -259,10 +263,14 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         }
         var a1=[],a2=[],a3=[],a4=[];
         if(theme=="均匀规划"){
-            a1.push(map.previousExtent_[0],map.previousExtent_[1]);
-            a2.push(map.previousExtent_[2],map.previousExtent_[1]);
-            a3.push(map.previousExtent_[2],map.previousExtent_[3]);
-            a4.push(map.previousExtent_[0],map.previousExtent_[3]);
+            a1.push(bbox[0],bbox[3]);
+            a2.push(bbox[2],bbox[3]);
+            a3.push(bbox[2],bbox[1]);
+            a4.push(bbox[0],bbox[1]);
+            // a1.push(map.previousExtent_[0],map.previousExtent_[1]);
+            // a2.push(map.previousExtent_[2],map.previousExtent_[1]);
+            // a3.push(map.previousExtent_[2],map.previousExtent_[3]);
+            // a4.push(map.previousExtent_[0],map.previousExtent_[3]);
         }else if(theme=="自由规划"){
             a1.push(rect[0],rect[3]);
             a2.push(rect[2],rect[3]);
@@ -431,7 +439,7 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
             }
             submitArray(a1,a2,a3,a4);   
     }
-    function addEvenNetFree(a1,a2,a3,a4,count,map,theme){
+    function addEvenNetFree(a1,a2,a3,a4,count,map,theme,bbox){
                 clearEvenFree.length = 0;
                 vectorFreeSource = null;
                 vectorFreeLayer= null;
@@ -591,13 +599,12 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         allArray.length = 0;
         if((selectedValue=="2*2"||selectedValue=="4*4"||selectedValue=="8*8"||selectedValue=="16*16")&&selectedValueInput=="*")
         {
-                    var keyValue = {
-                        "2*2":"2",
-                        "4*4":"4",
-                        "8*8":"8",
-                        "16*16":"16"
-                    };
-                    w = keyValue[selectedValue];
+                       var keyValue = {
+                          "2*2":"2",
+                          "4*4":"4",
+                          "8*8":"8",
+                          "16*16":"16"
+                     }                    w = keyValue[selectedValue];
                     h = keyValue[selectedValue];
 
         }else

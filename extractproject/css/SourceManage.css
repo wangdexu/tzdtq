@@ -154,7 +154,8 @@ body, html {
 }
 
 .navWrapActive{
-    background: url(../img/square3.png) center no-repeat!important;
+    background: url(../img/square5.png) center no-repeat!important;
+    /*background: url(../img/square3.png) center no-repeat!important;*/
 }
 
 .copyWrap i{
