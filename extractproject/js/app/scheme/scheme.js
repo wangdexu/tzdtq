@@ -599,13 +599,12 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
         allArray.length = 0;
         if((selectedValue=="2*2"||selectedValue=="4*4"||selectedValue=="8*8"||selectedValue=="16*16")&&selectedValueInput=="*")
         {
-                      var keyValue = {
+                       var keyValue = {
                           "2*2":"2",
                           "4*4":"4",
                           "8*8":"8",
                           "16*16":"16"
-                     }
-                    w = keyValue[selectedValue];
+                     }                    w = keyValue[selectedValue];
                     h = keyValue[selectedValue];
 
         }else
