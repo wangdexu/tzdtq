@@ -320,6 +320,7 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         return uuid;
     }
     var _pointHeight = function(argList){
+        var rediskey=_uuid();
         var lonlatvalue=[];
         var datalist=argList.arg[0].getSelectedRowId(0).split(",");         //获得选中行的所有行id集合
         //console.log(datalist);
@@ -329,9 +330,9 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         });
         //console.log(dataheight);
         var dataheight={
-            "rediskey":"b0159561-5473-4526-8e40-51ad090b29e6",
+            "rediskey":rediskey,
             "dsmid":"b0159561-5473-4526-8e40-51ad090b29e6",
-            "lonlatvalue":lonlatvalue
+            "lonlatvalue":[[1,116.4578,39.4562],[2,116.4578,39.4562]]
         };
 
 
