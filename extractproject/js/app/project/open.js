@@ -10,6 +10,8 @@ var tempData;
 var tempId;
 
 define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
+    var _map;
+    var _box;
     var _showProjectDialog = function (){
     //    scheme.clearMap();
        function getFormContent() {
@@ -52,9 +54,9 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                     childData.forEach(function (c){
                         if(c.type == "dir"){
                             $('<li class="nav_item clearfix wjj_leftbs" id="' + c.id + '" title="' + c.path + '" data-pid="' + c.id + '"  data-id="' + c.id + '" data-type="0">' +
-                                '<i></i>' +
+                                '<i style="background-repeat: no-repeat;width:12px;height:12px"></i>' +
                                 '<u></u>' +
-                                '<p style="color:black">' + c.path + '</p>' +
+                                '<p style="color:white">' + c.path + '</p>' +
                                 '<div id="par' + c.id + '" class="nav_item_sWrap clearfix"></div>' +
                                 '</li>').appendTo($("#jstreeDiv"));
                         }else{
@@ -63,8 +65,8 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                                 $('<li style="margin-left: 20px;" class="nav_item clearfix wjj_leftbs" data-text="'+c.path+'" data-type="'+c.type+'" data-url="'+c.url+'" title="' + c.path + '" data-pid="' + c.id + '"  data-id="' + c.id + '" data-type="1">' +
                                     //'<i></i>' +
                                     //'<u></u>' +
-                                '<input  type="checkbox" class="last_level"/>'+
-                                '<p style="color:black">' + c.path + '</p>' +
+                                '<input style="float:left" type="checkbox" class="last_level"/>'+
+                                '<p style="color:white">' + c.path + '</p>' +
                                 '<div id="par' + c.id + '" class="nav_item_sWrap clearfix"></div>' +
                                 '</li>').appendTo($("#jstreeDiv"));
                             }
@@ -104,7 +106,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                         childData.forEach(function (c) {
                             if(c.type == "dir"){
                                 $('<li class="nav_item clearfix wjj_leftbs" id="' + c.id + '" title="' + c.path + '" data-pid="' + c.id + '"  data-id="' + c.id + '" data-type="0">' +
-                                    '<i></i>' +
+                                    '<i style="background-repeat: no-repeat;width:12px;height:12px"></i>' +
                                     '<u></u>' +
                                     '<p>' + c.path + '</p>' +
                                     '<div id="par' + c.id + '" class="nav_item_sWrap clearfix"></div>' +
@@ -160,7 +162,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                 var number=$(this).children("p").html().split("_")[3];
                 $("p:contains("+number+")").prev().prop("checked",false);
                 if(data.node.original.type != "url"){
-                    map=undefined;
+                    _map=undefined;
                     $(".last_level").prop("checked",false);
                 }
                 $(this).children(".last_level").prop("checked",true);
@@ -294,6 +296,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
     }
     //查看影像服务
     function lookUrl(path,layers,bbox,type,imgType){
+        _box = bbox;
         var projection = ol.proj.get('EPSG:4326');
         var projectionExtent = projection.getExtent();
         var size = ol.extent.getWidth(projectionExtent) / 256;
@@ -306,7 +309,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
         }
         if(type == "wms"){
            $("#mapMainContainer").empty();
-           var map = new ol.Map({
+           _map = new ol.Map({
                 target: "mapMainContainer",
                 controls: ol.control.defaults().extend([
                     new ol.control.MousePosition({
@@ -332,9 +335,17 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                     ,projection:"EPSG:4326"
                 })
             });
-            map.addLayer(layer);
+            _map.addLayer(layer);
+            _funReturn(_map);
+            _returnBox(_box);
         }
     }
+    var _returnBox = function(){
+        return _box;
+    }
+     var _funReturn = function(){
+        return _map;
+   }
      //查看jpg文件
     function lookJpg(path){
         var pathArr = path.split("?");
@@ -425,7 +436,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                                 ).appendTo($(".dl_list"));
                                 // 文件夹左侧树模式
                                 $('<li class="nav_item clearfix wjj_leftbs" id="'+datas[i].id+'" title="'+datas[i].name+'" data-pid="'+datas[i].parentID+'"  data-id="'+datas[i].metadata+'" data-descirbe="'+datas[i].descirbe+'" data-createTime="'+datas[i].createTime+'" data-editTime="'+datas[i].editTime+'" data-userName="'+datas[i].userName+'" data-type="0" data-editType="$'+datas[i].editType+'">' +
-                                        '							<i></i>' +
+                                        '							<i style="background-repeat: no-repeat;width:12px;height:12px"></i>' +
                                         '							<u></u>' +
                                         '							<p style="color:black">'+datas[i].name+'</p>' +
                                         '							<div class="nav_item_sWrap clearfix"></div>' +
@@ -434,7 +445,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                                 ).appendTo($(".left_nav"));
                                 // 复制中的文件夹目录
                                 $('<li class="nav_item clearfix wjj_leftbs" id="'+datas[i].id+'" title="'+datas[i].name+'" data-pid="'+datas[i].parentID+'"  data-id="'+datas[i].metadata+'" data-type="0" data-editType="'+datas[i].editType+'">' +
-                                        '							<i></i>' +
+                                        '							<i style="background-repeat: no-repeat;width:12px;height:12px"></i>' +
                                         '							<u></u>' +
                                         '							<p style="color:black">'+datas[i].name+'</p>' +
                                         '							<div class="nav_item_sWrap clearfix"></div>' +
@@ -443,7 +454,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                                 ).appendTo($(".copyWrapToggle"));
                                 // 移动中的文件夹目录
                                 $('	 <li class="nav_item clearfix wjj_leftbs" id="'+datas[i].id+'" title="'+datas[i].name+'" data-pid="'+datas[i].parentID+'"  data-id="'+datas[i].metadata+'" data-type="0" data-editType="'+datas[i].editType+'">' +
-                                        '							<i></i>' +
+                                        '							<i style="background-repeat: no-repeat;width:12px;height:12px"></i>' +
                                         '							<u></u>' +
                                         '							<p style="color:black">'+datas[i].name+'</p>' +
                                         '							<div class="nav_item_sWrap clearfix"></div>' +
@@ -835,7 +846,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                                 '							</ul>').appendTo($(".dl_list"));
                             // 文件夹左侧树模式
                             $('<li class="nav_item clearfix wjj_leftbs" id="' + tempData[i].id + '" title="' + tempData[i].name + '" data-pid="' + tempData[i].parentID + '"  data-id="' + tempData[i].Metadata + '" data-descirbe="' + tempData[i].descirbe + '" data-createTime="' + tempData[i].createTime + '" data-editTime="' + tempData[i].editTime + '" data-userName="' + tempData[i].userName + '" data-type="0">' +
-                                '							<i></i>' +
+                                '							<i style="background-repeat: no-repeat;width:12px;height:12px"></i>' +
                                 '							<u></u>' +
                                 '							<p style="color:black">' + tempData[i].name + '</p>' +
                                 '							<div class="nav_item_sWrap clearfix"></div>' +
@@ -2106,6 +2117,8 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
     }
     return {
         showProjectDialog:_showProjectDialog,
+        funReturn:_funReturn,
+        returnBox:_returnBox
     }
 });
 
