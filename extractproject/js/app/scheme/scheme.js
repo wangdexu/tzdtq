@@ -604,7 +604,8 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                           "4*4":"4",
                           "8*8":"8",
                           "16*16":"16"
-                     }                    w = keyValue[selectedValue];
+                     }
+                    w = keyValue[selectedValue];
                     h = keyValue[selectedValue];
 
         }else

@@ -367,7 +367,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
         ribbon_1.attachEvent("onClick", function(id) {
             switch(id){
                 case "open":
-                  open.showProjectDialog();                    break;
+                  open.showProjectDialog();
+                    break;
                 case "close":
                     //console.log(id);
                     break;
@@ -573,6 +574,27 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                    break;
            }
         });
+    //监听点信息列表,并编辑后保存至全局
+    grid_3.attachEvent("onEditCell",function(stage,rowId,cellIndex,newValue,oldValue){
+        if ((stage==2)&&(newValue!=oldValue)){
+            alert("Cell with id="+rowId+" and index="+cellIndex+" was edited");
+            dataMain.FeaturePoint.Property.forEach(function(item,index){
+                if(item.POINTID==rowId){
+                    if(cellIndex==2){
+                        item.LONRANGE=grid_3.cells(rowId, cellIndex).getValue();
+                        //console.log(item.active);
+                    }else if(cellIndex==3){
+                        item.LATRANGE=grid_3.cells(rowId, cellIndex).getValue();
+                    }else if(cellIndex==4){
+                        item.HEIGHT=grid_3.cells(rowId, cellIndex).getValue();
+                    }
+                }
+            });
+            return true;
+        }
+        console.log(dataMain);
+        return true;
+    });
     };
     return {
         test:_test

@@ -474,7 +474,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
             var gridData={
                 "dsmid":"03adff02-0bd9-41c8-9334-ab9db659ecdc",
                 "lonlatvalue":[[1,116.4578,39.4562],[2,116.6578,39.5562],[3,116.5578,39.3562]]
-            }
+            };
             console.log(1);
             //刺点,发送经纬度,请求高程
             $.ajax({
