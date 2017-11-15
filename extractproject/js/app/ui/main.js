@@ -239,7 +239,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
 
         var status_1 = layout_1.attachStatusBar();
         //主视图鼠标移动显示经纬度控件挂载点
-        status_1.setText('<div id="post11"><div class="ol-mouse-position2"></div></div>');
+    status_1.setText("<progress style='float: left; class='progress'  id='progressBar' value='30' max='100'></progress></div><div id='post11'><div class='ol-mouse-position2'></div></div>");
         $("#post11").css({
             "position": "relative",
             "top": "0",
@@ -595,6 +595,16 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
         console.log(dataMain);
         return true;
     });
+
+    //右键点击事件
+    //$(document).mousedown(function(e){
+    //    if(1== e.which){
+    //        alert("右")
+    //    }else if(3== e.which){
+    //        alert("左")
+    //        console.log(grid_3.getSelectedRowId(0));
+    //    }
+    //})
     };
     return {
         test:_test

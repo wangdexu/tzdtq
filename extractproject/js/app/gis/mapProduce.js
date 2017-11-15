@@ -382,7 +382,6 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         };
         //console.log(gridData);
 
-
         //临时测试用
         //var jiaoke={
         //    "collectionrule":"自由规划",
@@ -428,6 +427,29 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         //    });
         //},1000);
         //发送网格点的数据
+
+
+        $("#progressBar").val(60);
+        //$.ajax({
+        //            url: "http://192.168.31.233:5000/GetPrjProcess",
+        //            type: "post",
+        //            data:JSON.stringify({"rediskey":rediskey}),
+        //            //dataType: 'JSPON',
+        //            success: function (data) {
+        //                console.log(data);
+        //                //if(data<100) {
+        //                //    console.log(data);
+        //                //    $("#progressBar").val(data);
+        //                //}else{
+        //                //    window.clearInterval(time);
+        //                //}
+        //
+        //            },
+        //            error: function () {
+        //                console.log("点列表数据,请求失败");
+        //            }
+        //        });
+
         $.ajax({
             url: "http://192.168.31.233:5000/ImageFptRefine",
             type: "post",
@@ -438,9 +460,34 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
                 dataDisplay(dataMain);
             },
             error: function () {
-                    console.log("点列表数据,请求失败");
+                console.log("点列表数据,请求失败");
             }
         });
+
+
+        var time=window.setInterval(function(){
+            $.ajax({
+                url: "http://192.168.31.233:5000/GetPrjProcess",
+                type: "post",
+                data:JSON.stringify({"rediskey":rediskey}),
+                //dataType: 'JSPON',
+                success: function (data) {
+                    console.log(data);
+                    if(data<100) {
+                        console.log(data);
+                        $("#progressBar").val(data);
+                    }else{
+                        window.clearInterval(time);
+                    }
+                },
+                error: function () {
+                    console.log("点列表数据,请求失败");
+                }
+            });
+        },2000);
+
+
+
     //    var dataInfor={
     //    "FeaturePoint": {
     //        "Property": [

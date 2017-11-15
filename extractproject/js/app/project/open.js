@@ -36,6 +36,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
         $(".nomodal-body.mCustomScrollbar")[0].style.background='#ffffff';
         $("#mCSB_1_container")[0].style.height='419px';
         loadTree();
+        console.log("jiaoke");
         clickTree();
     }
     function loadleftTree(){
@@ -401,14 +402,14 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                 },
                 error: function (e) {
                 }
-            })
+            });
             //	token = "RIwEs5MZM5ZIMl+65zqEHyP86XbWysP8iRcO5H+zcYd1Wg3e/JcjIZwYGe5Uyx1StAlLq788gQh60prYqhAkvAfaoxp+yjPGPveFcqFktMtLsKdyUmntFenwWudPDGGSMVlMeow9nVuMUg/1gpgOf3Ow2qCJQmwT2kDyrF1F6SQ=";
             $.ajax({
                 url: folderUrl,
                 type: "post",
                 data:{"parentId":"-2","orderType":orderTypeFlag,"token":token},
                 success: function (res) {
-                    if(res.status == "true"){
+                    if(""+res.status == "true"){
                         var datas = res.item.items;
                         initUserId = datas[0].userId;
                         for(var i in datas){
@@ -435,6 +436,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
 
                                 ).appendTo($(".dl_list"));
                                 // 文件夹左侧树模式
+
                                 $('<li class="nav_item clearfix wjj_leftbs" id="'+datas[i].id+'" title="'+datas[i].name+'" data-pid="'+datas[i].parentID+'"  data-id="'+datas[i].metadata+'" data-descirbe="'+datas[i].descirbe+'" data-createTime="'+datas[i].createTime+'" data-editTime="'+datas[i].editTime+'" data-userName="'+datas[i].userName+'" data-type="0" data-editType="$'+datas[i].editType+'">' +
                                         '							<i style="background-repeat: no-repeat;width:12px;height:12px"></i>' +
                                         '							<u></u>' +
@@ -492,10 +494,11 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
         //				getSession();
                     }
                 },
-                error: function (e) {
-                    if(e.status == "401"){
-                        getSession();
-                    }
+                error: function () {
+                    console.log("失败");
+                    //if(e.status == "401"){
+                    //    getSession();
+                    //}
                 }
 	    })
     }
