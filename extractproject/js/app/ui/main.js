@@ -18,7 +18,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
         leftDiv.setWidth('200');
         leftDiv.fixSize(1,0);
         leftDiv.hideHeader();
-        leftDiv.attachHTMLString('<div id="jstreeDiv" class="fileList" style="width:100%;height:100%;overflow:auto;background:black;padding-top:10px;float:left"></div>');  //左侧的文件列表
+        leftDiv.attachHTMLString('<label class="leftLabel">PROJECT</label><div id="jstreeDiv" class="fileList" style="width:100%;height:100%;overflow:auto;background:black;padding-top:10px;float:left"></div>');  //左侧的文件列表
         //leftDiv.attachHTMLString('<div id="treeboxbox_tree" class="fileList">文件列表</div>');  //左侧的文件列表
         //var tree=new dhtmlXTreeObject("treeboxbox_tree","100%","100%",0);
         //tree.setImagePath("codebase/imgs/");

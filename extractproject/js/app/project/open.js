@@ -45,7 +45,9 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
         noModalService("modal-9","show",showPar);
         $(".nomodal-body.mCustomScrollbar")[0].style.height='429px';
         $(".nomodal-body.mCustomScrollbar")[0].style.background='#ffffff';
-        $(".nomodal-body #mCSB_1_container")[0].style.height='419px';
+        if($(".nomodal-body #mCSB_1_container")[0] != undefined){
+            $(".nomodal-body #mCSB_1_container")[0].style.height='419px';
+        }
         loadTree();
         //console.log("jiaoke");
         clickTree();

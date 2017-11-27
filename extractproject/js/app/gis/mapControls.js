@@ -613,17 +613,24 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
     //removeAdd方法
     var _removeAdd = function(){
         var map = open.funReturn();
-        map.removeInteraction(draw);  //移除交互
+        if(map != undefined){
+            map.removeInteraction(draw);  //移除交互
+        }
     };
     //removeEdit方法
     var _removeEdit = function(){
         var map = open.funReturn();
-        map.removeInteraction(modify);  //移除交互
+        if(map != undefined){
+            map.removeInteraction(modify);  //移除交互
+        }
+
     };
     //association方法
     var _association = function(){
         var map = open.funReturn();
-        map.removeEventListener("moveend",_remove);  //移除关联监听
+        if(map != undefined){
+            map.removeEventListener("moveend",_remove);  //移除关联监听
+        }
         //console.log("jiaoke");
     };
     //添加一个点,就是添加一条空数据，手动填入数据
