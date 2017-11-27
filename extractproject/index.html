@@ -88,7 +88,17 @@
 
 <!--点id的容器-->
 <div id="pop" style="display:none"></div>
-
+<!--删除点的确认弹出框-->
+<div id="deleteContainer"  style="display: none;">
+    <div id="deletepointIdPop"  >
+        <div>
+            <span class="deletePointPop">确认删除当前点吗？</span>
+            <span class="deletePointPopClose">&times;</span>
+        </div>
+        <button id="commitDelete">确认</button>
+        <button id="changeDelete">取消</button>
+    </div>
+</div>
 <!--导入导出-->
 <div id="popExport"  style="display: none;">
     <div id="exportIdPop"  >

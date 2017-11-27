@@ -1,310 +1,91 @@
 var dataMain={
         "FeaturePoint": {
-            "Property": [
-                {
-                    "GRAPHID": "H50E002023",
-                    "PLANECOORDINATESYSTEM": "WGS84",
-                    "POINTID": "1",
-                    "CONTROLPOINTSORT": "影像控制点",
-                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
-                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
-                    "LATRANGE": "39.483287589",
-                    "PRODUCTIONUNIT": "",
-                    "DATASIZE": "1024",
-                    "RESOLUTION": "0.000160",
-                    "METHOD": "自由规划",
-                    "LEVEL": "",
-                    "FEATUREID": "H50E002023-20171109140907-1",
-                    "HEIGHTCOORDINATESYSTEM": "WGS84",
-                    "HEIGHT": "20368.00",
-                    "DATAFORMAT": "tif",
-                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
-                    "UNIT": "度",
-                    "ZONE": "50",
-                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
-                    "LONRANGE": "116.554037793",
-                    "MAPPROJECTION": "WGS84",
-                    "ZONENAME": ""
-                },
-                {
-                    "GRAPHID": "H50E002023",
-                    "PLANECOORDINATESYSTEM": "WGS84",
-                    "POINTID": "2",
-                    "CONTROLPOINTSORT": "影像控制点",
-                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
-                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
-                    "LATRANGE": "39.473527589",
-                    "PRODUCTIONUNIT": "",
-                    "DATASIZE": "1024",
-                    "RESOLUTION": "0.000160",
-                    "METHOD": "自由规划",
-                    "LEVEL": "",
-                    "FEATUREID": "H50E002023-20171109140907-2",
-                    "HEIGHTCOORDINATESYSTEM": "WGS84",
-                    "HEIGHT": "21105.00",
-                    "DATAFORMAT": "tif",
-                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
-                    "UNIT": "度",
-                    "ZONE": "50",
-                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
-                    "LONRANGE": "116.567637793",
-                    "MAPPROJECTION": "WGS84",
-                    "ZONENAME": ""
-                },
-                {
-                    "GRAPHID": "H50E002023",
-                    "PLANECOORDINATESYSTEM": "WGS84",
-                    "POINTID": "3",
-                    "CONTROLPOINTSORT": "影像控制点",
-                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
-                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
-                    "LATRANGE": "39.471607589",
-                    "PRODUCTIONUNIT": "",
-                    "DATASIZE": "1024",
-                    "RESOLUTION": "0.000160",
-                    "METHOD": "自由规划",
-                    "LEVEL": "",
-                    "FEATUREID": "H50E002023-20171109140907-3",
-                    "HEIGHTCOORDINATESYSTEM": "WGS84",
-                    "HEIGHT": "18775.00",
-                    "DATAFORMAT": "tif",
-                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
-                    "UNIT": "度",
-                    "ZONE": "50",
-                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
-                    "LONRANGE": "116.553397793",
-                    "MAPPROJECTION": "WGS84",
-                    "ZONENAME": ""
-                },
-                {
-                    "GRAPHID": "H50E002023",
-                    "PLANECOORDINATESYSTEM": "WGS84",
-                    "POINTID": "4",
-                    "CONTROLPOINTSORT": "影像控制点",
-                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
-                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
-                    "LATRANGE": "39.470647589",
-                    "PRODUCTIONUNIT": "",
-                    "DATASIZE": "1024",
-                    "RESOLUTION": "0.000160",
-                    "METHOD": "自由规划",
-                    "LEVEL": "",
-                    "FEATUREID": "H50E002023-20171109140907-4",
-                    "HEIGHTCOORDINATESYSTEM": "WGS84",
-                    "HEIGHT": "21190.00",
-                    "DATAFORMAT": "tif",
-                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
-                    "UNIT": "度",
-                    "ZONE": "50",
-                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
-                    "LONRANGE": "116.570037793",
-                    "MAPPROJECTION": "WGS84",
-                    "ZONENAME": ""
-                },
-                {
-                    "GRAPHID": "H50E002023",
-                    "PLANECOORDINATESYSTEM": "WGS84",
-                    "POINTID": "5",
-                    "CONTROLPOINTSORT": "影像控制点",
-                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
-                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
-                    "LATRANGE": "39.446967589",
-                    "PRODUCTIONUNIT": "",
-                    "DATASIZE": "1024",
-                    "RESOLUTION": "0.000160",
-                    "METHOD": "自由规划",
-                    "LEVEL": "",
-                    "FEATUREID": "H50E002023-20171109140907-5",
-                    "HEIGHTCOORDINATESYSTEM": "WGS84",
-                    "HEIGHT": "19786.00",
-                    "DATAFORMAT": "tif",
-                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
-                    "UNIT": "度",
-                    "ZONE": "50",
-                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
-                    "LONRANGE": "116.584917793",
-                    "MAPPROJECTION": "WGS84",
-                    "ZONENAME": ""
-                },
-                {
-                    "GRAPHID": "H50E002023",
-                    "PLANECOORDINATESYSTEM": "WGS84",
-                    "POINTID": "6",
-                    "CONTROLPOINTSORT": "影像控制点",
-                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
-                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
-                    "LATRANGE": "39.451927589",
-                    "PRODUCTIONUNIT": "",
-                    "DATASIZE": "1024",
-                    "RESOLUTION": "0.000160",
-                    "METHOD": "自由规划",
-                    "LEVEL": "",
-                    "FEATUREID": "H50E002023-20171109140907-6",
-                    "HEIGHTCOORDINATESYSTEM": "WGS84",
-                    "HEIGHT": "18918.00",
-                    "DATAFORMAT": "tif",
-                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
-                    "UNIT": "度",
-                    "ZONE": "50",
-                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
-                    "LONRANGE": "116.597877793",
-                    "MAPPROJECTION": "WGS84",
-                    "ZONENAME": ""
-                },
-                {
-                    "GRAPHID": "H50E002023",
-                    "PLANECOORDINATESYSTEM": "WGS84",
-                    "POINTID": "7",
-                    "CONTROLPOINTSORT": "影像控制点",
-                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
-                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
-                    "LATRANGE": "39.439927589",
-                    "PRODUCTIONUNIT": "",
-                    "DATASIZE": "1024",
-                    "RESOLUTION": "0.000160",
-                    "METHOD": "自由规划",
-                    "LEVEL": "",
-                    "FEATUREID": "H50E002023-20171109140907-7",
-                    "HEIGHTCOORDINATESYSTEM": "WGS84",
-                    "HEIGHT": "18004.01",
-                    "DATAFORMAT": "tif",
-                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
-                    "UNIT": "度",
-                    "ZONE": "50",
-                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
-                    "LONRANGE": "116.585237793",
-                    "MAPPROJECTION": "WGS84",
-                    "ZONENAME": ""
-                },
-                {
-                    "GRAPHID": "H50E002023",
-                    "PLANECOORDINATESYSTEM": "WGS84",
-                    "POINTID": "8",
-                    "CONTROLPOINTSORT": "影像控制点",
-                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
-                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
-                    "LATRANGE": "39.430967589",
-                    "PRODUCTIONUNIT": "",
-                    "DATASIZE": "1024",
-                    "RESOLUTION": "0.000160",
-                    "METHOD": "自由规划",
-                    "LEVEL": "",
-                    "FEATUREID": "H50E002023-20171109140907-8",
-                    "HEIGHTCOORDINATESYSTEM": "WGS84",
-                    "HEIGHT": "17052.01",
-                    "DATAFORMAT": "tif",
-                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
-                    "UNIT": "度",
-                    "ZONE": "50",
-                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
-                    "LONRANGE": "116.599317793",
-                    "MAPPROJECTION": "WGS84",
-                    "ZONENAME": ""
-                },
-                {
-                    "GRAPHID": "H50E002023",
-                    "PLANECOORDINATESYSTEM": "WGS84",
-                    "POINTID": "9",
-                    "CONTROLPOINTSORT": "影像控制点",
-                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
-                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
-                    "LATRANGE": "39.419607589",
-                    "PRODUCTIONUNIT": "",
-                    "DATASIZE": "1024",
-                    "RESOLUTION": "0.000160",
-                    "METHOD": "自由规划",
-                    "LEVEL": "",
-                    "FEATUREID": "H50E002023-20171109140907-9",
-                    "HEIGHTCOORDINATESYSTEM": "WGS84",
-                    "HEIGHT": "28083.00",
-                    "DATAFORMAT": "tif",
-                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
-                    "UNIT": "度",
-                    "ZONE": "50",
-                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
-                    "LONRANGE": "116.617877793",
-                    "MAPPROJECTION": "WGS84",
-                    "ZONENAME": ""
-                },
-                {
-                    "GRAPHID": "H50E002023",
-                    "PLANECOORDINATESYSTEM": "WGS84",
-                    "POINTID": "10",
-                    "CONTROLPOINTSORT": "影像控制点",
-                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
-                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
-                    "LATRANGE": "39.409527589",
-                    "PRODUCTIONUNIT": "",
-                    "DATASIZE": "1024",
-                    "RESOLUTION": "0.000160",
-                    "METHOD": "自由规划",
-                    "LEVEL": "",
-                    "FEATUREID": "H50E002023-20171109140907-10",
-                    "HEIGHTCOORDINATESYSTEM": "WGS84",
-                    "HEIGHT": "20704.00",
-                    "DATAFORMAT": "tif",
-                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
-                    "UNIT": "度",
-                    "ZONE": "50",
-                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
-                    "LONRANGE": "116.627157793",
-                    "MAPPROJECTION": "WGS84",
-                    "ZONENAME": ""
-                },
-                {
-                    "GRAPHID": "H50E002023",
-                    "PLANECOORDINATESYSTEM": "WGS84",
-                    "POINTID": "11",
-                    "CONTROLPOINTSORT": "影像控制点",
-                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
-                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
-                    "LATRANGE": "39.402487589",
-                    "PRODUCTIONUNIT": "",
-                    "DATASIZE": "1024",
-                    "RESOLUTION": "0.000160",
-                    "METHOD": "自由规划",
-                    "LEVEL": "",
-                    "FEATUREID": "H50E002023-20171109140907-11",
-                    "HEIGHTCOORDINATESYSTEM": "WGS84",
-                    "HEIGHT": "20141.01",
-                    "DATAFORMAT": "tif",
-                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
-                    "UNIT": "度",
-                    "ZONE": "50",
-                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
-                    "LONRANGE": "116.622677793",
-                    "MAPPROJECTION": "WGS84",
-                    "ZONENAME": ""
-                },
-                {
-                    "GRAPHID": "H50E002023",
-                    "PLANECOORDINATESYSTEM": "WGS84",
-                    "POINTID": "12",
-                    "CONTROLPOINTSORT": "影像控制点",
-                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
-                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
-                    "LATRANGE": "39.409207589",
-                    "PRODUCTIONUNIT": "",
-                    "DATASIZE": "1024",
-                    "RESOLUTION": "0.000160",
-                    "METHOD": "自由规划",
-                    "LEVEL": "",
-                    "FEATUREID": "H50E002023-20171109140907-12",
-                    "HEIGHTCOORDINATESYSTEM": "WGS84",
-                    "HEIGHT": "13218.00",
-                    "DATAFORMAT": "tif",
-                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
-                    "UNIT": "度",
-                    "ZONE": "50",
-                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
-                    "LONRANGE": "116.629077793",
-                    "MAPPROJECTION": "WGS84",
-                    "ZONENAME": ""
-                }
-            ]
-        }
-};
-define(['jquery','dhtmlx','ol'],function($,dhl,ol){
+            "Property": []
+        }};
+//var dataMain={
+//        "FeaturePoint": {
+//            "Property": [
+//                {
+//                    "GRAPHID": "H50E002023",
+//                    "PLANECOORDINATESYSTEM": "WGS84",
+//                    "POINTID": "1",
+//                    "CONTROLPOINTSORT": "影像控制点",
+//                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
+//                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
+//                    "LATRANGE": "30.8451",
+//                    "PRODUCTIONUNIT": "",
+//                    "DATASIZE": "1024",
+//                    "RESOLUTION": "0.000160",
+//                    "METHOD": "自由规划",
+//                    "LEVEL": "",
+//                    "FEATUREID": "H50E002023-20171109140907-1",
+//                    "HEIGHTCOORDINATESYSTEM": "WGS84",
+//                    "HEIGHT": "20368.00",
+//                    "DATAFORMAT": "tif",
+//                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
+//                    "UNIT": "度",
+//                    "ZONE": "50",
+//                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
+//                    "LONRANGE": "82.4641",
+//                    "MAPPROJECTION": "WGS84",
+//                    "ZONENAME": ""
+//                },
+//                {
+//                    "GRAPHID": "H50E002023",
+//                    "PLANECOORDINATESYSTEM": "WGS84",
+//                    "POINTID": "2",
+//                    "CONTROLPOINTSORT": "影像控制点",
+//                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
+//                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
+//                    "LATRANGE": "30.7874",
+//                    "PRODUCTIONUNIT": "",
+//                    "DATASIZE": "1024",
+//                    "RESOLUTION": "0.000160",
+//                    "METHOD": "自由规划",
+//                    "LEVEL": "",
+//                    "FEATUREID": "H50E002023-20171109140907-2",
+//                    "HEIGHTCOORDINATESYSTEM": "WGS84",
+//                    "HEIGHT": "21105.00",
+//                    "DATAFORMAT": "tif",
+//                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
+//                    "UNIT": "度",
+//                    "ZONE": "50",
+//                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
+//                    "LONRANGE": "82.4991",
+//                    "MAPPROJECTION": "WGS84",
+//                    "ZONENAME": ""
+//                },
+//                {
+//                    "GRAPHID": "H50E002023",
+//                    "PLANECOORDINATESYSTEM": "WGS84",
+//                    "POINTID": "3",
+//                    "CONTROLPOINTSORT": "影像控制点",
+//                    "PRODUCTIONDATE": "2017-11-09 14:09:07",
+//                    "DSMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dsm.tiff",
+//                    "LATRANGE": "30.7977",
+//                    "PRODUCTIONUNIT": "",
+//                    "DATASIZE": "1024",
+//                    "RESOLUTION": "0.000160",
+//                    "METHOD": "自由规划",
+//                    "LEVEL": "",
+//                    "FEATUREID": "H50E002023-20171109140907-3",
+//                    "HEIGHTCOORDINATESYSTEM": "WGS84",
+//                    "HEIGHT": "18775.00",
+//                    "DATAFORMAT": "tif",
+//                    "IMAGEID": "TH01-01_P20130417_10_883_123_OC_dom",
+//                    "UNIT": "度",
+//                    "ZONE": "50",
+//                    "DOMMARK": "/mnt/hgfs/E/testdata/TH01-01_P20130417_10_883_123_OC_dom.tiff",
+//                    "LONRANGE": "82.576",
+//                    "MAPPROJECTION": "WGS84",
+//                    "ZONENAME": ""
+//                }
+//            ]
+//        }
+//};
+//var dataMain;
+define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
+    var dataurl="http://192.168.4.221:2666";
     //var dataDisplay;    //声明的点信息列表显示函数
     //随机生成唯一字符串函数
     function _uuid() {
@@ -324,7 +105,7 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         var rediskey=_uuid();
         var lonlatvalue=[];
         var datalist=argList.arg[0].getSelectedRowId(0).split(",");         //获得选中行的所有行id集合
-        //console.log(datalist);
+        console.log(datalist);
         datalist.forEach(function(item){
             item=parseFloat(item);
             lonlatvalue.push([item,parseFloat(argList.arg[0].cells(item, 2).getValue()),parseFloat(argList.arg[0].cells(item, 3).getValue())])
@@ -332,159 +113,218 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
 
         var dataheight={
             "rediskey":rediskey,
-            "dsmid":"85e47e88-cef7-44f3-8b78-94aec05c27ba",
+            "dsmid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
             "lonlatvalue":lonlatvalue
         };
         //console.log(dataheight);
 
         $.ajax({
-            url:"http://192.168.31.233:5000/GetPtAlt",
+            url:dataurl+"/GetPtAlt",
             type:"post",
             contentType: "application/json",
             //dataType:'jsonp',
             data:JSON.stringify(dataheight),
             async: false,
             success:function(data){
-                data=$.parseJSON(data);
-                console.log(dataMain);
-
-                //将获得的高程保存起来
-                dataMain.FeaturePoint.Property.forEach(function(item,index){
-                    data.forEach(function(value){
-                        if(item.POINTID==value[0]){
-                            item.HEIGHT=value[1].toFixed(2);
-                        }
-                    });
-                });
-                console.log(dataMain);
-                dataDisplay(dataMain);
+                if(data=="SUCCESS"){
+                    time();
+                }else{
+                    console.log(data);
+                }
             },
             error: function () {
-                    console.log("高程-数据获取失败");
+                    console.log("高程-数据获取失败1");
             }
         });
+        function time(){
+            console.log(1);
+            var time=window.setInterval(function(){
+                $.ajax({
+                    url: dataurl+"/GetPtAltProcess",
+                    type: "post",
+                    data:JSON.stringify({"rediskey":rediskey}),
+                    //dataType: 'JSPON',
+                    success: function (data) {
+                        console.log(data);
+                        $("#progressBar").val(data);
+                        if(data<100) {
+                            console.log(data);
+                        }else{
+                            $.ajax({
+                                url:dataurl+"/GetPtAltResult",
+                                type:"post",
+                                contentType: "application/json",
+                                //dataType:'jsonp',
+                                data:JSON.stringify({"rediskey":rediskey}),
+                                async: false,
+                                success:function(data){
+                                    data=$.parseJSON(data);
+                                    console.log(dataMain);
+
+                                    //将获得的高程保存起来
+                                    dataMain.FeaturePoint.Property.forEach(function(item,index){
+                                        data.forEach(function(value){
+                                            if(item.POINTID==value[0]){
+                                                item.HEIGHT=value[1].toFixed(2);
+                                            }
+                                        });
+                                    });
+                                    console.log(dataMain);
+                                    dataDisplay(dataMain);
+                                },
+                                error: function () {
+                                    console.log("高程-数据获取失败2");
+                                }
+                            });
+                            window.clearInterval(time);
+                        }
+                    },
+                    error: function () {
+                        console.log("点列表进程,请求失败");
+                    }
+                });
+            },500);
+        }
 
 
 
 
     };
+    var __mapCoordinateFixed4 = function(target) {
+        //console.log(target);
+        return  (Math.round(target *10000))/10000;
+    };
     var _pointDraw = function(argList){
+        var linkPointLayer;
+        var mainAddPoint = function(map,leftTable,mainX,mainY,id){
+            if(undefined == linkPointLayer) {
+                linkPointLayer = new ol.layer.Vector({
+                    source: new ol.source.Vector(),
+                    style: new ol.style.Style({
+                        image: new ol.style.Icon({
+                            anchor: [10, 10],
+                            anchorXUnits: 'pixels',
+                            anchorYUnits: 'pixels',
+                            imgSize: [21, 21],
+                            src: "img/21px.png"
+                        })
+                    }),
+                    wrapX: false
+                });
+                map.addLayer(linkPointLayer); //将图层添加到目标之上
+            }
+
+
+            var point = [mainX,mainY];
+            var pointFeature = new ol.Feature({
+                geometry:new ol.geom.Point(point),
+                style:new ol.style.Style({
+                    image:new ol.style.Icon({
+                        anchor: [10,10],
+                        anchorXUnits: 'pixels',
+                        anchorYUnits: 'pixels',
+                        imgSize:[21,21],
+                        src:"img/21px.png"
+                    })
+                })
+            });
+            var pointID = id;//leftTable.cells(id, 1).cell.innerHTML;
+            pointFeature.setId(pointID);
+
+            linkPointLayer.getSource().addFeature(pointFeature);
+            linkPointLayer.id = pointID;
+
+            $('#pop').append('<div id="pop'+pointID+'" style="color: red">&nbsp;'+pointID+'</div>');
+
+            var pop = new ol.Overlay({
+                element:document.getElementById('pop'+pointID), //挂载点
+                position: point,    //设置其位置
+                positioning: 'top-left'   //显示位置的方向
+            });
+            var singlePoint={};
+            singlePoint.id = pointID;
+            singlePoint.singlePointtCoordinateX = __mapCoordinateFixed4(pointID[0]);
+            singlePoint.singlePointtCoordinateY =__mapCoordinateFixed4(pointID[1]);
+            //points.push(singlePoint);
+            map.addOverlay(pop);  // 地图添加
+
+        }
+        dataMain.FeaturePoint.Property.forEach(function(item){
+            var map = open.funReturn();
+            mainAddPoint(map,argList.arg[0],item.LONRANGE,item.LATRANGE,item.POINTID);
+        });
+
         var rediskey=_uuid();
         //网格点数据,罗旭给坐标
         var gridData= {
             "collectionrule":isFree,
             "controlpointsort":"影像控制点",
-            "domid":"85e47e88-cef7-44f3-8b78-94aec05c27ba",
-            "domxmlid":"48ea4804-9bf8-4d55-9f68-33ca16e8d2b4",
-            "dsmid":"85e47e88-cef7-44f3-8b78-94aec05c27ba",
+            "domid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
+            "domxmlid":"86d8490e-0ddb-481f-8736-70c329b99d6a",
+            "dsmid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
             "rediskey":rediskey,
             "InputPointInfo":allArray
         };
-        //console.log(gridData);
-
-        //临时测试用
-        //var jiaoke={
-        //    "collectionrule":"自由规划",
-        //    "controlpointsort":"影像控制点",
-        //    "domid":"",
-        //    "domxmlid":"",
-        //    "dsmid":"",
-        //    "rediskey":"",
-        //    "InputPointInfo":[[116.123,39.456,117.123,39.123],[116.123,39.456,117.123,39.123],[116.123,39.456,117.123,39.123]]
-        //};
-        //$.ajax({
-        //    url:"http://192.168.31.233:5000/ImageFptRefine",
-        //    type:"post",
-        //    contentType: "application/json",
-        //    //dataType:'jsonp',
-        //    data:JSON.stringify(jiaoke),
-        //    async: false,
-        //    success:function(data){
-        //        console.log(data);
-        //        dataDisplay(data)
-        //    },
-        //    error: function () {
-        //            alert("特征点提取精化-数据获取失败");
-        //    }
-        //});
-        //进度条定时器
-        //setInterval(function(){
-        //    $.ajax({
-        //        url:"http://192.168.31.230:5000/GetPrjProgress",
-        //        type:"post",
-        //        contentType: "application/json",
-        //        //dataType:'jsonp',
-        //        data:JSON.stringify({"rediskey":rediskey}),
-        //        async: false,
-        //        success:function(data){
-        //
-        //        },
-        //        error: function (e) {
-        //            if(e.status == "401"){
-        //                console.log("请求失败");
-        //            }
-        //        }
-        //    });
-        //},1000);
-        //发送网格点的数据
-
-
-        $("#progressBar").val(60);
-        //$.ajax({
-        //            url: "http://192.168.31.233:5000/GetPrjProcess",
-        //            type: "post",
-        //            data:JSON.stringify({"rediskey":rediskey}),
-        //            //dataType: 'JSPON',
-        //            success: function (data) {
-        //                console.log(data);
-        //                //if(data<100) {
-        //                //    console.log(data);
-        //                //    $("#progressBar").val(data);
-        //                //}else{
-        //                //    window.clearInterval(time);
-        //                //}
-        //
-        //            },
-        //            error: function () {
-        //                console.log("点列表数据,请求失败");
-        //            }
-        //        });
-
         $.ajax({
-            url: "http://192.168.31.233:5000/ImageFptRefine",
+            url: dataurl+"/ImageFptRefine",
             type: "post",
             data:JSON.stringify(gridData),
             //dataType: 'JSPON',
             success: function (data) {
-                dataMain=$.parseJSON(data);
-                dataDisplay(dataMain);
+                console.log("1:"+data);
+                if(data=="SUCCESS"){
+                    console.log(data);
+                    time();
+                }else{
+                    console.log(data);
+                }
             },
             error: function () {
-                console.log("点列表数据,请求失败");
+                console.log("点列表数据1,请求失败");
             }
         });
 
-
-        var time=window.setInterval(function(){
-            $.ajax({
-                url: "http://192.168.31.233:5000/GetPrjProcess",
-                type: "post",
-                data:JSON.stringify({"rediskey":rediskey}),
-                //dataType: 'JSPON',
-                success: function (data) {
-                    console.log(data);
-                    if(data<100) {
+        function time(){
+            var time=window.setInterval(function(){
+                console.log(2);
+                $.ajax({
+                    url: dataurl+"/ImageFptRefineProcess",
+                    type: "post",
+                    data:JSON.stringify({"rediskey":rediskey}),
+                    //dataType: 'JSPON',
+                    success: function (data) {
                         console.log(data);
                         $("#progressBar").val(data);
-                    }else{
-                        window.clearInterval(time);
+                        if(data<100) {
+                            console.log(data);
+
+                        }else{
+                            $.ajax({
+                                url: dataurl+"/ImageFptRefineResult",
+                                type: "post",
+                                data:JSON.stringify({"rediskey":rediskey}),
+                                //dataType: 'JSPON',
+                                success: function (data) {
+                                    dataMain=$.parseJSON(data);
+                                    dataDisplay(dataMain);
+                                    dataMain.FeaturePoint.Property.forEach(function(item){
+                                        var map = open.funReturn();
+                                        mainAddPoint(map,argList.arg[0],item.LONRANGE,item.LATRANGE,item.POINTID);
+                                    })
+                                },
+                                error: function () {
+                                    console.log("点列表数据2,请求失败");
+                                }
+                            });
+                            window.clearInterval(time);
+                        }
+                    },
+                    error: function () {
+                        console.log("点列表数据,请求失败");
                     }
-                },
-                error: function () {
-                    console.log("点列表数据,请求失败");
-                }
-            });
-        },2000);
+                });
+            },2000);
+        };
 
 
 
@@ -795,41 +635,42 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
     //    }
     //};
     //    dataDisplay(dataInfor); //调用点信息数据显示函数
-        function dataDisplay(dataInfor){             //点信息数据显示函数
-            var dataArr = dataInfor.FeaturePoint.Property;
-            //生成点信息数据
-            var data= {
-                rows: []
-            };
-            var shu=dataArr.length;
-            for(var i=1;i<=shu;i++){
-                data.rows.push({ id:dataArr[i-1].POINTID, data: [i,i,dataArr[i-1].LONRANGE,dataArr[i-1].LATRANGE,dataArr[i-1].HEIGHT]});
-            }
-            argList.arg[0].clearAll();                      //加载前先清空列表的内容
-            argList.arg[0].parse(data,function(){               //加载数据到列表
-                //alert(1);
-            },"json");
-            //调用属性信息数据,默认显示列表的第一条
-            attrInformation(1);
-
-            argList.arg[0].attachEvent('onRowSelect', function(rId, cInd){          //监听点信息列表点击事件
-                attrInformation(rId);                                               //调用属性信息数据显示函数
-            });
-            function attrInformation(id) {                                          //属性信息数据显示函数
-                var dataChild = dataInfor.FeaturePoint.Property[id-1];
-                $("#GRAPHID").empty().append(dataChild.GRAPHID);
-                $("#PRODUCTIONDATE").empty().append(dataChild.PRODUCTIONDATE);
-                $("#ZONENAME").empty().append(dataChild.ZONENAME);
-                $("#FEATUREID").empty().append(dataChild.FEATUREID);
-                $("#PLANECOORDINATESYSTEM").empty().append(dataChild.PLANECOORDINATESYSTEM);
-                $("#HEIGHTCOORDINATESYSTEM").empty().append(dataChild.HEIGHTCOORDINATESYSTEM);
-                $("#PERSON").empty().append(dataChild.PERSON);
-                $("#LEVEL").empty().append(dataChild.LEVEL);
-                $("#RESOLUTION").empty().append(dataChild.RESOLUTION);
-                $("#METHOD").empty().append(dataChild.METHOD);
-            }
-        }
-
+    //    function dataDisplay(dataInfor){
+    //        var dataArr = dataInfor.FeaturePoint.Property;
+    //        //生成点信息数据
+    //        var data= {
+    //            rows: []
+    //        };
+    //        var shu=dataArr.length;
+    //        for(var i=1;i<=shu;i++){
+    //            data.rows.push({ id:dataArr[i-1].POINTID, data: [i,i,dataArr[i-1].LONRANGE,dataArr[i-1].LATRANGE,dataArr[i-1].HEIGHT]});
+    //        }
+    //        argList.arg[0].clearAll();                      //加载前先清空列表的内容
+    //        argList.arg[0].parse(data,function(){               //加载数据到列表
+    //            //alert(1);
+    //        },"json");
+    //        //调用属性信息数据,默认显示列表的第一条
+    //        attrInformation(1);
+    //
+    //
+    //        argList.arg[0].attachEvent('onRowSelect', function(rId, cInd){          //监听点信息列表点击事件
+    //            attrInformation(rId);                                               //调用属性信息数据显示函数
+    //        });
+    //        function attrInformation(id) {                                          //属性信息数据显示函数
+    //            var dataChild = dataInfor.FeaturePoint.Property[id-1];
+    //            $("#GRAPHID").empty().append(dataChild.GRAPHID);
+    //            $("#PRODUCTIONDATE").empty().append(dataChild.PRODUCTIONDATE);
+    //            $("#ZONENAME").empty().append(dataChild.ZONENAME);
+    //            $("#FEATUREID").empty().append(dataChild.FEATUREID);
+    //            $("#PLANECOORDINATESYSTEM").empty().append(dataChild.PLANECOORDINATESYSTEM);
+    //            $("#HEIGHTCOORDINATESYSTEM").empty().append(dataChild.HEIGHTCOORDINATESYSTEM);
+    //            $("#PERSON").empty().append(dataChild.PERSON);
+    //            $("#LEVEL").empty().append(dataChild.LEVEL);
+    //            $("#RESOLUTION").empty().append(dataChild.RESOLUTION);
+    //            $("#METHOD").empty().append(dataChild.METHOD);
+    //        }
+    //
+    //    }
 
 
 
@@ -888,2181 +729,7 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
     };
     var _pointProduce = function() {
         var rediskey = _uuid();
-        //console.log(gpcData);
 
-        //gpcData什么时候给我?
-        //var gpcData = [
-        //    {
-        //        "FeaturePoint": {
-        //            "Property": [
-        //                {
-        //                    "GRAPHID": "jiaoke",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "1",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "LATRANGE": "40.244306521",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "501.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F11111111",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.919906624",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "2",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.244234655",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "338.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.920733823",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "3",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.242820832",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "135.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.918821334",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "4",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.243257321",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "312.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.921538433",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "5",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "6",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "7",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "8",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "9",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "10",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "11",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "12",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "13",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "14",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "15",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "16",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "17",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "18",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "19",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "20",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "21",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "22",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "23",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "24",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "25",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "26",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "27",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "28",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "29",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "30",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "31",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "32",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "33",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "34",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "35",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "36",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "37",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "38",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "39",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "40",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                }
-        //            ]
-        //        }
-        //    },
-        //    {
-        //        "FeaturePoint": {
-        //            "Property": [
-        //                {
-        //                    "GRAPHID": "wangmeng",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "1",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.244306521",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "501.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F0000000",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.919906624",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "2",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.244234655",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "338.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.920733823",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "3",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.242820832",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "135.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.918821334",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "4",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.243257321",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "312.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.921538433",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "5",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "6",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "7",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "8",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "9",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "10",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "11",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "12",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "13",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "14",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "15",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "16",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "17",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "18",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "19",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "20",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "21",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "22",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "23",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "24",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "25",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "26",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "27",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "28",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "29",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "30",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "31",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "32",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "33",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "34",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "35",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "36",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "37",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235422186",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "303.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931022607",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "38",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.235025160",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "170.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933362243",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "39",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234118454",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "304.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.931212956",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                },
-        //                {
-        //                    "GRAPHID": "",
-        //                    "PLANECOORDINATESYSTEM": "",
-        //                    "POINTID": "40",
-        //                    "CONTROLPOINTSORT": "",
-        //                    "PRODUCTIONDATE": "",
-        //                    "DSMMARK": "",
-        //                    "COL": "",
-        //                    "LATRANGE": "40.234807771",
-        //                    "PRODUCTIONUNIT": "",
-        //                    "DATASIZE": "",
-        //                    "RESOLUTION": "",
-        //                    "METHOD": "",
-        //                    "ROW": "",
-        //                    "LEVEL": "",
-        //                    "FEATUREID": "",
-        //                    "HEIGHTCOORDINATESYSTEM": "",
-        //                    "HEIGHT": "236.00",
-        //                    "DATAFORMAT": "",
-        //                    "IMAGEID": "L51F033030",
-        //                    "UNIT": "",
-        //                    "ZONE": "",
-        //                    "DOMMARK": "",
-        //                    "LONRANGE": "116.933220685",
-        //                    "MAPPROJECTION": "",
-        //                    "ZONENAME": ""
-        //                }
-        //            ]
-        //        }
-        //    }
-        //];
         //var gpcData=dataMain;
         //gpcData.forEach(function (item) {
         //    var name = "";
@@ -3075,29 +742,67 @@ define(['jquery','dhtmlx','ol'],function($,dhl,ol){
         //});
         var gridData={
             "rediskey":rediskey,
-            "domid":"85e47e88-cef7-44f3-8b78-94aec05c27ba",
-            "domxmlid":"48ea4804-9bf8-4d55-9f68-33ca16e8d2b4",
-            "dsmid":"85e47e88-cef7-44f3-8b78-94aec05c27ba",
+            "domid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
+            "domxmlid":"86d8490e-0ddb-481f-8736-70c329b99d6a",
+            "dsmid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
             "gcpjson":dataMain
         };
 
 
         $.ajax({
-            url:"http://192.168.31.233:5000/ImagePtCut",
-            type:"post",
-            contentType: "application/json",
-            //dataType:'jsonp',
+            url: dataurl+"/ImagePtCut",
+            type: "post",
             data:JSON.stringify(gridData),
-            //data:{},
-            async: false,
-            success:function(data){
-
+            //dataType: 'JSPON',
+            success: function (data) {
+                if(data=="SUCCESS"){
+                    time();
+                }else{
+                    console.log(data);
+                }
             },
             error: function () {
-                    console.log("特征点生成-数据获取失败");
-
+                console.log("点列表数据1,请求失败");
             }
         });
+
+        function time(){
+            console.log(3);
+            var time=window.setInterval(function(){
+                $.ajax({
+                    url: dataurl+"/ImagePtCutProcess",
+                    type: "post",
+                    data:JSON.stringify({"rediskey":rediskey}),
+                    //dataType: 'JSPON',
+                    success: function (data) {
+                        console.log(data);
+                        $("#progressBar").val(data);
+                        if(data<100) {
+                            console.log(data);
+                        }else{
+                            $.ajax({
+                                url: dataurl+"/ImagePtCutResult",
+                                type: "post",
+                                data:JSON.stringify({"rediskey":rediskey}),
+                                //dataType: 'JSPON',
+                                success: function (data) {
+                                    //dataMain=$.parseJSON(data);
+                                    //dataDisplay(dataMain);
+                                    console.log(data);
+                                },
+                                error: function () {
+                                    console.log("点列表数据1,请求失败");
+                                }
+                            });
+                            window.clearInterval(time);
+                        }
+                    },
+                    error: function () {
+                        console.log("点列表数据,请求失败");
+                    }
+                });
+            },2000);
+        }
         //console.log("pointProduce")
         //$.ajax({
         //    url: "",
