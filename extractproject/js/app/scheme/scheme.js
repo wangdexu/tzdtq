@@ -13,7 +13,7 @@ var clearEven = [];
 var clearEvenFree = [];
 var allArrayFree = [];
 var allFree = [];
-var draw;
+
 var allArray = [];
 var cache;
 var isFree;
@@ -24,6 +24,7 @@ var vectorFreeLayer;
 var xminX1,xmaxX1,xminY1,xmaxY1;
 var xminX2,xmaxX2,xminY2,xmaxY2;
 define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
+    var draw;
     // var map = open.map;
     function clearMap(map){
         if(vectorSource1!=null&&vectorSource1!='undefined'){
@@ -55,6 +56,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
     }
   
     var _targetSchemeEven = function(map,themeName,bbox){
+        map.removeInteraction(draw);
         isFree = themeName;
         clearMap(map);
         selectedValue = "2*2";
@@ -72,6 +74,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
          }
     }
     var _targetSchemeFree = function(map,themeName,bbox){
+        map.removeInteraction(draw);
         isFree = themeName;
         clearMap(map);
         showNet("",map,themeName,bbox)
@@ -144,8 +147,65 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
         }
         addEvenNetFree(a1,a2,a3,a4,count,map,theme,bbox);
     }
+
+//var _imgBox=function(){
+//    //////////////
+//    var map=open.funReturn();
+//    if(source!=null&&source!='undefined'){
+//        map.removeLayer(vector);
+//    }
+//    source= new ol.source.Vector();
+//    vector = new ol.layer.Vector({
+//        source: source
+//    });
+//    //将矢量图层加载到map中
+//    map.addLayer(vector);
+//    //  map.removeInteraction(draw);
+//    if(draw!=null&&draw!='undefined'){
+//        map.removeInteraction(draw);
+//    }
+//    draw = new ol.interaction.Draw({
+//        source: source,
+//        type: 'LineString',
+//        style: new ol.style.Style({
+//            fill: new ol.style.Fill({
+//                color: 'rgba(255, 255, 255, 0)'
+//            }),
+//            stroke: new ol.style.Stroke({
+//                color: '#ffcc33',
+//                width: 2
+//            }),
+//            image: new ol.style.Circle({
+//                radius: 7,
+//                fill: new ol.style.Fill({
+//                    color: '#ffcc33'
+//                })
+//            })
+//        }),
+//        maxPoints: 2,
+//        geometryFunction: function(coordinates, geometry){
+//            if(!geometry){
+//                geometry = new ol.geom.Polygon(null);
+//            }
+//            coordinates=[[82.364218,30.909817],[82.655710,30.667106]];
+//            var start = coordinates[0];
+//            var end = coordinates[1];
+//            geometry.setCoordinates([
+//                [start, [start[0], end[1]], end, [end[0], start[1]], start]
+//            ]);
+//            console.log(coordinates);
+//            return geometry;
+//        }
+//    });
+//
+//
+//    /////////////////
+//};
+
+
     var _targetScheme = function(map,themeName,bbox){
         isFree = themeName;
+        clearMap(map);
         clearMap(map);
         if(source!=null&&source!='undefined'){
              map.removeLayer(vector); 
@@ -165,7 +225,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                     type: 'LineString',
                     style: new ol.style.Style({
                         fill: new ol.style.Fill({
-                            color: 'rgba(255, 255, 255, 0.2)'
+                            color: 'rgba(255, 255, 255, 0)'
                         }),
                         stroke: new ol.style.Stroke({
                             color: '#ffcc33',
@@ -183,16 +243,44 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                         if(!geometry){
                             geometry = new ol.geom.Polygon(null);
                         }
+                        //coordinates=[[82.364218,30.909817],[82.655710,30.667106]];
                         var start = coordinates[0];
                         var end = coordinates[1];
                         geometry.setCoordinates([
                             [start, [start[0], end[1]], end, [end[0], start[1]], start]
                         ]);
+                        console.log(coordinates);
                         return geometry;
                     }
             });
+
+        //var pointFeature = new ol.Feature({
+        //    point = [[mainX,mainY],[mainX,mainY][mainX,mainY],[mainX,mainY]]
+        //    geometry:new ol.geom.Polygon(point),
+        //    style:new ol.style.Style({
+        //    image:new ol.style.Icon({
+        //        anchor: [10,10],
+        //        anchorXUnits: 'pixels',
+        //        anchorYUnits: 'pixels',
+        //        imgSize:[21,21],
+        //        src:"img/21px.png"
+        //    })
+        //})
+        //    });
+        vector.setStyle(new ol.style.Style({
+                stroke: new ol.style.Stroke({
+                    color: '#72DB67',
+                    width: 2
+                })
+
+                //geometry:function(feature){
+                //    var coordinates = feature.getGeometry().getCoordinates()[0];
+                //    return feature.getGeometry();
+                //}
+            }));
             map.addInteraction(draw);
             draw.on('drawend',function(event){
+                selectedValue="2*2";
                  map.removeInteraction(draw);
                  var rect = event.feature.values_.geometry.extent_;
                  showDialog(rect,map,"目标规划","","",bbox);
@@ -207,7 +295,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                      }
                      selectedValue = keyValue[e.target.value];
                  }
-            });     
+            });
     };
    
     function showDialog(rect,map,theme,x,y,bbox)
@@ -218,7 +306,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
         }
         var singleButtons = [];
         singleButtons.push({id:"startIncButId",name:"确定",order:2,halign:"right",callback:function(){drawNet(cache,map,theme,x,y,bbox);return false}});
-        singleButtons.push({id:"sendMessageButId",name:"取消",order:1,halign:"right",callback:function(){cancelNet();return false}}); 
+        singleButtons.push({id:"sendMessageButId",name:"取消",order:1,halign:"right",callback:function(){cancelNet();return false}});
         var showPar = {
             zIndex:1024,
             width:400,
@@ -239,7 +327,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
             $(".form-group>select")[0].value="";
         }
         $(".close")[0].onclick = function(){
-            clearMap(map);
+            //clearMap(map);
         }
         $("#sendMessageButId_modal-9")[0].onclick = function(){
             clearMap(map);
@@ -289,9 +377,9 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
             'GeometryCollection': [new ol.style.Style({
                     stroke: new ol.style.Stroke({
                     width: 1,    
-                    color: [255, 0, 0, 1]  
-                }),
-                })],
+                    color: [114,219,103,1]
+                })
+                })]
     };
     var styleFunction = function(feature, resolution) {
             return styles[feature.getGeometry().getType()];
@@ -604,7 +692,8 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                           "4*4":"4",
                           "8*8":"8",
                           "16*16":"16"
-                     }                    w = keyValue[selectedValue];
+                     }
+                    w = keyValue[selectedValue];
                     h = keyValue[selectedValue];
 
         }else
@@ -628,10 +717,16 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                 }
             }
     }
+    var _removeDraw=function(){
+        map = open.funReturn();
+        map.removeInteraction(draw);
+    };
     return {
         targetScheme:_targetScheme,
         targetSchemeEven:_targetSchemeEven,
-        targetSchemeFree:_targetSchemeFree    
+        targetSchemeFree:_targetSchemeFree,
+        removeDraw:_removeDraw
+        //imgBox:_imgBox
     }
 });
 

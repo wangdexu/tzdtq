@@ -10,10 +10,21 @@ var tempData;
 var tempId;
 
 define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
+    var _arr;
     var _map;
+    var _mapmin;
     var _box;
     var _showProjectDialog = function (){
     //    scheme.clearMap();
+        //打开 弹出层 点击"X""确定""取消",让弹层消失
+        //$("body").on("click","#startIncButId_modal-9,.close ",function(){
+        //    $("#ui-draggable-handle").css({display:"none"})
+        //});
+        $("body").on("click","#modal-9 button",function(){
+
+            $(".ui-draggable-handle").remove();
+            console.log(1);
+        });
        function getFormContent() {
             return $("#formTemplate").html();
         }
@@ -34,11 +45,13 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
         noModalService("modal-9","show",showPar);
         $(".nomodal-body.mCustomScrollbar")[0].style.height='429px';
         $(".nomodal-body.mCustomScrollbar")[0].style.background='#ffffff';
-        $("#mCSB_1_container")[0].style.height='419px';
+        $(".nomodal-body #mCSB_1_container")[0].style.height='419px';
         loadTree();
+        //console.log("jiaoke");
         clickTree();
     }
     function loadleftTree(){
+        //console.log("123");
         event.stopPropagation();
         var ids = tempId;
         //获取任务目录
@@ -80,6 +93,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
             }
         });
         clickLeftTree();
+        $(".ui-draggable-handle").remove();
     }
     function clickLeftTree(){
         // 文件夹点击展开
@@ -184,6 +198,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                     var bbox;
                     if(theRequest.bbox != undefined){
                         bbox = theRequest.bbox.split(",");
+                        //console.log("111+"+bbox);
                     }
                     lookUrl(url,layer,bbox,"wms",imgType);
                     //lookUrl("","","","wms");
@@ -203,7 +218,68 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                     // var path = data.node.original.url;
                     //var path = "installer.xml";
                     // lookJpg(path)
-                }
+                };
+                _arr=_map.getView().getCenter();
+                //////
+                //var vectorSource = new ol.source.Vector();
+                //var polygon = new ol.geom.Polygon([[[82.364218,30.909817],[82.364218,30.667106],[82.655710,30.667106],[82.655710,30.909817]]]).transform('EPSG:4326', 'EPSG:4326');
+                //vectorSource.addFeature(
+                //    new ol.Feature({
+                //        geometry: polygon,
+                //        name : '面',
+                //        index : '1'
+                //    })
+                //);//添加面
+                ////////
+                //if(undefined == linkPointLayer) {
+                //    linkPointLayer = new ol.layer.Vector({
+                //        source: new ol.source.Vector(),
+                //        style: new ol.style.Style({
+                //            image: new ol.style.Icon({
+                //                anchor: [10, 10],
+                //                anchorXUnits: 'pixels',
+                //                anchorYUnits: 'pixels',
+                //                imgSize: [21, 21],
+                //                src: "img/21px.png"
+                //            })
+                //        }),
+                //        wrapX: false
+                //    });
+                //    map.addLayer(linkPointLayer); //将图层添加到目标之上
+                //}
+                //
+                //
+                //var point = [[82.364218,30.909817],[82.364218,30.667106],[82.655710,30.667106],[82.655710,30.909817]];
+                //var pointFeature = new ol.Feature({
+                //    geometry:new ol.geom.Polygon(point),
+                //    style:new ol.style.Style({
+                //        fill: new ol.style.Fill({
+                //            color: 'rgba(255, 255, 255, 0)'
+                //        }),
+                //        stroke: new ol.style.Stroke({
+                //            color: '#ffcc33',
+                //            width: 2
+                //        })
+                //    })
+                //});
+                ////if(leftTable.cells(id, 2).getValue() == "ControlPoint"){
+                ////    controlPointLayer.getSource().addFeature(pointFeature);
+                ////    controlPointLayer.id = pointID;
+                ////    pointLayerArr.push(controlPointLayer);
+                ////}else if(leftTable.cells(id, 2).getValue() == "CheckPoint"){
+                ////    checkPointLayer.getSource().addFeature(pointFeature);
+                ////    checkPointLayer.id = pointID;
+                ////    pointLayerArr.push(checkPointLayer);
+                ////}else if(leftTable.cells(id, 2).getValue() == "TiePoint"){
+                //linkPointLayer.getSource().addFeature(pointFeature);
+                //linkPointLayer.id = pointID;
+                ////    pointLayerArr.push(linkPointLayer);
+                ////}
+                ////
+                //////pointLayer.id = pointID;
+                //////pointLayerArr.push(pointLayer);
+                ////给每个刺点显示其点ID的容器
+                /////////
             }
 
         })
@@ -308,18 +384,38 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
             matrixIds[z] = z;
         }
         if(type == "wms"){
-           $("#mapMainContainer").empty();
+           $("#small_map").empty();
+           _mapmin = new ol.Map({
+                target: "small_map",
+                //controls: ol.control.defaults().extend([
+                //    new ol.control.MousePosition({
+                //        coordinateFormat: ol.coordinate.createStringXY(4),
+                //        projection: 'EPSG:4326'
+                //    })
+                //]),
+                view: new ol.View({
+                    projection: 'EPSG:4326',
+                    center:[bbox[0]-(-0.2),bbox[1]-0.2],
+                    zoom: 12,
+                    minZoom: 8,
+                    maxZoom: 17
+                })
+            });
+            //_mapmin.center=[115.768862907,39.699632969];
+            $("#mapMainContainer").empty();
            _map = new ol.Map({
                 target: "mapMainContainer",
                 controls: ol.control.defaults().extend([
-                    new ol.control.MousePosition({
+                    new ol.control.MousePosition({  //鼠标移动控件
                         coordinateFormat: ol.coordinate.createStringXY(4),
                         projection: 'EPSG:4326',
+                        className:"ol-mouse-position2",  //显示坐标内容挂载点
+                        target:"post11"    //鼠标移动控件挂载点
                     })
                 ]),
                 view: new ol.View({
                     projection: 'EPSG:4326',
-                    center:[bbox[0]-0.0001,bbox[1]-0.2],
+                    center:[bbox[0]-(-0.2),bbox[1]-0.2],
                     zoom: 10,
                     minZoom: 8,
                     maxZoom: 15
@@ -335,7 +431,9 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                     ,projection:"EPSG:4326"
                 })
             });
+            _mapmin.addLayer(layer);
             _map.addLayer(layer);
+            _funReturnmin(_mapmin);
             _funReturn(_map);
             _returnBox(_box);
         }
@@ -346,6 +444,13 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
      var _funReturn = function(){
         return _map;
    }
+     var _funReturnmin = function(){
+        return _mapmin;
+   }
+    var _funReturnarr = function(){
+        return _arr;
+        console.log("jiji"+_arr);
+    }
      //查看jpg文件
     function lookJpg(path){
         var pathArr = path.split("?");
@@ -401,14 +506,14 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                 },
                 error: function (e) {
                 }
-            })
+            });
             //	token = "RIwEs5MZM5ZIMl+65zqEHyP86XbWysP8iRcO5H+zcYd1Wg3e/JcjIZwYGe5Uyx1StAlLq788gQh60prYqhAkvAfaoxp+yjPGPveFcqFktMtLsKdyUmntFenwWudPDGGSMVlMeow9nVuMUg/1gpgOf3Ow2qCJQmwT2kDyrF1F6SQ=";
             $.ajax({
                 url: folderUrl,
                 type: "post",
                 data:{"parentId":"-2","orderType":orderTypeFlag,"token":token},
                 success: function (res) {
-                    if(res.status == "true"){
+                    if(""+res.status == "true"){
                         var datas = res.item.items;
                         initUserId = datas[0].userId;
                         for(var i in datas){
@@ -435,6 +540,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
 
                                 ).appendTo($(".dl_list"));
                                 // 文件夹左侧树模式
+
                                 $('<li class="nav_item clearfix wjj_leftbs" id="'+datas[i].id+'" title="'+datas[i].name+'" data-pid="'+datas[i].parentID+'"  data-id="'+datas[i].metadata+'" data-descirbe="'+datas[i].descirbe+'" data-createTime="'+datas[i].createTime+'" data-editTime="'+datas[i].editTime+'" data-userName="'+datas[i].userName+'" data-type="0" data-editType="$'+datas[i].editType+'">' +
                                         '							<i style="background-repeat: no-repeat;width:12px;height:12px"></i>' +
                                         '							<u></u>' +
@@ -492,10 +598,11 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
         //				getSession();
                     }
                 },
-                error: function (e) {
-                    if(e.status == "401"){
-                        getSession();
-                    }
+                error: function () {
+                    console.log("失败");
+                    //if(e.status == "401"){
+                    //    getSession();
+                    //}
                 }
 	    })
     }
@@ -2118,7 +2225,9 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
     return {
         showProjectDialog:_showProjectDialog,
         funReturn:_funReturn,
-        returnBox:_returnBox
+        funReturnmin:_funReturnmin,
+        returnBox:_returnBox,
+        funReturnarr:_funReturnarr
     }
 });
 

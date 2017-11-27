@@ -31,12 +31,12 @@
                     //样式填充  
                     fill: new ol.style.Fill({  
                         //填充颜色  
-                        color: 'rgba(37,241,239,0.2)'  
+                        color: 'rgba(37,241,239,0.2)'
                     }),  
                     //笔触  
                     stroke: new ol.style.Stroke({  
                         //笔触颜色  
-                        color: '#264df6',  
+                        color: '#264df6',
                         //笔触宽度  
                         width:2  
                     }),  
@@ -47,7 +47,7 @@
                         //填充  
                         fill: new ol.style.Fill({  
                             //填充颜色  
-                            color: '#e81818'  
+                            color: '#e81818'
                         })  
                     })  
                 })  
