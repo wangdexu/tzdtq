@@ -338,6 +338,8 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
     }
     function drawNet(rect,map,theme,x,y,bbox)
     {
+        //$("#modal-9").css({display:"none"})
+
         var selectValue;
         if($(".panel-body input")[0].checked){//下拉选择
                 selectValue = selectedValue
@@ -371,7 +373,11 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
             a3.push(rect[2],rect[3]);
             a4.push(rect[0],rect[3]);
         }
-        seperateLine(a1,a2,a3,a4,selectValue,map,theme,x,y); 
+        seperateLine(a1,a2,a3,a4,selectValue,map,theme,x,y);
+        $("#modal-9").remove();
+    }
+    function cancelNet(){
+        $("#modal-9").remove();
     }
     var styles = {
             'GeometryCollection': [new ol.style.Style({
@@ -719,7 +725,9 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
     }
     var _removeDraw=function(){
         map = open.funReturn();
-        map.removeInteraction(draw);
+        if(map != undefined){
+            map.removeInteraction(draw);
+        }
     };
     return {
         targetScheme:_targetScheme,

@@ -1,6 +1,7 @@
 var small_Map;
 var tempMap;
 var dataDisplay;
+var windowGrid;
 //主视图添加预测的点
 //var mainAddPoint;
 /**
@@ -52,8 +53,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     {id : "project", text : "工程", text_pos : "buttom", type : "block", mode : "cols", list : [
                     {id : "open", text : "打开",img : "submit.png", isbig : true, type : "button"},
                     {id : "export", text : "导入/导出",img : "import.png",isbig : true,  type : "button"},
+                        {id : "save", text : "保存",img : "import.png",isbig : true,  type : "button"},
                     {id : "close", text : "关闭",img : "close.png",isbig : true,  type : "button"}
-                    //{id : "save", text : "保存",img : "import.png",isbig : true,  type : "button"}
                 ]},
                 {id : "tools", text : "工具", text_pos : "buttom", type : "block", mode : "cols", list : [
                     {id : "zoomIn", text : "放大",img:"big.png",isbig : true, type : "button"},
@@ -80,7 +81,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                 ]},
                 {id : "edit", text : "编辑", text_pos : "buttom", type : "block", mode : "cols", list : [
 
-                    {id : "addPoint", text : "添加点",img:"plus_point.png", isbig : true, type : "button"},
+                    //{id : "addPoint", text : "添加点",img:"plus_point.png", isbig : true, type : "button"},
                     {id : "stabPoint", text : "刺点",img:"hit_point.png", isbig : true, type : "buttonTwoState"},
                     {id : "modifyPoint", text : "修改点",img:"change_point.png", isbig : true, type : "buttonTwoState"},
                     {id : "deleteSingle", text : "删除点",img:"delete_point.png",isbig : true, type : "button"},
@@ -103,10 +104,28 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
 
                     {id : "pointHeight", text : "特征点高程获取",img:"auto_match.png", isbig : true, type : "button"},
                     {id : "pointDraw", text : "特征点提取精化",img:"auto_match.png", isbig : true, type : "button"},
-                    {id : "pointProduce", text : "特征点数据生成",img:"network.png", isbig : true, type : "button"}
+                    {id : "pointProduce", text : "特征点切片入库",img:"network.png", isbig : true, type : "button"},
+                    {id : "groundProduce", text : "大地控制点制备",img:"network.png", isbig : true, type : "button"},
+                    {id : "photoProduce", text : "相片控制点制备",img:"network.png", isbig : true, type : "button"}
                 ]}
             ]
         });
+        var systemKey = getUrlParam("systemkey");
+        if(systemKey == "yx"){
+            ribbon_1.hide("groundProduce");
+            ribbon_1.hide("photoProduce");
+        }else if(systemKey == "dd"){
+            ribbon_1.hide("collectMode");
+            ribbon_1.hide("pointProduce");
+            ribbon_1.hide("pointDraw");
+            ribbon_1.hide("photoProduce");
+        }else if(systemKey == "xp"){
+            ribbon_1.hide("collectMode");
+            ribbon_1.hide("pointProduce");
+            ribbon_1.hide("pointDraw");
+            ribbon_1.hide("groundProduce");
+        }
+
         var layout_1 = rightDiv.attachLayout('2E');
         var cell_1 = layout_1.cells('a');
         cell_1.hideHeader();
@@ -143,7 +162,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
             '<li>图幅编号:</li>' +
             '<li>测区时间:</li>' +
             '<li>测区名称:</li>' +
-            '<li>像空点编号:</li>' +
+            '<li>像控点编号:</li>' +
             '<li>平面坐标系:</li>' +
             '<li>高程坐标系:</li>' +
             '<li>人员:</li>' +
@@ -184,6 +203,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
         grid_3.setColSorting('str,str,str,str,str');
         grid_3.setInitWidths('*,*,*,*,*');
         grid_3.init();
+        windowGrid = grid_3;
         //grid_3.load('./data/grid.xml','xml');
 
         //var data={
@@ -380,8 +400,9 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
         ribbon_1.attachEvent("onClick", function(id) {
             switch(id){
                 case "open":
-                  open.showProjectDialog();
-                    ribbon_1.setItemState("stabPoint", "false", "");        //让刺点按钮弹起来        
+                  //open.showProjectDialog();
+                    open.openProject();
+                    ribbon_1.setItemState("stabPoint", "false", "");        //让刺点按钮弹起来
                     mapControl.removeAdd();                                 //移除刺点关联
                     ribbon_1.setItemState("modifyPoint", "false", "");      //让修改按钮弹起来
                     mapControl.removeEdit();                                //移除修改关联
@@ -584,6 +605,11 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
                     scheme.removeDraw();                                    //去除目标规划的鼠标圆点
+                    break;
+                case "save":
+                    mapProduce.save({
+                        eventName:"onClick"
+                    });
                     break;
                 //case "autoPrediction":
                 //    $(".autoMatch").addClass("autoMatchLoading").fadeIn(500);
@@ -951,6 +977,15 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
             //points.push(singlePoint);
             map.addOverlay(pop);  // 地图添加
             //popArr.push(pop);   // 存储点的ol.Overlay 对象
+        }
+        function getUrlParam(name){
+            var reg = new RegExp("(^|&)"+name+"=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if(r!=null){
+                return unescape(r[2])
+            }else{
+                return null;
+            }
         }
     };
     return {

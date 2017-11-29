@@ -114,6 +114,49 @@
         <button id="export">导出</button>
     </div>
 </div>
+<!--打开工程列表面板-->
+<div id="openProject"  style="display: none;">
+    <div id="openProjectPop"  >
+        <div style="padding-left: 10px;height: 40px;">
+            <img src="img/runtitleleft.png">
+            <span >历史任务：</span>
+            <span class="exportPop">&times;</span>
+        </div>
+        <div style="    margin-left: 30px;    margin-bottom: 30px;">
+            <table id="projectList">
+                <!--<tr>-->
+                    <!--<td>任务1</td>-->
+                    <!--<td><button>删除</button></td>-->
+                    <!--<td><button>打开</button></td>-->
+                <!--</tr>-->
+            </table>
+            <!--<label style="margin-left: 60px">任务1</label><button class="a" style="margin-left: 30px">打开</button><button >删除</button><br>-->
+            <!--<label style="margin-left: 60px">任务2</label><button class="a" style="margin-left: 30px">打开</button><button >删除</button><br>-->
+        </div>
+        <button id="closeProject">关闭</button>
+        <button id="new">新建</button>
+    </div>
+</div>
+<!--新建任务面板-->
+<div id="newProject"  style="display: none;">
+    <div id="newProjectPop"  >
+        <div style="padding-left: 10px;height: 40px;">
+            <img src="img/runtitleleft.png">
+            <span >新建任务</span>
+            <span class="exportPop">&times;</span>
+        </div>
+        <div style="width:100%;">
+            <span>任务名称:</span> <input id="projectName" style="margin-bottom: 10px;    margin-top: 50px;" type="text"  /><br>
+            <span>选择文件:</span> <input id="dirid" style="margin-bottom: 50px;" type="text" disabled="disabled" placeholder="文件夹名称"/>
+            <button id="openFile">
+                <!--<img  id="" class="buttonImg" src="../../images/folder.png" />-->
+                ...
+            </button>
+        </div>
+        <button id="closeNew">关闭</button>
+        <button id="save">确认</button>
+    </div>
+</div>
 <!--删除点的弹出框-->
 <div id="popContainer"  style="display: none;">
 <div id="pointIdPop"  >

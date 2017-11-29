@@ -490,6 +490,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
     var popArr = [];
     var _stabPoint = function(argList) {
         var map=open.funReturn();
+        var smallMap = open.funReturnmin();
         if(draw != undefined && draw != null){
             map.removeInteraction(draw);
         }
@@ -499,6 +500,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
         //if(pointLayer==null){ //只创建一次添加点图层
         var pointLayer = __createPointLayer(); //调用绘制点图层
         map.addLayer(pointLayer); //将图层添加到目标之上
+        smallMap.addLayer(pointLayer);
         __drawPoint(pointLayer);           //绘制一个点
         //}
         map.addInteraction(draw);   //添加交互
@@ -593,7 +595,9 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
                 position: coordinates,    //设置其位置
                 positioning: 'top-left'   //显示位置的方向
             });
+            smallMap.addOverlay(pop);
             map.addOverlay(pop);  // 地图添加
+
             popArr.push(pop);   // 存储点的ol.Overlay 对象
             index++;
             map.removeInteraction(draw);  //移除交互
@@ -636,17 +640,22 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
     //添加一个点,就是添加一条空数据，手动填入数据
     var _addPoint = function(argList){
      var  leftTable = argList.arg[0]; //获取第一个参数
-        if(orderList.length<=0 && pointIdList.length <= 0){
-            leftTable.forEachRow(function(id){
-                leftTable.forEachCell(id,function(cellObj,index){
-                    if(index === 0){
-                        orderList.push(cellObj.getValue());
-                    }
-                    if(index === 1){
-                        pointIdList.push(cellObj.getValue());
-                    }
+        if(orderList.length<=0 && pointIdList.length <= 0) {
+            if (leftTable.getRowsNum() > 0) {
+                leftTable.forEachRow(function (id) {  //循环每一行
+                    leftTable.forEachCell(id, function (cellObj, index) {  //循环每一行的每一个cell,每个cell的id为index，对象为cellObj
+                        if (index === 0) {
+                            orderList.push(cellObj.getValue() == undefined ? 0 : cellObj.getValue());
+                        }
+                        if (index === 1) {
+                            pointIdList.push(cellObj.getValue() == undefined ? 0 : cellObj.getValue());
+                        }
+                    });
                 });
-            });
+            } else {
+                orderList.push(0);
+                pointIdList.push(0);
+            }
         }
 
        var numOrder = Math.max.apply(null,orderList) + 1;

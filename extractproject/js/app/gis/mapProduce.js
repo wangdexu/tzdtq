@@ -85,7 +85,7 @@ var dataMain={
 //};
 //var dataMain;
 define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
-    var dataurl="http://192.168.4.221:2666";
+    //var dataurl="http://192.168.4.221:2666";
     //var dataDisplay;    //声明的点信息列表显示函数
     //随机生成唯一字符串函数
     function _uuid() {
@@ -119,7 +119,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
         //console.log(dataheight);
 
         $.ajax({
-            url:dataurl+"/GetPtAlt",
+            url:window.dataurl+"/GetPtAlt",
             type:"post",
             contentType: "application/json",
             //dataType:'jsonp',
@@ -140,7 +140,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
             console.log(1);
             var time=window.setInterval(function(){
                 $.ajax({
-                    url: dataurl+"/GetPtAltProcess",
+                    url: window.dataurl+"/GetPtAltProcess",
                     type: "post",
                     data:JSON.stringify({"rediskey":rediskey}),
                     //dataType: 'JSPON',
@@ -151,7 +151,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                             console.log(data);
                         }else{
                             $.ajax({
-                                url:dataurl+"/GetPtAltResult",
+                                url:window.dataurl+"/GetPtAltResult",
                                 type:"post",
                                 contentType: "application/json",
                                 //dataType:'jsonp',
@@ -194,64 +194,65 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
         //console.log(target);
         return  (Math.round(target *10000))/10000;
     };
-    var _pointDraw = function(argList){
-        var linkPointLayer;
-        var mainAddPoint = function(map,leftTable,mainX,mainY,id){
-            if(undefined == linkPointLayer) {
-                linkPointLayer = new ol.layer.Vector({
-                    source: new ol.source.Vector(),
-                    style: new ol.style.Style({
-                        image: new ol.style.Icon({
-                            anchor: [10, 10],
-                            anchorXUnits: 'pixels',
-                            anchorYUnits: 'pixels',
-                            imgSize: [21, 21],
-                            src: "img/21px.png"
-                        })
-                    }),
-                    wrapX: false
-                });
-                map.addLayer(linkPointLayer); //将图层添加到目标之上
-            }
-
-
-            var point = [mainX,mainY];
-            var pointFeature = new ol.Feature({
-                geometry:new ol.geom.Point(point),
-                style:new ol.style.Style({
-                    image:new ol.style.Icon({
-                        anchor: [10,10],
+    var linkPointLayer;
+    var _mainAddPoint = function(map,leftTable,mainX,mainY,id){
+        if(undefined == linkPointLayer) {
+            linkPointLayer = new ol.layer.Vector({
+                source: new ol.source.Vector(),
+                style: new ol.style.Style({
+                    image: new ol.style.Icon({
+                        anchor: [10, 10],
                         anchorXUnits: 'pixels',
                         anchorYUnits: 'pixels',
-                        imgSize:[21,21],
-                        src:"img/21px.png"
+                        imgSize: [21, 21],
+                        src: "img/21px.png"
                     })
-                })
+                }),
+                wrapX: false
             });
-            var pointID = id;//leftTable.cells(id, 1).cell.innerHTML;
-            pointFeature.setId(pointID);
-
-            linkPointLayer.getSource().addFeature(pointFeature);
-            linkPointLayer.id = pointID;
-
-            $('#pop').append('<div id="pop'+pointID+'" style="color: red">&nbsp;'+pointID+'</div>');
-
-            var pop = new ol.Overlay({
-                element:document.getElementById('pop'+pointID), //挂载点
-                position: point,    //设置其位置
-                positioning: 'top-left'   //显示位置的方向
-            });
-            var singlePoint={};
-            singlePoint.id = pointID;
-            singlePoint.singlePointtCoordinateX = __mapCoordinateFixed4(pointID[0]);
-            singlePoint.singlePointtCoordinateY =__mapCoordinateFixed4(pointID[1]);
-            //points.push(singlePoint);
-            map.addOverlay(pop);  // 地图添加
-
+            map.addLayer(linkPointLayer); //将图层添加到目标之上
         }
+
+
+        var point = [mainX,mainY];
+        var pointFeature = new ol.Feature({
+            geometry:new ol.geom.Point(point),
+            style:new ol.style.Style({
+                image:new ol.style.Icon({
+                    anchor: [10,10],
+                    anchorXUnits: 'pixels',
+                    anchorYUnits: 'pixels',
+                    imgSize:[21,21],
+                    src:"img/21px.png"
+                })
+            })
+        });
+        var pointID = id;//leftTable.cells(id, 1).cell.innerHTML;
+        pointFeature.setId(pointID);
+
+        linkPointLayer.getSource().addFeature(pointFeature);
+        linkPointLayer.id = pointID;
+
+        $('#pop').append('<div id="pop'+pointID+'" style="color: red">&nbsp;'+pointID+'</div>');
+
+        var pop = new ol.Overlay({
+            element:document.getElementById('pop'+pointID), //挂载点
+            position: point,    //设置其位置
+            positioning: 'top-left'   //显示位置的方向
+        });
+        var singlePoint={};
+        singlePoint.id = pointID;
+        singlePoint.singlePointtCoordinateX = __mapCoordinateFixed4(pointID[0]);
+        singlePoint.singlePointtCoordinateY =__mapCoordinateFixed4(pointID[1]);
+        //points.push(singlePoint);
+        map.addOverlay(pop);  // 地图添加
+
+    }
+    var _pointDraw = function(argList){
+
         dataMain.FeaturePoint.Property.forEach(function(item){
             var map = open.funReturn();
-            mainAddPoint(map,argList.arg[0],item.LONRANGE,item.LATRANGE,item.POINTID);
+            _mainAddPoint(map,argList.arg[0],item.LONRANGE,item.LATRANGE,item.POINTID);
         });
 
         var rediskey=_uuid();
@@ -259,14 +260,20 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
         var gridData= {
             "collectionrule":isFree,
             "controlpointsort":"影像控制点",
-            "domid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
-            "domxmlid":"86d8490e-0ddb-481f-8736-70c329b99d6a",
-            "dsmid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
+            //"domid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
+            //"domxmlid":"86d8490e-0ddb-481f-8736-70c329b99d6a",
+            //"dsmid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
+            "domid":selectDomData.domid,
+            "domxmlid":selectDomData.dsmid,
+            "dsmid":selectDomData.xmlid,
+            //"domid":"53061084-b582-4c2e-9038-652afdfaaa85",
+            //"domxmlid":"9b5f4bf7-79f3-437f-af65-eae4f78f044c",
+            //"dsmid":"53061084-b582-4c2e-9038-652afdfaaa85",
             "rediskey":rediskey,
             "InputPointInfo":allArray
         };
         $.ajax({
-            url: dataurl+"/ImageFptRefine",
+            url: window.dataurl+"/ImageFptRefine",
             type: "post",
             data:JSON.stringify(gridData),
             //dataType: 'JSPON',
@@ -288,7 +295,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
             var time=window.setInterval(function(){
                 console.log(2);
                 $.ajax({
-                    url: dataurl+"/ImageFptRefineProcess",
+                    url: window.dataurl+"/ImageFptRefineProcess",
                     type: "post",
                     data:JSON.stringify({"rediskey":rediskey}),
                     //dataType: 'JSPON',
@@ -300,7 +307,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
 
                         }else{
                             $.ajax({
-                                url: dataurl+"/ImageFptRefineResult",
+                                url: window.dataurl+"/ImageFptRefineResult",
                                 type: "post",
                                 data:JSON.stringify({"rediskey":rediskey}),
                                 //dataType: 'JSPON',
@@ -309,7 +316,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                                     dataDisplay(dataMain);
                                     dataMain.FeaturePoint.Property.forEach(function(item){
                                         var map = open.funReturn();
-                                        mainAddPoint(map,argList.arg[0],item.LONRANGE,item.LATRANGE,item.POINTID);
+                                        _mainAddPoint(map,argList.arg[0],item.LONRANGE,item.LATRANGE,item.POINTID);
                                     })
                                 },
                                 error: function () {
@@ -727,6 +734,20 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
 
 
     };
+    var _save = function(){
+        $.ajax({
+            url: window.dataurl+"/ImageFptRefineResult",
+            type: "post",
+            data:JSON.stringify({"id":taskUuid+imgId,"data":dataMain}),
+            //dataType: 'JSPON',
+            success: function (data) {
+                alert("保存成功！");
+            },
+            error: function () {
+                console.log("点列表数据2,请求失败");
+            }
+        });
+    }
     var _pointProduce = function() {
         var rediskey = _uuid();
 
@@ -750,7 +771,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
 
 
         $.ajax({
-            url: dataurl+"/ImagePtCut",
+            url: window.dataurl+"/ImagePtCut",
             type: "post",
             data:JSON.stringify(gridData),
             //dataType: 'JSPON',
@@ -770,7 +791,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
             console.log(3);
             var time=window.setInterval(function(){
                 $.ajax({
-                    url: dataurl+"/ImagePtCutProcess",
+                    url: window.dataurl+"/ImagePtCutProcess",
                     type: "post",
                     data:JSON.stringify({"rediskey":rediskey}),
                     //dataType: 'JSPON',
@@ -781,7 +802,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                             console.log(data);
                         }else{
                             $.ajax({
-                                url: dataurl+"/ImagePtCutResult",
+                                url: window.dataurl+"/ImagePtCutResult",
                                 type: "post",
                                 data:JSON.stringify({"rediskey":rediskey}),
                                 //dataType: 'JSPON',
@@ -998,7 +1019,8 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
     return {
         pointHeight:_pointHeight,
         pointDraw:_pointDraw,
-        pointProduce:_pointProduce
-        //saveDate:_saveDate
+        pointProduce:_pointProduce,
+        save:_save,
+        mainAddPoint:_mainAddPoint
     }
 });

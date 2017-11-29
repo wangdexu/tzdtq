@@ -8,8 +8,168 @@ var checkUrl = "http://192.168.4.3:8808/image-service/manager/sliceCheck.action"
 var unifyUrl = "http://192.168.4.3:8808/image-service/manager/sliceUnify.action";
 var tempData;
 var tempId;
+var taskUuid;
+var imgId;
+var selectDomData = {};
+define(['jquery','dhtmlx','ol','../scheme/scheme','../gis/mapProduce'],function($,dhl,ol,scheme,mapProduce){
 
-define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
+    var tempDomData;
+
+    function _uuid() {
+        var s = [];
+        var hexDigits = "0123456789abcdef";
+        for (var i = 0; i < 36; i++) {
+            s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+        }
+        s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+        s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+        s[8] = s[13] = s[18] = s[23] = "-";
+
+        var uuid = s.join("");
+        return uuid;
+    }
+    var _openProject = function(){
+        var $exportPop = $("#openProjectPop");
+        $exportPop.css({"display":"block"}).fadeIn(500);    //透明蒙层
+        $("#openProject").addClass("popContainer").fadeIn(500); // 显示删除弹出层
+        $(".exportPop").on('click',function(){     //删除弹出层
+            $exportPop.css({"display":"none"}).fadeOut(500);
+            $("#openProject").removeClass("popContainer").fadeOut(500);
+        });
+        $("#closeProject").on('click',function(){     //删除弹出层
+            $exportPop.css({"display":"none"}).fadeOut(500);
+            $("#openProject").removeClass("popContainer").fadeOut(500);
+        });
+        $("#new").on('click',function(){     //删除弹出层
+            //$exportPop.css({"display":"none"}).fadeOut(500);
+            //$("#openProject").removeClass("popContainer").fadeOut(500);
+            _newProject();
+        });
+
+        //var data = {"userid":"aaaaaa"};
+        $.ajax({
+            url:window.projectUrl+"queryPostgreSQL",
+            type:"post",
+            contentType: "application/json",
+            //dataType:'jsonp',
+            //data:JSON.stringify(data),
+            //data:data,
+            async: false,
+            success:function(data){
+                console.log(data);
+                $("#projectList").empty();
+                data.forEach(function(item){
+                    $("#projectList").append("<tr id='"+item.taskid+"'><td style='width: 250px'>"+item.taskname+"</td><td style='width: 60px'><span id='deleteProject"+item.taskid+"' style='cursor: pointer'>删除</span></td><td style='width: 60px'><span id='openProject"+item.taskid+"' style='cursor: pointer'>打开</span></td></tr>");
+                    $("#deleteProject"+item.taskid).click(function(){
+                        console.log(item.taskid);
+                        if(window.confirm('你确定删除选择的任务吗？')){
+                            _deleteProject(item.taskid);
+                            return true;
+                        }else{
+                            //alert("取消");
+                            return false;
+                        }
+
+                    })
+                    $("#openProject"+item.taskid).click(function(){
+                        console.log(item.taskid);
+                        tempDomData = item.content;
+                        _openOldProject(item.taskid,item.dirid)
+                    })
+                })
+            },
+            error: function (e) {
+                if(e.status == "401"){
+                    //getSession();
+                }
+            }
+        })
+    }
+    var _deleteProject = function(taskid){
+        var data = {"taskid":taskid}
+        $.ajax({
+            url:window.projectUrl+"deletePostgreSQL",
+            type:"post",
+            contentType: "application/json",
+            //dataType:'jsonp',
+            data:JSON.stringify(data),
+            //data:data,
+            async: false,
+            success:function(data){
+                console.log(data);
+                var $exportPop = $("#openProjectPop");
+                $exportPop.css({"display":"none"}).fadeOut(500);
+                $("#openProject").removeClass("popContainer").fadeOut(500);
+                _openProject();
+            },
+            error: function (e) {
+                if(e.status == "401"){
+                    //getSession();
+                }
+            }
+        })
+    }
+    var _openOldProject = function(taskid,dirid){
+        var $exportPop = $("#openProjectPop");
+        $exportPop.css({"display":"none"}).fadeOut(500);
+        $("#openProject").removeClass("popContainer").fadeOut(500);
+        taskUuid = taskid;
+        tempId = dirid;
+        loadleftTree();
+    }
+    var _newProject = function(){
+        var $exportPop = $("#newProjectPop");
+        $exportPop.css({"display":"block"}).fadeIn(500);    //透明蒙层
+        $("#newProject").addClass("popContainer").fadeIn(500); // 显示删除弹出层
+        $(".exportPop").on('click',function(){     //删除弹出层
+            $exportPop.css({"display":"none"}).fadeOut(500);
+            $("#openProject").removeClass("popContainer").fadeOut(500);
+        });
+        $("#closeNew").on('click',function(){     //删除弹出层
+            $exportPop.css({"display":"none"}).fadeOut(500);
+            $("#newProject").removeClass("popContainer").fadeOut(500);
+        });
+        $("#openFile").on('click',function(){     //删除弹出层
+            _showProjectDialog();
+        });
+        $("#save").on('click',function(){     //保存任务
+            $exportPop.css({"display":"none"}).fadeOut(500);
+            $("#newProject").removeClass("popContainer").fadeOut(500);
+            $exportPop.css({"display":"none"}).fadeOut(500);
+            $("#openProject").removeClass("popContainer").fadeOut(500);
+            var taskName = $("#projectName").val();
+            var uuid = _uuid();
+            var data = {
+                "taskname":taskName,
+                "taskid":uuid,
+                "dirid":tempId,
+                "content":tempDomData
+            }
+            $.ajax({
+                url:window.projectUrl+"insertPostgreSQL",
+                type:"post",
+                contentType: "application/json",
+                //dataType:'jsonp',
+                data:JSON.stringify(data),
+                //data:data,
+                async: false,
+                success:function(data){
+                    console.log(data);
+                    var $exportPop = $("#openProjectPop");
+                    $exportPop.css({"display":"none"}).fadeOut(500);
+                    $("#openProject").removeClass("popContainer").fadeOut(500);
+                    taskUuid = uuid;
+                    //_openProject();
+                    loadleftTree();
+                },
+                error: function (e) {
+                    if(e.status == "401"){
+                        //getSession();
+                    }
+                }
+            })
+        });
+    }
     var _arr;
     var _map;
     var _mapmin;
@@ -29,7 +189,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
             return $("#formTemplate").html();
         }
         var singleButtons = [];
-        singleButtons.push({id:"startIncButId",name:"确定",order:2,halign:"right",callback:function(){loadleftTree();return false}});
+        singleButtons.push({id:"startIncButId",name:"确定",order:2,halign:"right",callback:function(){}});//loadleftTree();return false
         singleButtons.push({id:"sendMessageButId",name:"取消",order:1,halign:"right",callback:function(){cancelNet();return false}}); 
         var showPar = {
             zIndex:1024,
@@ -97,6 +257,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
         clickLeftTree();
         $(".ui-draggable-handle").remove();
     }
+
     function clickLeftTree(){
         // 文件夹点击展开
 	    $("#jstreeDiv").delegate(".nav_item", "click", function() {
@@ -176,11 +337,50 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                 //勾选框
                 clickObject=this;
                 var number=$(this).children("p").html().split("_")[3];
-                $("p:contains("+number+")").prev().prop("checked",false);
+                //$("p:contains("+number+")").prev().prop("checked",false);
+                if($(this).prev().children("input:first-child")[0] != undefined){
+                    $(this).prev().children("input:first-child").prop("checked",false);
+                }
+                if($(this).next().children("input:first-child")[0] != undefined){
+                    $(this).next().children("input:first-child").prop("checked",false);
+                }
                 if(data.node.original.type != "url"){
                     _map=undefined;
                     $(".last_level").prop("checked",false);
                 }
+                imgId = data.node.original.text;
+                var tempStr = imgId.split(".")[1];
+                tempDomData.forEach(function(item){
+                    if(item.text.indexOf(tempStr) >= 0){
+                        var tempNameStr = item.text.split(".");
+                        if(tempNameStr[2].toLowerCase() == "tif" || tempNameStr[2].toLowerCase() == "tiff"){
+                            selectDomData["domid"] = item.metadata;
+                            selectDomData["dsmid"] = item.metadata;
+                        }else if(tempNameStr[2].toLowerCase() == "xml"){
+                            selectDomData["xmlid"] = item.metadata;
+                        }
+
+                    }
+                })
+                //$.ajax({
+                //    url: dataurl+"/ImageFptRefineResult",
+                //    type: "post",
+                //    data:JSON.stringify({"id":taskUuid+imgId}),
+                //    //dataType: 'JSPON',
+                //    success: function (data) {
+                //        if(data.stats == 0){
+                //            dataMain=$.parseJSON(data);
+                //            dataDisplay(dataMain);
+                //            dataMain.FeaturePoint.Property.forEach(function(item){
+                //                var map = open.funReturn();
+                //                mapProduce.mainAddPoint(map,windowGrid,item.LONRANGE,item.LATRANGE,item.POINTID);
+                //            })
+                //        }
+                //    },
+                //    error: function () {
+                //        console.log("点列表数据2,请求失败");
+                //    }
+                //});
                 $(this).children(".last_level").prop("checked",true);
                 if(data.node.original.type == "file"){
                     // lookText(data.node.original.text)
@@ -388,6 +588,17 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
         if(type == "wms"){
            $("#small_map").empty();
            _mapmin = new ol.Map({
+               interactions: ol.interaction.defaults({
+                   //默认不能双击、滚轮放大
+                   doubleClickZoom: false,
+                   //mouseWheelZoom: false,
+                   //shiftDragZoom: false,
+                   //pinchZoom:false,
+                   //默认Alt+Shift不能旋转
+                   altShiftDragRotate:false,
+                   pinchRotate:false
+                   //dragPan:false
+               }),
                 target: "small_map",
                 //controls: ol.control.defaults().extend([
                 //    new ol.control.MousePosition({
@@ -395,6 +606,11 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                 //        projection: 'EPSG:4326'
                 //    })
                 //]),
+               controls: ol.control.defaults({ //控件全部不能用
+                   attribution: false,
+                   rotate: false,
+                   zoom: false
+               }),
                 view: new ol.View({
                     projection: 'EPSG:4326',
                     center:[bbox[0]-(-0.2),bbox[1]-0.2],
@@ -406,8 +622,23 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
             //_mapmin.center=[115.768862907,39.699632969];
             $("#mapMainContainer").empty();
            _map = new ol.Map({
+               interactions: ol.interaction.defaults({
+                   //默认不能双击、滚轮放大
+                   doubleClickZoom: false,
+                   //mouseWheelZoom: false,
+                   //shiftDragZoom: false,
+                   //pinchZoom:false,
+                   //默认Alt+Shift不能旋转
+                   altShiftDragRotate:false,
+                   pinchRotate:false
+                   //dragPan:false
+               }),
                 target: "mapMainContainer",
-                controls: ol.control.defaults().extend([
+                controls: ol.control.defaults({ //控件全部不能用
+                    attribution: false,
+                    rotate: false,
+                    zoom: false
+                }).extend([
                     new ol.control.MousePosition({  //鼠标移动控件
                         coordinateFormat: ol.coordinate.createStringXY(4),
                         projection: 'EPSG:4326',
@@ -903,6 +1134,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
             event.stopPropagation();
             var ids = $(this).attr("id");
             var $that = $(this).find(".nav_item_sWrap");
+            $("#dirid").attr("value",$(this).attr("title"));
             // 将被点击的元素的id存入新建文件夹按钮中的data-currentPid属性中，用于防止当前文件夹中是空，拿不到pid这个问题
             $(".nav_title").attr("data-currentpid", ids);
             $(".left_nav .wjj_leftbs").children("p").css("color", "#333").removeClass("activeFlag1");
@@ -931,6 +1163,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
                     tempData = res.item.items;
                     if(res.item.items.length!=0){
                         tempId = res.item.items[0].parentID;
+                        tempDomData = res.item.items;
                     }
                     $(".wenjianContCont").html("");
                     $(".dl_list").html("");
@@ -2223,13 +2456,15 @@ define(['jquery','dhtmlx','ol','../scheme/scheme'],function($,dhl,ol,scheme){
         $(".toolBtn").click(function(){
             // toggleState(this,"clicked");
         });
+
     }
     return {
         showProjectDialog:_showProjectDialog,
         funReturn:_funReturn,
         funReturnmin:_funReturnmin,
         returnBox:_returnBox,
-        funReturnarr:_funReturnarr
+        funReturnarr:_funReturnarr,
+        openProject:_openProject
     }
 });
 
