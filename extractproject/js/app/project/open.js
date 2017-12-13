@@ -10,10 +10,12 @@ var tempData;
 var tempId;
 var taskUuid;
 var imgId;
+var imgName;
+var taskName;
 var selectDomData = {};
 define(['jquery','dhtmlx','ol','../scheme/scheme','../gis/mapProduce'],function($,dhl,ol,scheme,mapProduce){
 
-    var tempDomData;
+    var tempDomData = {};
 
     function _uuid() {
         var s = [];
@@ -54,7 +56,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../gis/mapProduce'],function(
             //dataType:'jsonp',
             //data:JSON.stringify(data),
             //data:data,
-            async: false,
+            async: true,
             success:function(data){
                 console.log(data);
                 $("#projectList").empty();
@@ -74,6 +76,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../gis/mapProduce'],function(
                     $("#openProject"+item.taskid).click(function(){
                         console.log(item.taskid);
                         tempDomData = item.content;
+                        taskName = item.taskname;
                         _openOldProject(item.taskid,item.dirid)
                     })
                 })
@@ -139,10 +142,43 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../gis/mapProduce'],function(
             $("#openProject").removeClass("popContainer").fadeOut(500);
             var taskName = $("#projectName").val();
             var uuid = _uuid();
+            var data = {"dirid":tempId,"classify":"我的资源"};
+            var folderData;
+            var dirId;
+            $.ajax({
+                url: baseUrl + 'api/fs/listinput',
+                contentType:"application/x-www-form-urlencoded;charset=UTF-8",
+                type: "post",
+                async: false,
+                data: data,
+                success: function (data) {
+                    if (data.length != 0) {
+                        folderData = data;
+                        data.forEach(function(item){
+                            if(item.path.toLocaleLowerCase() == "dom"){
+                                tempDomData["dom"] = item.children;
+                                dirId = item.id;
+                                tempId = item.id;
+                            }else if(item.path.toLocaleLowerCase() == "dsm"){
+                                tempDomData["dsm"] = item.children;
+                            }
+
+                        })
+                        //alert("获取数据成功！");
+                    } else {
+                        alert("获取数据失败！请先在webOs系统内导入数据！");
+                    }
+                },
+                error: function (e) {
+                    if(e.status == "401"){
+                        getSession();
+                    }
+                }
+            })
             var data = {
                 "taskname":taskName,
                 "taskid":uuid,
-                "dirid":tempId,
+                "dirid":dirId,
                 "content":tempDomData
             }
             $.ajax({
@@ -348,39 +384,51 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../gis/mapProduce'],function(
                     _map=undefined;
                     $(".last_level").prop("checked",false);
                 }
-                imgId = data.node.original.text;
-                var tempStr = imgId.split(".")[1];
-                tempDomData.forEach(function(item){
-                    if(item.text.indexOf(tempStr) >= 0){
-                        var tempNameStr = item.text.split(".");
-                        if(tempNameStr[2].toLowerCase() == "tif" || tempNameStr[2].toLowerCase() == "tiff"){
-                            selectDomData["domid"] = item.metadata;
-                            selectDomData["dsmid"] = item.metadata;
-                        }else if(tempNameStr[2].toLowerCase() == "xml"){
-                            selectDomData["xmlid"] = item.metadata;
+                imgName = data.node.original.text;
+                var tempStr = imgName.split("_")[imgName.split("_").length-2];
+                tempDomData["dom"].forEach(function(item){
+                    if(item.path.indexOf(tempStr) >= 0){
+                        var tempNameStr = item.path.split(".");
+                        if(tempNameStr[tempNameStr.length-1].toLowerCase() == "tif" || tempNameStr[tempNameStr.length-1].toLowerCase() == "tiff"){
+                            selectDomData["domid"] = item.metadataid;
+                            imgId = item.metadataid;
+                        }else if(tempNameStr[tempNameStr.length-1].toLowerCase() == "xml"){
+                            selectDomData["xmlid"] = item.metadataid;
                         }
-
                     }
                 })
-                //$.ajax({
-                //    url: dataurl+"/ImageFptRefineResult",
-                //    type: "post",
-                //    data:JSON.stringify({"id":taskUuid+imgId}),
-                //    //dataType: 'JSPON',
-                //    success: function (data) {
-                //        if(data.stats == 0){
-                //            dataMain=$.parseJSON(data);
-                //            dataDisplay(dataMain);
-                //            dataMain.FeaturePoint.Property.forEach(function(item){
-                //                var map = open.funReturn();
-                //                mapProduce.mainAddPoint(map,windowGrid,item.LONRANGE,item.LATRANGE,item.POINTID);
-                //            })
-                //        }
-                //    },
-                //    error: function () {
-                //        console.log("点列表数据2,请求失败");
-                //    }
-                //});
+                tempDomData["dsm"].forEach(function(item){
+                    if(item.path.indexOf(tempStr) >= 0){
+                        var tempNameStr = item.path.split(".");
+                        if(tempNameStr[tempNameStr.length-1].toLowerCase() == "tif" || tempNameStr[tempNameStr.length-1].toLowerCase() == "tiff"){
+                            selectDomData["dsmid"] = item.metadataid;
+                        }
+                        //else if(tempNameStr[tempNameStr.length-1].toLowerCase() == "xml"){
+                        //    selectDomData["xmlid"] = item.metadata;
+                        //}
+                    }
+                })
+                $.ajax({
+                    url: dataurl+"SendWorkCondition",
+                    type: "post",
+                    data:JSON.stringify({"taskid":taskUuid,"domid":taskUuid+imgId}),
+                    //dataType: 'JSPON',
+                    success: function (data) {
+                        if(data != "FAIL"){
+                            dataMain=data;
+                            if(dataMain.FeaturePoint.length>0){
+                                dataDisplay(dataMain);
+                                dataMain.FeaturePoint.forEach(function(item){
+                                    //var map = open.funReturn();
+                                    mapProduce.mainAddPoint(_map,windowGrid,item.LONRANGE,item.LATRANGE,item.POINTID);
+                                })
+                            }
+                        }
+                    },
+                    error: function () {
+                        console.log("点列表数据2,请求失败");
+                    }
+                });
                 $(this).children(".last_level").prop("checked",true);
                 if(data.node.original.type == "file"){
                     // lookText(data.node.original.text)
@@ -421,6 +469,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../gis/mapProduce'],function(
                     //var path = "installer.xml";
                     // lookJpg(path)
                 };
+                //_map = open.funReturn();
                 _arr=_map.getView().getCenter();
                 //////
                 //var vectorSource = new ol.source.Vector();
@@ -1163,7 +1212,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../gis/mapProduce'],function(
                     tempData = res.item.items;
                     if(res.item.items.length!=0){
                         tempId = res.item.items[0].parentID;
-                        tempDomData = res.item.items;
+                        //tempDomData = res.item.items;
                     }
                     $(".wenjianContCont").html("");
                     $(".dl_list").html("");

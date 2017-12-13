@@ -364,3 +364,9 @@ html, body{
     -o-user-select: none;
     user-select: none;
 }
+
+.nav_item .last_level {
+    float: left;
+    margin-left: 5px;
+    margin-top: 4.5px;
+}

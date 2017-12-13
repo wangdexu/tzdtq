@@ -17,6 +17,7 @@ var allFree = [];
 var allArray = [];
 var cache;
 var isFree;
+var ghType;
 var tempX;
 var tempY;
 var vectorFreeSource;
@@ -60,6 +61,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
         isFree = themeName;
         clearMap(map);
         selectedValue = "2*2";
+        ghType = "均匀规划";
         showDialog("",map,"均匀规划","","",bbox);
         $(".form-group>input")[0].style.display='none'
         $(".col-lg-12.col-md-12")[0].style.display='none'
@@ -89,6 +91,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                    if((allArrayFree[i][0]<tempX&&tempX<allArrayFree[i][2])&&(allArrayFree[i][3]<tempY&&tempY<allArrayFree[i][1]))//四个矩形坐标位置
                     // if((bbox[i][0]<tempX&&tempX<bbox[i][2])&&(bbox[i][3]<tempY&&tempY<bbox[i][1]))//四个矩形坐标位置
                     {
+                       ghType = "目标规划";
                         showDialog(allArrayFree[i],map,"自由规划",tempX,tempY,bbox);
                         // showDialog(bbox[i],map,"自由规划",tempX,tempY,bbox);
                         $(".form-group>select")[0].value="2*2";
@@ -283,6 +286,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                 selectedValue="2*2";
                  map.removeInteraction(draw);
                  var rect = event.feature.values_.geometry.extent_;
+                ghType = "目标规划";
                  showDialog(rect,map,"目标规划","","",bbox);
                  $(".col-lg-12.col-md-12")[0].style.display='block';
                  $(".form-group>input")[0].style.display='block'

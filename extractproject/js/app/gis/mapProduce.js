@@ -1,7 +1,6 @@
-var dataMain={
-        "FeaturePoint": {
-            "Property": []
-        }};
+var dataMain= {
+    "FeaturePoint": []
+        };
 //var dataMain={
 //        "FeaturePoint": {
 //            "Property": [
@@ -104,7 +103,12 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
     var _pointHeight = function(argList){
         var rediskey=_uuid();
         var lonlatvalue=[];
-        var datalist=argList.arg[0].getSelectedRowId(0).split(",");         //获得选中行的所有行id集合
+        var datalist;
+        try {
+            datalist=argList.arg[0].getSelectedRowId(0).split(",");         //获得选中行的所有行id集合
+        }catch (e){
+            datalist=[argList.arg[0].getSelectedRowId(0)];         //获得选中行的所有行id集合
+        }
         console.log(datalist);
         datalist.forEach(function(item){
             item=parseFloat(item);
@@ -113,13 +117,15 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
 
         var dataheight={
             "rediskey":rediskey,
-            "dsmid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
+            //"dsmid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
+            "dsmid":selectDomData.dsmid,
+            //"dsmid":"53061084-b582-4c2e-9038-652afdfaaa85",
             "lonlatvalue":lonlatvalue
         };
         //console.log(dataheight);
 
         $.ajax({
-            url:window.dataurl+"/GetPtAlt",
+            url:window.dataurl+"GetPtAlt",
             type:"post",
             contentType: "application/json",
             //dataType:'jsonp',
@@ -129,18 +135,19 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                 if(data=="SUCCESS"){
                     time();
                 }else{
+                    alert("高程-数据获取失败!")
                     console.log(data);
                 }
             },
             error: function () {
-                    console.log("高程-数据获取失败1");
+                alert("高程-数据获取失败!")
             }
         });
         function time(){
             console.log(1);
             var time=window.setInterval(function(){
                 $.ajax({
-                    url: window.dataurl+"/GetPtAltProcess",
+                    url: window.dataurl+"GetPtAltProcess",
                     type: "post",
                     data:JSON.stringify({"rediskey":rediskey}),
                     //dataType: 'JSPON',
@@ -151,18 +158,18 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                             console.log(data);
                         }else{
                             $.ajax({
-                                url:window.dataurl+"/GetPtAltResult",
+                                url:window.dataurl+"GetPtAltResult",
                                 type:"post",
                                 contentType: "application/json",
                                 //dataType:'jsonp',
                                 data:JSON.stringify({"rediskey":rediskey}),
                                 async: false,
                                 success:function(data){
-                                    data=$.parseJSON(data);
+                                    data=data.result;
                                     console.log(dataMain);
 
                                     //将获得的高程保存起来
-                                    dataMain.FeaturePoint.Property.forEach(function(item,index){
+                                    dataMain.FeaturePoint.forEach(function(item,index){
                                         data.forEach(function(value){
                                             if(item.POINTID==value[0]){
                                                 item.HEIGHT=value[1].toFixed(2);
@@ -249,23 +256,36 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
 
     }
     var _pointDraw = function(argList){
+        var open = argList.arg[2];
+        var map = open.funReturn();
+        dataMain.FeaturePoint.forEach(function(item){
 
-        dataMain.FeaturePoint.Property.forEach(function(item){
-            var map = open.funReturn();
             _mainAddPoint(map,argList.arg[0],item.LONRANGE,item.LATRANGE,item.POINTID);
         });
-
+        //alert(unescape("\u7279\u5f81\u70b9\u63d0\u53d6\u5931\u8d25"));
         var rediskey=_uuid();
+        var systemKey = getUrlParam("systemkey");
+        var pointType = "影像特征点";
+        if(systemKey == "yx"){
+            pointType = "影像特征点";
+        }else if(systemKey == "dd"){
+            pointType = "大地特征点";
+        }else if(systemKey == "xp"){
+            pointType = "像片特征点";
+        }
         //网格点数据,罗旭给坐标
         var gridData= {
-            "collectionrule":isFree,
-            "controlpointsort":"影像控制点",
+            "collectionrule":ghType,
+            "controlpointsort":pointType,
             //"domid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
             //"domxmlid":"86d8490e-0ddb-481f-8736-70c329b99d6a",
             //"dsmid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
+            //"domid":selectDomData.domid,
+            //"domxmlid":selectDomData.dsmid,
+            //"dsmid":selectDomData.xmlid,
             "domid":selectDomData.domid,
-            "domxmlid":selectDomData.dsmid,
-            "dsmid":selectDomData.xmlid,
+            "domxmlid":selectDomData.xmlid,
+            "dsmid":selectDomData.dsmid,
             //"domid":"53061084-b582-4c2e-9038-652afdfaaa85",
             //"domxmlid":"9b5f4bf7-79f3-437f-af65-eae4f78f044c",
             //"dsmid":"53061084-b582-4c2e-9038-652afdfaaa85",
@@ -273,7 +293,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
             "InputPointInfo":allArray
         };
         $.ajax({
-            url: window.dataurl+"/ImageFptRefine",
+            url: window.dataurl+"ImageFptRefine",
             type: "post",
             data:JSON.stringify(gridData),
             //dataType: 'JSPON',
@@ -295,29 +315,34 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
             var time=window.setInterval(function(){
                 console.log(2);
                 $.ajax({
-                    url: window.dataurl+"/ImageFptRefineProcess",
+                    url: window.dataurl+"ImageFptRefineProcess",
                     type: "post",
                     data:JSON.stringify({"rediskey":rediskey}),
                     //dataType: 'JSPON',
                     success: function (data) {
                         console.log(data);
                         $("#progressBar").val(data);
-                        if(data<100) {
+                        if(data<100 && data != -1) {
                             console.log(data);
 
-                        }else{
+                        }else if(data == -1 || data == 100){
                             $.ajax({
-                                url: window.dataurl+"/ImageFptRefineResult",
+                                url: window.dataurl+"ImageFptRefineResult",
                                 type: "post",
                                 data:JSON.stringify({"rediskey":rediskey}),
                                 //dataType: 'JSPON',
                                 success: function (data) {
-                                    dataMain=$.parseJSON(data);
-                                    dataDisplay(dataMain);
-                                    dataMain.FeaturePoint.Property.forEach(function(item){
-                                        var map = open.funReturn();
-                                        _mainAddPoint(map,argList.arg[0],item.LONRANGE,item.LATRANGE,item.POINTID);
-                                    })
+                                    if(data.status == "false"){
+                                        alert(unescape(data.msg));
+                                    }else{
+                                        dataMain=data.result;
+                                        dataDisplay(dataMain);
+                                        dataMain.FeaturePoint.forEach(function(item){
+                                            //var map = open.funReturn();
+                                            _mainAddPoint(map,argList.arg[0],item.LONRANGE,item.LATRANGE,item.POINTID);
+                                        })
+                                    }
+
                                 },
                                 error: function () {
                                     console.log("点列表数据2,请求失败");
@@ -736,9 +761,9 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
     };
     var _save = function(){
         $.ajax({
-            url: window.dataurl+"/ImageFptRefineResult",
+            url: window.dataurl+"SaveWorkCondition",
             type: "post",
-            data:JSON.stringify({"id":taskUuid+imgId,"data":dataMain}),
+            data:JSON.stringify({"taskid":taskUuid,"domid":taskUuid+imgId,"gcpjson":dataMain}),
             //dataType: 'JSPON',
             success: function (data) {
                 alert("保存成功！");
@@ -761,17 +786,33 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
         //        }
         //    });
         //});
+        var systemKey = getUrlParam("systemkey");
+        var pointType = "影像特征点";
+        if(systemKey == "yx"){
+            pointType = "影像特征点";
+        }else if(systemKey == "dd"){
+            pointType = "大地特征点";
+        }else if(systemKey == "xp"){
+            pointType = "像片特征点";
+        }
         var gridData={
+            "taskid":taskUuid,
+            "taskname":taskName,
+            //"collectionrule":ghType,
+            "controlpointsort":pointType,
             "rediskey":rediskey,
-            "domid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
-            "domxmlid":"86d8490e-0ddb-481f-8736-70c329b99d6a",
-            "dsmid":"e8043ed0-d121-40ba-b679-4bdfa38d9074",
+            "domid":selectDomData.domid,
+            "domxmlid":selectDomData.xmlid,
+            "dsmid":selectDomData.dsmid,
+            //"domid":"53061084-b582-4c2e-9038-652afdfaaa85",
+            //"domxmlid":"9b5f4bf7-79f3-437f-af65-eae4f78f044c",
+            //"dsmid":"53061084-b582-4c2e-9038-652afdfaaa85",
             "gcpjson":dataMain
         };
 
 
         $.ajax({
-            url: window.dataurl+"/ImagePtCut",
+            url: window.dataurl+"ImagePtCut",
             type: "post",
             data:JSON.stringify(gridData),
             //dataType: 'JSPON',
@@ -791,7 +832,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
             console.log(3);
             var time=window.setInterval(function(){
                 $.ajax({
-                    url: window.dataurl+"/ImagePtCutProcess",
+                    url: window.dataurl+"ImagePtCutProcess",
                     type: "post",
                     data:JSON.stringify({"rediskey":rediskey}),
                     //dataType: 'JSPON',
@@ -802,7 +843,7 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
                             console.log(data);
                         }else{
                             $.ajax({
-                                url: window.dataurl+"/ImagePtCutResult",
+                                url: window.dataurl+"ImagePtCutResult",
                                 type: "post",
                                 data:JSON.stringify({"rediskey":rediskey}),
                                 //dataType: 'JSPON',
@@ -870,13 +911,22 @@ define(['jquery','dhtmlx','ol','../project/open'],function($,dhl,ol,open){
         //
         //);
     };
+    function getUrlParam(name){
+        var reg = new RegExp("(^|&)"+name+"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null){
+            return unescape(r[2])
+        }else{
+            return null;
+        }
+    }
     //var _saveDate= function(argList){
     //    var dataMain={                      //按保存按钮,生成操作后的数据
     //        "FeaturePoint" : {
     //            "Property": []
     //        }
     //    };
-    //    var dataArr = dataMain.FeaturePoint.Property;
+    //    var dataArr = dataMain.FeaturePoint;
     //    for(var i=1;i<=argList.arg[0].getRowsNum();i++){                //遍历一遍点信息列表,将最新的操作后数据动态生成并保存
     //        dataArr.push({"COL" : 11597,"DATAFORMAT" : "tif","DATASIZE" : 1024,"DOMMARK" : "E:\\testdata\\inputData\\GF1_beijing\\GF1_PMS1_E116.9_N40.3_20160831_L1A0001795441_dom.tiff","DSMMARK" : "E:\\testdata\\inputData\\GF1_beijing\\GF1_PMS1_E116.9_N40.3_20160831_L1A0001795441_dsm.tiff","FEATUREID" : "H50E002023-20171023162532-2","GRAPHID" : "H50E002023","HEIGHT" : value(i,4),"HEIGHTCOORDINATESYSTEM" : "WGS84","LATRANGE" : value(i,3),"LEVEL" : "","PERSON" : "","LONRANGE" : value(i,2),"MAPPROJECTION" : "UTM","METHOD" : "自由规划","PLANECOORDINATESYSTEM" : "WGS84","POINTID" : argList.arg[0].getRowId(i-1),"PRODUCTIONDATE" : "2017-10-23 16:25:32","PRODUCTIONUNIT" : "","RESOLUTION" : "0.5","ROW" : 11555,"UNIT" : "meter","ZONE" : "49","ZONENAME" : ""});
     //    }

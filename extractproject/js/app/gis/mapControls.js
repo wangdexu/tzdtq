@@ -544,6 +544,12 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
             //添加一行信息  序号，点ID，点类型。。。。。。。
             var rowData = [numOrder,pointID,__mapCoordinateFixed4(coordinates[0]),__mapCoordinateFixed4(coordinates[1]),""];
             leftTable.addRow(numOrder,rowData,false);  //行的ID 与序号号值是一样的
+            if(undefined == gpcData){
+                gpcData = {"data":[]};
+                gpcData.data.push({"pointid":pointID,"x":__mapCoordinateFixed4(coordinates[0]),"y":__mapCoordinateFixed4(coordinates[1]),"z":0})
+            }else{
+                gpcData.data.push({"pointid":pointID,"x":__mapCoordinateFixed4(coordinates[0]),"y":__mapCoordinateFixed4(coordinates[1]),"z":0})
+            }
             pointLayer.id = pointID;
             pointLayerArr.push(pointLayer);
             event.feature.setId(pointID);  //给每个点（要素）添加一个唯一的ID值
@@ -582,7 +588,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
             indexExample.POINTID=singlePoint.id;
             indexExample.LONRANGE=singlePoint.singlePointtCoordinateX;
             indexExample.LATRANGE=singlePoint.singlePointtCoordinateY;
-            dataMain.FeaturePoint.Property.splice(-1,0,indexExample);
+            dataMain.FeaturePoint.splice(-1,0,indexExample);
             //console.log(dataMain.FeaturePoint.Property);
 
             //
@@ -629,6 +635,13 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
         }
 
     };
+    //removeDelete方法
+    var _removeDelete = function(){
+        var map = open.funReturn();
+        if(map != undefined){
+            map.removeInteraction(selectPoint);  //移除交互
+        }
+    }
     //association方法
     var _association = function(){
         var map = open.funReturn();
@@ -694,8 +707,8 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
             "ZONENAME": ""
         };
         indexExample.POINTID=pointID;
-        dataMain.FeaturePoint.Property.splice(-1,0,indexExample);
-        console.log(dataMain.FeaturePoint.Property);
+        dataMain.FeaturePoint.splice(-1,0,indexExample);
+        console.log(dataMain.FeaturePoint);
     };
 
     //修改点操作
@@ -710,7 +723,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
             var leftTable = data.arg[0];
             var selectedPointID ;
             var selectPoint = new ol.interaction.Select(
-                {"hitTolerance":10}
+                {"hitTolerance":20}
             );   //实例化交互选择，操作要素
             map.addInteraction(selectPoint);
             selectPoint.on('select',function(event){
@@ -770,13 +783,13 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
                                 leftTable.cells(id, 2).cell.innerHTML = x;//leftTable.cells(id, 1).cell.innerHTML;
                                 leftTable.cells(id, 3).cell.innerHTML = y;
                                 //保存数据
-                                dataMain.FeaturePoint.Property.forEach(function(item,index){
+                                dataMain.FeaturePoint.forEach(function(item,index){
                                     if(item.POINTID==id){
                                             item.LONRANGE=x;
                                             item.LATRANGE=y;
                                     }
                                 });
-                                //console.log(dataMain.FeaturePoint.Property);
+                                //console.log(dataMain.FeaturePoint);
 
 
                             }
@@ -990,30 +1003,121 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
     //    }
     //};
     //删除单点操作
-    var _deleteSinglePoint = function(argList){
-        var features = pointLayerArr;//pointLayer.getSource().getFeatures();   //得到地图所有的 features
-        var datalist=argList.arg[0].getSelectedRowId(0).split(",");         //获得选中行的所有行id集合
-        argList.arg[0].deleteSelectedRows();
-        console.log(datalist);
-        for (var i = 0; i < features.length; i++) {
-            datalist.forEach(function(value){
-            if (value == features[i].id) {
-                features[i].getSource().removeFeature(features[i].getSource().getFeatureById(features[i].id));
-                $("#pop"+(features[i].id-1)+"").remove();
-                pointLayerArr.splice(i,1);
-            }
-            });
-        };
-        dataMain.FeaturePoint.Property.forEach(function(item,index){
-            datalist.forEach(function(value){
-                _deletePoint(argList.arg[0],value);
-                if(item.POINTID==value){
-                    dataMain.FeaturePoint.Property.splice(index,1);
-                }
-            });
-        });
-    };
+    //var _deleteSinglePoint = function(argList){
+    //    var features = pointLayerArr;//pointLayer.getSource().getFeatures();   //得到地图所有的 features
+    //    var datalist=argList.arg[0].getSelectedRowId(0).split(",");         //获得选中行的所有行id集合
+    //    argList.arg[0].deleteSelectedRows();
+    //    console.log(datalist);
+    //    for (var i = 0; i < features.length; i++) {
+    //        datalist.forEach(function(value){
+    //        if (value == features[i].id) {
+    //            features[i].getSource().removeFeature(features[i].getSource().getFeatureById(features[i].id));
+    //            $("#pop"+(features[i].id-1)+"").remove();
+    //            pointLayerArr.splice(i,1);
+    //        }
+    //        });
+    //    };
+    //    dataMain.FeaturePoint.forEach(function(item,index){
+    //        datalist.forEach(function(value){
+    //            _deletePoint(argList.arg[0],value);
+    //            if(item.POINTID==value){
+    //                dataMain.FeaturePoint.splice(index,1);
+    //            }
+    //        });
+    //    });
+    //};
 
+    var selectPoint;
+    var _deleteSinglePoint = function(data){
+        map.removeInteraction(draw);  //移除交互
+        var leftTable = data.arg[0];
+        //var $pointIdPop = $("#pointIdPop");
+        if(popArr.length<=0){
+            //alert("当前没有点可以删除！");
+        }else{
+            var features = pointLayerArr;//pointLayer.getSource().getFeatures();   //得到地图所有的 features
+            var selectedPointID ;
+            selectPoint = new ol.interaction.Select(
+                {"hitTolerance":20}
+            );   //实例化交互选择，操作要素
+            map.addInteraction(selectPoint);
+            selectPoint.on('select',function(event){
+                event.preventDefault();
+                event.stopPropagation();
+                if(undefined != event.selected[0]){
+                    event.selected[0].setStyle(new ol.style.Style({
+                        stroke: new ol.style.Stroke({
+                            color: '#FB8383',
+                            width: 0
+                        })
+                        //,
+                        //image:new ol.style.Icon({
+                        //    anchor: [10,10],
+                        //    anchorXUnits: 'pixels',
+                        //    anchorYUnits: 'pixels',
+                        //    imgSize:[21,21],
+                        //    src:"img/21px.png"
+                        //})
+                        //geometry:function(feature){
+                        //    var coordinates = feature.getGeometry().getCoordinates()[0];
+                        //    return feature.getGeometry();
+                        //}
+                    }));
+                    selectedPointID = event.selected[0].getId();   // 得到选择的要素的id值
+                    //map.removeInteraction(selectPoint);           //移除交互
+                    var deleteIds = [];
+                    for(var i=0;i<features.length;i++){
+                        if(selectedPointID === parseInt(features[i].id)){
+                            //features[i].getSource().removeFeature(features[i].getSource());  //移除要删除的features
+
+                            //var f = features[i];
+                            //    f.getSource().clear();
+                            deleteIds.push(i);
+                            features[i].setVisible(false);
+                            map.removeOverlay(features[i]);
+                            //features[i].getSource().getFeatures().clear();
+                            features[i].getSource().removeFeature(features[i].getSource().getFeatureById(selectedPointID));
+                            features[i].getSource().changed();
+                            map.removeOverlay(popArr[i]);                    //移除其对应的点ID显示层
+
+                            //popArr.splice(i,1);                        //将对应存储的features 删除
+                            //points.splice(i,1);                        //将对应的点信息删除
+                            //$(this).val("null");                     //输入框置空
+
+                            leftTable.forEachRow(function(id){
+                                leftTable.forEachCell(id,function(cellObj,index){
+                                    if(index == 1){
+                                        if(cellObj.getValue() == selectedPointID){
+                                            leftTable.deleteRow(id);
+                                            $("#mapArr"+id).css("display","none");
+                                        }
+                                    }
+                                });
+                            });
+                            dataMain.data.forEach(function(item){
+                                if(item.pointid == selectedPointID){
+                                    item.active = 0;
+                                }
+                            })
+                            for(var i=0;i<gpcData.data.length;i++){
+                                var item = gpcData.data[i];
+                                if(item.pointid = importToId[selectedPointID]){
+                                    gpcData.data.splice(i,1)
+                                }
+                            }
+                        }
+                        //deleteIds.forEach(function(id){
+                        //    pointLayerArr.splice(id,1);
+                        //})
+
+                    }
+                }
+                map.updateSize();
+                map.changed();
+                $(".mapMainContainer").css({"cursor": "pointer"});
+            })
+        }
+    };
     //让十字标高亮
     var _highLight = function(selectedPointID) {
         var map = open.funReturn();
@@ -1089,9 +1193,9 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
                         }
                     });
                 });
-                dataMain.FeaturePoint.Property.forEach(function(item,index){
+                dataMain.FeaturePoint.forEach(function(item,index){
                     if(item.pointid == selectedPointID){
-                        dataMain.FeaturePoint.Property.splice(index,1);
+                        dataMain.FeaturePoint.splice(index,1);
                     }
                 })
             }
@@ -1128,7 +1232,7 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
                     $("#pop"+(features[i].id-1)+"").remove();
         };
         pointLayerArr=[];
-        dataMain.FeaturePoint.Property=[];
+        dataMain.FeaturePoint=[];
         argList.arg[0].clearAll();
 
 
@@ -1165,7 +1269,8 @@ define(['jquery','dhtmlx','ol','../scheme/scheme','../project/open'],function($,
         removeAdd:_removeAdd,
         removeEdit:_removeEdit,
         highLight:_highLight,
-        association:_association
+        association:_association,
+        removeDelete:_removeDelete
     }
 });
 

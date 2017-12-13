@@ -53,7 +53,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     {id : "project", text : "工程", text_pos : "buttom", type : "block", mode : "cols", list : [
                     {id : "open", text : "打开",img : "submit.png", isbig : true, type : "button"},
                     {id : "export", text : "导入/导出",img : "import.png",isbig : true,  type : "button"},
-                        {id : "save", text : "保存",img : "import.png",isbig : true,  type : "button"},
+                        {id : "save", text : "保存",img : "save.png",isbig : true,  type : "button"},
                     {id : "close", text : "关闭",img : "close.png",isbig : true,  type : "button"}
                 ]},
                 {id : "tools", text : "工具", text_pos : "buttom", type : "block", mode : "cols", list : [
@@ -81,10 +81,10 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                 ]},
                 {id : "edit", text : "编辑", text_pos : "buttom", type : "block", mode : "cols", list : [
 
-                    //{id : "addPoint", text : "添加点",img:"plus_point.png", isbig : true, type : "button"},
+                    {id : "addPoint", text : "添加点",img:"plus_point.png", isbig : true, type : "button"},
                     {id : "stabPoint", text : "刺点",img:"hit_point.png", isbig : true, type : "buttonTwoState"},
                     {id : "modifyPoint", text : "修改点",img:"change_point.png", isbig : true, type : "buttonTwoState"},
-                    {id : "deleteSingle", text : "删除点",img:"delete_point.png",isbig : true, type : "button"},
+                    {id : "deleteSingle", text : "删除点",img:"delete_point.png",isbig : true, type : "buttonTwoState"},
                     {id : "deleteAll", text : "删除所有点", img:"delete_all_point.png",isbig : true,type : "button"},
                     //{id : "delete", text : "删除",img:"删除点48px.png", isbig : true, type : "buttonSelect", items : [
                     //    {type : "item", buttonid : "deleteSingle",img:"删除点22px.png", text : "删除点"},
@@ -98,7 +98,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
 
                     {id : "goalProgram", text : "目标规划",img:"auto_match.png", isbig : true, type : "button"},
                     {id : "evenProgram", text : "均匀规划",img:"network.png", isbig : true, type : "button"},
-                    {id : "freeProgram", text : "自由规划",img:"network.png", isbig : true, type : "button"}
+                    {id : "freeProgram", text : "自由规划",img:"free-plan.png", isbig : true, type : "button"}
                 ]},
                 {id : "process", text : "处理", text_pos : "buttom", type : "block", mode : "cols", list : [
 
@@ -117,7 +117,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
         }else if(systemKey == "dd"){
             ribbon_1.hide("collectMode");
             ribbon_1.hide("pointProduce");
-            ribbon_1.hide("pointDraw");
+            //ribbon_1.hide("pointDraw");
             ribbon_1.hide("photoProduce");
         }else if(systemKey == "xp"){
             ribbon_1.hide("collectMode");
@@ -406,6 +406,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     mapControl.removeAdd();                                 //移除刺点关联
                     ribbon_1.setItemState("modifyPoint", "false", "");      //让修改按钮弹起来
                     mapControl.removeEdit();                                //移除修改关联
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                     $(".mapMainContainer").css({"cursor": "default"});
                     scheme.removeDraw();                                    //去除目标规划的鼠标圆点
                     break;
@@ -430,6 +432,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
                     scheme.removeDraw();                                    //去除目标规划的鼠标圆点
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                     break;
  				case "goalProgram":
                     mapControl.targetScheme("goalProgram");
@@ -438,6 +442,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     ribbon_1.setItemState("modifyPoint", "false", "");      //让修改按钮弹起来
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                     break;
                 case "evenProgram":
                     mapControl.targetSchemeEven("evenProgram");
@@ -446,6 +452,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     ribbon_1.setItemState("modifyPoint", "false", "");      //让修改按钮弹起来
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                      break;
                 case "freeProgram":
                     mapControl.targetSchemeFree("freeProgram");
@@ -454,6 +462,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     ribbon_1.setItemState("modifyPoint", "false", "");      //让修改按钮弹起来
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                     break;
                 case "zoomIn":
                     $("#mapMainContainer").css({"cursor":"crosshair"});
@@ -467,6 +477,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
                     scheme.removeDraw();                                    //去除目标规划的鼠标圆点
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                     break;
                 case "zoomOut":
                     $("#mapMainContainer").css({"cursor":"crosshair"});
@@ -480,6 +492,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
                     scheme.removeDraw();                                    //去除目标规划的鼠标圆点
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                     break;
                 case "fullView":
                     mapControl.fullView({
@@ -493,6 +507,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
                     scheme.removeDraw();                                    //去除目标规划的鼠标圆点
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                     break;
                 case "translate":
                     $(".mapMainContainer").css({"cursor":"move"});
@@ -506,6 +522,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
                     scheme.removeDraw();                                    //去除目标规划的鼠标圆点
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                     break;
                 //case "oneRatioOne":
                 //    mapControl.oneRatioOne({
@@ -525,6 +543,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
                     scheme.removeDraw();                                    //去除目标规划的鼠标圆点
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                     break;
                 //case "stabPoint":
                 //   // $(".mapMainContainer").css({"cursor":"crosshair"});
@@ -564,6 +584,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
                     scheme.removeDraw();                                    //去除目标规划的鼠标圆点
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                     break;
                 //case "save":
                 //    mapProduce.saveDate({
@@ -582,11 +604,13 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
                     scheme.removeDraw();                                    //去除目标规划的鼠标圆点
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                     break;
                 case "pointDraw":
                     mapProduce.pointDraw({
                         eventName:"onClick",
-                        arg: [grid_3,cell_8]
+                        arg: [grid_3,cell_8,open]
                     });
                     ribbon_1.setItemState("stabPoint", "false", "");        //让刺点按钮弹起来
                     mapControl.removeAdd();                                 //移除刺点关联
@@ -594,6 +618,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
                     scheme.removeDraw();                                    //去除目标规划的鼠标圆点
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                     break;
                 case "pointProduce":
                     mapProduce.pointProduce({
@@ -605,6 +631,8 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                     mapControl.removeEdit();                                //移除修改关联
                     $(".mapMainContainer").css({"cursor": "default"});
                     scheme.removeDraw();                                    //去除目标规划的鼠标圆点
+                    ribbon_1.setItemState("deleteSingle", "false", "");
+                    mapControl.removeDelete();
                     break;
                 case "save":
                     mapProduce.save({
@@ -695,6 +723,18 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                         //smallMap.removeAdd(mapId);
                     }
                     break;
+                case "deleteSingle":
+                    mapControl.deleteSinglePoint({
+                        eventName:"onClick",
+                        arg: [grid_3]
+                    });
+                    ribbon_1.setItemState("stabPoint", "false", "");        //让刺点按钮弹起来
+                    mapControl.removeAdd();                                 //移除刺点关联
+                    ribbon_1.setItemState("modifyPoint", "false", "");      //让修改按钮弹起来
+                    mapControl.removeEdit();                                //移除修改关联
+                    $(".mapMainContainer").css({"cursor": "default"});
+                    scheme.removeDraw();                                    //去除目标规划的鼠标圆点
+                    break;
                 case "associatedDisplay":
                     ribbon_1.setItemState("stabPoint", "false", "");        //让刺点按钮弹起来
                     mapControl.removeAdd();                                 //移除刺点关联
@@ -782,7 +822,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
     grid_3.attachEvent("onEditCell",function(stage,rowId,cellIndex,newValue,oldValue){
         if ((stage==2)&&(newValue!=oldValue)){
             alert("Cell with id="+rowId+" and index="+cellIndex+" was edited");
-            dataMain.FeaturePoint.Property.forEach(function(item,index){
+            dataMain.FeaturePoint.forEach(function(item,index){
                 if(item.POINTID==rowId){
                     if(cellIndex==2){
                         item.LONRANGE=grid_3.cells(rowId, cellIndex).getValue();
@@ -838,7 +878,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
 
     //点信息数据显示函数
     dataDisplay=function(dataInfor){
-        var dataArr = dataInfor.FeaturePoint.Property;
+        var dataArr = dataInfor.FeaturePoint;
         //生成点信息数据
         var data= {
             rows: []
@@ -863,7 +903,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                 console.log(1);
             });
             function attrInformation(id) {                                          //属性信息数据显示函数
-                var dataChild = dataMain.FeaturePoint.Property[id-1];
+                var dataChild = dataMain.FeaturePoint[id-1];
                 $("#GRAPHID").empty().append(dataChild.GRAPHID);
                 $("#PRODUCTIONDATE").empty().append(dataChild.PRODUCTIONDATE);
                 $("#ZONENAME").empty().append(dataChild.ZONENAME);
@@ -874,6 +914,7 @@ define(['jquery','dhtmlx','ol','../gis/mapControls','../scheme/scheme','../proje
                 $("#LEVEL").empty().append(dataChild.LEVEL);
                 $("#RESOLUTION").empty().append(dataChild.RESOLUTION);
                 $("#METHOD").empty().append(dataChild.METHOD);
+                $("#CONTROLPOINTSORT").empty().append(dataChild.CONTROLPOINTSORT);
             }
 
         //添加点在图上的十字标记
