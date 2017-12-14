@@ -370,3 +370,9 @@ html, body{
     margin-left: 5px;
     margin-top: 4.5px;
 }
+
+div.gridbox .objbox {
+    background-color: white;
+    position: relative;
+    overflow-x: hidden !important;
+}
